@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://skyhacks.org/"/>
-  <updated>2018-08-29T16:19:17.327Z</updated>
+  <updated>2018-08-29T16:20:45.070Z</updated>
   <id>http://skyhacks.org/</id>
   
   <author>
@@ -20,33 +20,22 @@
     <link href="http://skyhacks.org/2018/08/30/LeetCode/LeetCode-TransposeMatrix/"/>
     <id>http://skyhacks.org/2018/08/30/LeetCode/LeetCode-TransposeMatrix/</id>
     <published>2018-08-30T01:40:59.000Z</published>
-    <updated>2018-08-29T16:19:17.327Z</updated>
+    <updated>2018-08-29T16:20:45.070Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a><a href="https://leetcode.com/problems/number-of-islands/description/" target="_blank" rel="external">题目描述</a>：</h2><p>Given a 2d grid map of ‘1’s (land) and ‘0’s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.<br><strong>Example 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">11110</div><div class="line">11010</div><div class="line">11000</div><div class="line">00000</div></pre></td></tr></table></figure></p>
-<p>Answer: 1<br><strong>Example 2:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">11000</div><div class="line">11000</div><div class="line">00100</div><div class="line">00011</div></pre></td></tr></table></figure></p>
-<p>Answer: 3</p>
-<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给定一个由字符‘1’（陆地）和‘0’（水域）组成的二维网格地图，计算岛屿的个数。岛屿被水域环绕，由竖直或者水平方向邻接的陆地构成。你可以假设网格地图的四条边都被水域包围。<br>测试样例见题目描述</p>
-<h3 id="解题思路1："><a href="#解题思路1：" class="headerlink" title="解题思路1："></a>解题思路1：</h3><hr>
-<p>DFS：深度优先遍历（递归实现）<br>参考LeetCode Discuss：<br><a href="https://discuss.leetcode.com/topic/106261/java-c-clean-code" target="_blank" rel="external">https://discuss.leetcode.com/topic/106261/java-c-clean-code</a><br><a href="https://discuss.leetcode.com/topic/13045/my-accepted-c-solution-may-be-trivial" target="_blank" rel="external">https://discuss.leetcode.com/topic/13045/my-accepted-c-solution-may-be-trivial</a></p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; &gt;&amp; grid)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="number">0</span> == grid.size() || <span class="number">0</span> == grid[<span class="number">0</span>].size())</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> numIslands = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.size(); i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[<span class="number">0</span>].size(); j++) &#123;</div><div class="line">                <span class="keyword">if</span> (<span class="string">'1'</span> == grid[i][j]) &#123;</div><div class="line">                    numIslands++;</div><div class="line">                    bfs(grid, i, j);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> numIslands;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; &gt;&amp; grid, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="number">0</span> &gt; i || i &gt;= grid.size() || <span class="number">0</span> &gt; j || j &gt;= grid[<span class="number">0</span>].size() || <span class="string">'0'</span> == grid[i][j])</div><div class="line">            <span class="keyword">return</span>;</div><div class="line"></div><div class="line">        grid[i][j] = <span class="string">'0'</span>; <span class="comment">// mark the value to avoid duplication</span></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dir(&#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;); <span class="comment">// c++11/14</span></div><div class="line">        <span class="comment">// int nums[] = &#123;-1, 0, 1, 0, -1&#125;;</span></div><div class="line">        <span class="comment">// vector&lt;int&gt; dir(nums, nums + sizeof(nums) / sizeof(int));</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; dir.size() - <span class="number">1</span>; idx++) &#123;</div><div class="line">            <span class="keyword">int</span> rowIdx = i + dir[idx]; <span class="comment">// row index</span></div><div class="line">            <span class="keyword">int</span> colIdx = j + dir[idx + <span class="number">1</span>]; <span class="comment">// col index</span></div><div class="line">            dfs(grid, rowIdx, colIdx);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong></p>
-<pre><code>1. 递归函数需要注意结束条件，即边界的处理。我们关心的是grid范围内，其值为1的元素
-2. 为避免重复计数，每统计一个grid[i][j]，将其值置为0
-3. 由于孤岛有四个维度，元素grid[i][j]的四个方向的下一个元素坐标分别为：[(i-1, j), (i+1, j), (i, j-1), (i, j+1)]
-4. 由于是字符数组，在dfs迭代过程中，先要判断是否存在空数组情况，即‘[]’.
-</code></pre><h3 id="解题思路2："><a href="#解题思路2：" class="headerlink" title="解题思路2："></a>解题思路2：</h3><hr>
-<p>BFS：广度优先遍历（借助队列迭代实现）<br>参考LeetCode Discuss：<br><a href="https://discuss.leetcode.com/topic/11589/dfs-and-bfs-in-c" target="_blank" rel="external">https://discuss.leetcode.com/topic/11589/dfs-and-bfs-in-c</a></p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; &gt;&amp; grid)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="number">0</span> == grid.size() || <span class="number">0</span> == grid[<span class="number">0</span>].size())</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> numIslands = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.size(); i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[<span class="number">0</span>].size(); j++) &#123;</div><div class="line">                <span class="keyword">if</span> (<span class="string">'1'</span> == grid[i][j]) &#123;</div><div class="line">                    numIslands++;</div><div class="line">                    bfs(grid, i, j);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> numIslands;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; &gt;&amp; grid, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="built_in">queue</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; &gt; q;</div><div class="line">        q.push(pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;(i, j));</div><div class="line">        grid[i][j] = <span class="string">'0'</span>; <span class="comment">// mark the value to avoid duplication</span></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dir(&#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;); <span class="comment">// c++11/14</span></div><div class="line">        <span class="comment">// int nums[] = &#123;-1, 0, 1, 0, -1&#125;;</span></div><div class="line">        <span class="comment">// vector&lt;int&gt; dir(nums, nums + sizeof(nums) / sizeof(int));</span></div><div class="line">        <span class="keyword">while</span> (<span class="number">0</span> &lt; q.size()) &#123;</div><div class="line">            <span class="keyword">int</span> m = q.front().first; <span class="comment">// row index</span></div><div class="line">            <span class="keyword">int</span> n = q.front().second; <span class="comment">// col index</span></div><div class="line">            q.pop(); <span class="comment">// remove from queue</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; dir.size() - <span class="number">1</span>; idx++) &#123;</div><div class="line">                <span class="keyword">int</span> rowIdx = m + dir[idx];</div><div class="line">                <span class="keyword">int</span> colIdx = n + dir[idx + <span class="number">1</span>];</div><div class="line">                <span class="keyword">if</span> (<span class="number">0</span>&lt;=rowIdx &amp;&amp; rowIdx&lt;grid.size() &amp;&amp; <span class="number">0</span>&lt;=colIdx &amp;&amp; colIdx&lt;grid[<span class="number">0</span>].size()</div><div class="line">                    &amp;&amp; <span class="string">'1'</span>==grid[rowIdx][colIdx]) &#123;</div><div class="line">                    q.push(pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;(rowIdx, colIdx));</div><div class="line">                    grid[rowIdx][colIdx] = <span class="string">'0'</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong></p>
-<pre><code>1. BFS的处理需要借助数组实现，每一次将grid范围内其值为1的元素塞进数组（后续元素为当前grid[i][j]四个方向上的邻接元素）
-2. 为避免重复计数，每统计一个grid[i][j]，将其值置为0
-3. 由于孤岛有四个维度，元素grid[i][j]的四个方向的下一个元素坐标分别为：[(i-1, j), (i+1, j), (i, j-1), (i, j+1)]
-4. 由于是字符数组，在dfs迭代过程中，先要判断是否存在空数组情况，即‘[]’.
-</code></pre>]]></content>
+    <content type="html"><![CDATA[<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a><a href="https://leetcode.com/problems/transpose-matrix" target="_blank" rel="external">题目描述</a>：</h2><p>Given a matrix A, return the transpose of A.<br>The transpose of a matrix is the matrix flipped over it’s main diagonal, switching the row and column indices of the matrix.</p>
+<p><strong>Example 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [[1,2,3],[4,5,6],[7,8,9]]</div><div class="line">Output: [[1,4,7],[2,5,8],[3,6,9]]</div></pre></td></tr></table></figure></p>
+<p><strong>Example 2:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [[1,2,3],[4,5,6]]</div><div class="line">Output: [[1,4],[2,5],[3,6]]</div></pre></td></tr></table></figure></p>
+<p><strong>Note:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1 &lt;= A.length &lt;= 1000</div><div class="line">1 &lt;= A[0].length &lt;= 1000</div></pre></td></tr></table></figure></p>
+<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>把一个矩阵按照主对角线，翻转行列的数值。<br>测试样例见题目描述</p>
+<h3 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h3><p>其实就是讲远矩阵的行列颠倒过来，按主对角线翻转就是元素的行列索引值对调。</p>
+<hr>
+<p>参考LeetCode Discuss：<br><a href="https://leetcode.com/problems/transpose-matrix/discuss/146797/C++JavaPython-Easy-Understood" target="_blank" rel="external">https://leetcode.com/problems/transpose-matrix/discuss/146797/C++JavaPython-Easy-Understood</a></p>
+<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; transpose(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; A) &#123;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; vRes;</div><div class="line">        <span class="keyword">if</span> (<span class="number">0</span> == A.size()) <span class="keyword">return</span> vRes;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> row = A.size();</div><div class="line">        <span class="keyword">int</span> col = A[<span class="number">0</span>].size();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> colIdx = <span class="number">0</span>; colIdx &lt; col; colIdx++) &#123;</div><div class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> rowIdx = <span class="number">0</span>; rowIdx &lt; row; rowIdx++) &#123;</div><div class="line">                v.push_back(A[rowIdx][colIdx]);</div><div class="line">            &#125;</div><div class="line">            vRes.push_back(v);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> vRes;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;题目描述：&quot;&gt;&lt;a href=&quot;#题目描述：&quot; class=&quot;headerlink&quot; title=&quot;题目描述：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode.com/problems/number-of-islands/description/&quot; 
+      &lt;h2 id=&quot;题目描述：&quot;&gt;&lt;a href=&quot;#题目描述：&quot; class=&quot;headerlink&quot; title=&quot;题目描述：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode.com/problems/transpose-matrix&quot; target=&quot;_blank
     
     </summary>
     
@@ -92,9 +81,9 @@
       <category term="Arts" scheme="http://skyhacks.org/categories/Arts/"/>
     
     
-      <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
-    
       <category term="Hexo" scheme="http://skyhacks.org/tags/Hexo/"/>
+    
+      <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
       <category term="Tip" scheme="http://skyhacks.org/tags/Tip/"/>
     
@@ -188,9 +177,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
-    
       <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
+    
+      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
     
   </entry>
   
@@ -287,9 +276,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Review" scheme="http://skyhacks.org/tags/Review/"/>
-    
       <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
+    
+      <category term="Review" scheme="http://skyhacks.org/tags/Review/"/>
     
   </entry>
   
@@ -375,9 +364,9 @@
       <category term="Arts" scheme="http://skyhacks.org/categories/Arts/"/>
     
     
-      <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
-    
       <category term="Blog" scheme="http://skyhacks.org/tags/Blog/"/>
+    
+      <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
       <category term="GitHub" scheme="http://skyhacks.org/tags/GitHub/"/>
     
@@ -538,13 +527,13 @@
     
       <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
     
-      <category term="Majority Element" scheme="http://skyhacks.org/tags/Majority-Element/"/>
-    
-      <category term="Moore’s voting algorithm" scheme="http://skyhacks.org/tags/Moore%E2%80%99s-voting-algorithm/"/>
-    
       <category term="Sort" scheme="http://skyhacks.org/tags/Sort/"/>
     
       <category term="HashTable" scheme="http://skyhacks.org/tags/HashTable/"/>
+    
+      <category term="Majority Element" scheme="http://skyhacks.org/tags/Majority-Element/"/>
+    
+      <category term="Moore’s voting algorithm" scheme="http://skyhacks.org/tags/Moore%E2%80%99s-voting-algorithm/"/>
     
   </entry>
   
@@ -921,9 +910,9 @@
       <category term="Others" scheme="http://skyhacks.org/categories/Others/"/>
     
     
-      <category term="Hexo" scheme="http://skyhacks.org/tags/Hexo/"/>
-    
       <category term="Next" scheme="http://skyhacks.org/tags/Next/"/>
+    
+      <category term="Hexo" scheme="http://skyhacks.org/tags/Hexo/"/>
     
       <category term="Gitment" scheme="http://skyhacks.org/tags/Gitment/"/>
     
@@ -1210,9 +1199,9 @@
       <category term="Others" scheme="http://skyhacks.org/categories/Others/"/>
     
     
-      <category term="Blog" scheme="http://skyhacks.org/tags/Blog/"/>
-    
       <category term="Hexo" scheme="http://skyhacks.org/tags/Hexo/"/>
+    
+      <category term="Blog" scheme="http://skyhacks.org/tags/Blog/"/>
     
       <category term="GitHub]" scheme="http://skyhacks.org/tags/GitHub/"/>
     
