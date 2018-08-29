@@ -1,0 +1,1212 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Blog,Hexo,GitHub]," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Practice Makes Perfect" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="很早之前就计划搭建一个博客，但由于各方面原因（最主要还是懒），一直耽误着。终于几个月前看到同事在弄，自己也开始折腾起来。 一路跌跌撞撞，也算初步搞定。特此把中间踩过的坑记录下来，也算对后来的道友有个交代。 一、前期准备服务器购买 我是用的是VPS（虚拟专用服务器）作为网站的服务器，选择了口碑较好的搬瓦工VPS，因为其价格便宜，稳定性强，并且还支持支付宝付款。关键的关键是VPS上安装了Shadows">
+<meta name="keywords" content="Blog,Hexo,GitHub]">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo环境搭建个人博客">
+<meta property="og:url" content="http://skyhacks.org/2017/07/21/Others/UseHexoToBuildBlog/index.html">
+<meta property="og:site_name" content="Practice Makes Perfect">
+<meta property="og:description" content="很早之前就计划搭建一个博客，但由于各方面原因（最主要还是懒），一直耽误着。终于几个月前看到同事在弄，自己也开始折腾起来。 一路跌跌撞撞，也算初步搞定。特此把中间踩过的坑记录下来，也算对后来的道友有个交代。 一、前期准备服务器购买 我是用的是VPS（虚拟专用服务器）作为网站的服务器，选择了口碑较好的搬瓦工VPS，因为其价格便宜，稳定性强，并且还支持支付宝付款。关键的关键是VPS上安装了Shadows">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_1.png">
+<meta property="og:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_2.png">
+<meta property="og:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_3.png">
+<meta property="og:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_4.png">
+<meta property="og:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_6.png">
+<meta property="og:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_5.png">
+<meta property="og:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_7.png">
+<meta property="og:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_8.png">
+<meta property="og:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_9.png">
+<meta property="og:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_10.png">
+<meta property="og:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_11.png">
+<meta property="og:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_12.png">
+<meta property="og:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_13.png">
+<meta property="og:updated_time" content="2018-08-27T15:15:14.987Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo环境搭建个人博客">
+<meta name="twitter:description" content="很早之前就计划搭建一个博客，但由于各方面原因（最主要还是懒），一直耽误着。终于几个月前看到同事在弄，自己也开始折腾起来。 一路跌跌撞撞，也算初步搞定。特此把中间踩过的坑记录下来，也算对后来的道友有个交代。 一、前期准备服务器购买 我是用的是VPS（虚拟专用服务器）作为网站的服务器，选择了口碑较好的搬瓦工VPS，因为其价格便宜，稳定性强，并且还支持支付宝付款。关键的关键是VPS上安装了Shadows">
+<meta name="twitter:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://skyhacks.org/2017/07/21/Others/UseHexoToBuildBlog/"/>
+
+
+
+
+
+  <title> Hexo环境搭建个人博客 | Practice Makes Perfect </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-64459895-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Practice Makes Perfect</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            Commonweal 404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://skyhacks.org/2017/07/21/Others/UseHexoToBuildBlog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sky_co">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Practice Makes Perfect">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hexo环境搭建个人博客
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-21T17:14:41+08:00">
+                2017-07-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Others/" itemprop="url" rel="index">
+                    <span itemprop="name">Others</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>很早之前就计划搭建一个博客，但由于各方面原因（最主要还是懒），一直耽误着。终于几个月前看到同事在弄，自己也开始折腾起来。 一路跌跌撞撞，也算初步搞定。特此把中间踩过的坑记录下来，也算对后来的道友有个交代。</p>
+<h2 id="一、前期准备"><a href="#一、前期准备" class="headerlink" title="一、前期准备"></a>一、前期准备</h2><h3 id="服务器购买"><a href="#服务器购买" class="headerlink" title="服务器购买"></a>服务器购买</h3><hr>
+<p>我是用的是VPS（虚拟专用服务器）作为网站的服务器，选择了口碑较好的搬瓦工VPS，因为其价格便宜，稳定性强，并且还支持支付宝付款。<br>关键的关键是VPS上安装了Shadowsocks以后就可以无忧访问外网了，比隔天就被封杀的VPN靠谱多了。 <strong>:)</strong></p>
+<p><a href="http://banwagong.cn" target="_blank" rel="external">搬瓦工官网</a><br>注册完后，在Home页面有很多产品供我们选择，我之前选择的是最便宜的那款，2.99美刀一个月，如果觉得性能有瓶颈，可以考虑换个买4.99美刀一个月的，性能提升了一倍(毕竟2.99美刀的内存才256M)。<br>每个直达方案通道里面，有具体方案的细节，筒子们可以自己研究下再做决定。</p>
+<img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_1.png">
+<p>购买完成后，选择<code>VPS Hosting-&gt;Services-&gt;My Services</code>。<br>然后可以看到已经购买的VPS。 服务器有了，下面当然就是给你的服务器安装操作系统。 点击KiwiVM Control Panel</p>
+<img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_2.png">
+<p>选择<code>Install new OS</code>，我安装的是<code>centos-6-x86</code>，这个根据个人喜好选择。 装完好系统，我们可以看到自己VPS的服务器属性。</p>
+<img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_3.png">
+<p>然后远程连接到服务器上。 网上有很多串口连接软件，我用的是<a href="http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe" target="_blank" rel="external">Putty</a>。 打开后，输入服务器的IP地址和端口号。</p>
+<img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_4.png">
+<p>登录成功后，进入熟悉的命令行模式，至此VPS的购买就全部搞定啦！</p>
+<h3 id="域名注册"><a href="#域名注册" class="headerlink" title="域名注册"></a>域名注册</h3><hr>
+<p>对于网站的访问，我们可以通过IP地址直接访问，也可以通过域名来访问。 相比之下，域名更便于记忆。 当然为了此步骤更多是为了显得更专（zhuang）业（bi）。 具体步骤如下：<br>域名注册网站：</p>
+<ul>
+<li><strong>TK</strong></li>
+<li><strong>Namecheap</strong></li>
+</ul>
+<p>Tk域名，网络上最容易申请到的免费域名之一，以TK结尾，与COM、NET、CN一样同属顶级域名。 因为是免费域名，很多人用来做垃圾网站，听说百度一般不会收录。 汗！<br>经过网上的一番对比，最终还是选择了在Namecheap上注册域名。 购买好域名后，要配置下域名和我们的服务器IP地址的映射关系。 配置好后，可能需要等十来分钟后，才可以被DNS服务器正常解析。</p>
+<img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_6.png">
+<p>关于NameCheap的映射关系配置，请参考链接: <a href="http://xianhuo.org/namecheap-yumingjiexijiaocheng2016.html" target="_blank" rel="external">namecheap域名解析教程2017</a><br>OK，恭喜你，前期工作准备完了！ 开罐可乐庆祝一下!  <strong>:)</strong></p>
+<h2 id="二、Hexo环境安装"><a href="#二、Hexo环境安装" class="headerlink" title="二、Hexo环境安装"></a>二、Hexo环境安装</h2><h2 id="本机Windows部署"><a href="#本机Windows部署" class="headerlink" title="(本机Windows部署)"></a><strong>(本机Windows部署)</strong></h2><p>当初也有很多博客框架的选择摆在我面前,但是我没有犹豫选择了<a href="https://hexo.io/zh-cn/index.html" target="_blank" rel="external">Hexo</a>。主要就是看中它的迅速快，号称使用<code>Node.js</code>让上百个页面在几秒内瞬间完成渲染；同时最关键的原因在于只需要一条命令就可以完成一键部署。 终极原因是因为懒 ～<br>Hexo的官网上东西已经比较全了，大家动手前，可以先浏览一下官网，讲的还是很详细的关于建站这块。<br>闲话不多说，让我们撸起袖子，荡起双桨，二话不说开始干。</p>
+<h3 id="基本思路"><a href="#基本思路" class="headerlink" title="基本思路"></a>基本思路</h3><hr>
+<p>在本地生成静态文件，把静态文件部署到VPS上，用Nginx直接做Web服务，由于hexo支持git的部署方式，从而可以实现从本地更新博客，方便快捷。</p>
+<h3 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a>安装Node.js</h3><hr>
+<p>在<a href="https://nodejs.org/en/download/" target="_blank" rel="external">Node.js</a>官网下载最新版，一路默认安装。</p>
+<h3 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h3><hr>
+<p>下载<a href="https://git-scm.com/download/win" target="_blank" rel="external">Git for windows</a>一路默认next点下去。<br>Git这里我们需要注意一下，需要配置一下<a href="http://www.brafox.com/post/2015/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/git-%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE.html" target="_blank" rel="external">环境变量</a>。<br>然后我们需要生成SSH密钥，按下面的步骤进行。</p>
+<ol>
+<li>打开<code>C:\Users\&lt;用户名&gt;\.ssh</code>文件夹，如果没有就新建</li>
+<li>在空白处单击右键，选择<code>Git Bash Here</code>打开终端</li>
+<li>设置git用户名<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.email &quot;email@example.com&quot;</div><div class="line">git config --global user.name &quot;username&quot;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="生成ssh密钥"><a href="#生成ssh密钥" class="headerlink" title="生成ssh密钥"></a>生成ssh密钥</h3><hr>
+<p>一路回车生成公钥和密钥，一会要用到公钥<code>id_rsa.pub</code><br><code>ssh-keygen -t rsa -C &quot;email@example.com&quot;</code></p>
+<img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_5.png">
+<h3 id="创建网站目录"><a href="#创建网站目录" class="headerlink" title="创建网站目录"></a>创建网站目录</h3><hr>
+<p>在你电脑的任意位置创建一个文件夹（例如<code>C:\hexo</code>，下文以此代替），作为网站目录(名字可以任取)。</p>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><hr>
+<p>打开<code>cmd</code>(<strong>以管理员权限运行</strong>)，通过<code>cd</code>命令进入<code>hexo</code>文件夹，输入<code>node</code>后执行如下命令(或者压根不用)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo-cli</div><div class="line">hexo init</div><div class="line">npm install</div><div class="line">hexo d -fg</div></pre></td></tr></table></figure></p>
+<p>运行完上述命令后,可以在<code>C:\hexo</code>文件夹下看到有以下的文件目录生成。 你可以看见hexo文件夹下有一个<code>themes</code>文件夹，这是可以自定义的，从而改变网站的呈现形式，<a href="https://hexo.io/themes/" target="_blank" rel="external">Hexo</a>官网也提供了一些可供选择的主题。</p>
+<img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_7.png">
+<p>接着启动本地hexo server<br><code>hexo serve(或者hexo s)</code><br>打开<code>http://localhost:4000</code> 即可看到你的站点（当然还没有发布到网络）。 如果没有响应的话，电脑重启一下，再敲入<code>hexo serve(或者hexo s)</code><br>启动本地hexo server的命令。</p>
+<img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_8.png">
+<p>到这里，本地的网站部署和搭建就告一段落。 可以稍微休息下，准备部署VPS了。</p>
+<h2 id="三、部署Hexo"><a href="#三、部署Hexo" class="headerlink" title="三、部署Hexo"></a>三、部署Hexo</h2><h2 id="VPS部署"><a href="#VPS部署" class="headerlink" title="(VPS部署)"></a><strong>(VPS部署)</strong></h2><p>前面已经讲解过VPS的购买和系统安装，此处为<code>Centos 6</code>在<code>root</code>下的操作，关于连接VPS，Windows 用户请使用<a href="http://the.earth.li/~sgtatham/putty/latest/x86/putty.exe" target="_blank" rel="external">Putty</a>（提示： Putty 中使用粘贴仅需鼠标右键）。<br>关于<code>vi</code>操作，按下<code>i</code>键进入编辑模式，编辑结束后按<code>esc</code>键退出，这时按<code>：</code>，并输入 <code>wq</code> ，即可。</p>
+<h3 id="安装Git-1"><a href="#安装Git-1" class="headerlink" title="安装Git"></a>安装Git</h3><hr>
+<p>在Putty终端输入如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum update &amp;&amp; apt-get upgrade -y #更新内核</div><div class="line">yum install git-core</div></pre></td></tr></table></figure></p>
+<h3 id="安装nginx"><a href="#安装nginx" class="headerlink" title="安装nginx"></a>安装nginx</h3><hr>
+<p>在Putty终端输入如下命令：<br><code>yum install nginx -y</code></p>
+<h3 id="新建git用户添加sudo权限"><a href="#新建git用户添加sudo权限" class="headerlink" title="新建git用户添加sudo权限"></a>新建git用户添加sudo权限</h3><hr>
+<p>在Putty终端输入如下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">adduser git</div><div class="line">chmod 740 /etc/sudoers #改变权限值用于读写</div><div class="line">vim /etc/sudoers</div></pre></td></tr></table></figure></p>
+<p>在vi编辑中找到如下内容：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">## Allow root to run any commands anywhere</div><div class="line">rootALL=(ALL) ALL</div></pre></td></tr></table></figure></p>
+<p>在下面添加一行<br><code>git   ALL=(ALL) ALL</code><br>保存并退出(<code>vi</code>里输入<code>:wq</code>，回车执行)后执行<br><code>chmod 440 /etc/sudoers #改回原来的权限值</code></p>
+<h3 id="创建git仓库，并配置ssh登录"><a href="#创建git仓库，并配置ssh登录" class="headerlink" title="创建git仓库，并配置ssh登录"></a>创建git仓库，并配置ssh登录</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">su git</div><div class="line">cd ~</div><div class="line">mkdir .ssh &amp;&amp; cd .ssh</div><div class="line">touch authorized_keys</div><div class="line">vi authorized_keys // 在这个文件中粘贴进刚刚Winodws下申请的key（在id_rsa.pub文件中）</div><div class="line">cd ~</div><div class="line">mkdir hexo.git &amp;&amp; cd hexo.git</div><div class="line">git init --bare</div></pre></td></tr></table></figure>
+<p>(上文中提到<code>hexo.git或者hexo</code>都可以替换成你的网站的名字)</p>
+<img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_9.png">
+<p>测试一下，如果在<strong>git bash</strong>中输入<code>ssh git@VPS的IP地址</code>,能够远程登录的话，则表示设置成功了。</p>
+<h3 id="创建网站目录并赋予git对网站目录的所有权"><a href="#创建网站目录并赋予git对网站目录的所有权" class="headerlink" title="创建网站目录并赋予git对网站目录的所有权"></a>创建网站目录并赋予git对网站目录的所有权</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd /var/www</div><div class="line">mkdir hexo</div><div class="line">chown git:git -R /var/www/hexo</div></pre></td></tr></table></figure>
+<p>(上文中提到<code>hexo</code>都可以替换成你的网站的名字)</p>
+<h3 id="配置git-hooks"><a href="#配置git-hooks" class="headerlink" title="配置git hooks"></a>配置git hooks</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">su git</div><div class="line">cd /home/git/hexo.git/hooks # 如果没有hooks目录,就mkdir hooks 自己建一个目录</div><div class="line">vim post-receive</div></pre></td></tr></table></figure>
+<p>输入如下内容后保存退出(<code>vim下输入</code>:wq`)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash -l</div><div class="line">GIT_REPO=/home/git/hexo.git #git仓库</div><div class="line">TMP_GIT_CLONE=/tmp/hexo</div><div class="line">PUBLIC_WWW=/var/www/hexo #网站目录</div><div class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;</div><div class="line">git clone $GIT_REPO $TMP_GIT_CLONE</div><div class="line">rm -rf $&#123;PUBLIC_WWW&#125;/*</div><div class="line">cp -rf $&#123;TMP_GIT_CLONE&#125;/* $&#123;PUBLIC_WWW&#125;</div></pre></td></tr></table></figure>
+<p>(上文中提到<code>hexo.git或者hexo</code>都可以替换成你的网站的名字)<br>原理就是从<code>GIT_REPO</code>仓库中把文件拷贝到<code>PUBLIC_WWW</code>目录下发布，中间有个<code>TMP_GIT_CLONE</code>用于保存文件。<br>然后赋予脚本的执行权限 <code>chmod +x post-receive</code><br>同时把上述的三个路径都用<code>chown git:git -R /路径</code>更改了owner</p>
+<h3 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h3><hr>
+<p><code>vim /etc/nginx/conf.d/hexo.conf</code><br>插入如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen         80 ;</div><div class="line">    root /var/www/hexo;//这里可以改成你的网站目录地址，我将网站放在/var/www/hexo</div><div class="line">    server_name example.com www.example.com;//这里输入你的域名或IP地址</div><div class="line">    access_log  /var/log/nginx/hexo_access.log;//这里的log文件也可以根据自己网站名字替换</div><div class="line">    error_log   /var/log/nginx/hexo_error.log;//这里的log文件也可以根据自己网站名字替换</div><div class="line">    location ~* ^.+\.(ico|gif|jpg|jpeg|png)$ &#123;</div><div class="line">            root /var/www/hexo;//网站目录地址</div><div class="line">            access_log   off;</div><div class="line">            expires      1d;</div><div class="line">    &#125;</div><div class="line">    location ~* ^.+\.(css|js|txt|xml|swf|wav)$ &#123;</div><div class="line">        root /var/www/hexo;//网站目录地址</div><div class="line">        access_log   off;</div><div class="line">        expires      10m;</div><div class="line">    &#125;</div><div class="line">    location / &#123;</div><div class="line">        root /var/www/hexo;//网站目录地址</div><div class="line">        if (-f $request_filename) &#123;</div><div class="line">            rewrite ^/(.*)$  /$1 break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>重启Nginx<br><code>service nginx restart</code><br>(如果上述操作git用户搞不定，就切换到root用户<code>su root</code>)</p>
+<h3 id="配置hexo配置文件"><a href="#配置hexo配置文件" class="headerlink" title="配置hexo配置文件"></a>配置hexo配置文件</h3><hr>
+<p>位于<code>hexo</code>文件夹下，<code>_config.yml</code>,修改<code>deploy</code>选项，改成如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">- type: git</div><div class="line">  repo: ssh://git@VPS的IP地址:/home/git/hexo.git#VPS上对应的git仓库(包含git hooks的地址)</div><div class="line">  branch: master</div><div class="line">- type: git</div><div class="line">  repo: ssh://git@github.com/hexo.git#github上对应的保存静态文件的仓库</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
+<p>接着在hexo文件夹内，按住<code>shift右击</code>，选择在此处打开命令窗口（当然你也可以用cd命令），运行<code>hexo g &amp;&amp; hexo d</code>，如果一切正常，静态文件已经被成功的push到了blog的仓库里，如果出现<code>appears not to be a git repo</code>的错误，删除hexo目录下的<code>.deploy</code>后再次<code>hexo g &amp;&amp; hexo d</code>就可以了。<br>到这里，博客已经完全建好了。</p>
+<h3 id="更新博客"><a href="#更新博客" class="headerlink" title="更新博客"></a>更新博客</h3><hr>
+<p>使用一款 MarkDown 编辑器写 Blog 。写完后将文件以 <code>*.md</code>的格式保存在本地<code>[网站目录]\source\_posts</code>中。文件编码必须为 <strong><code>UTF-8</code></strong>，这一点仅 Windows 用户需注意。<br>编写完后，只需要在hexo文件夹下执行<code>hexo g &amp;&amp; hexo d</code>，博客即可更新。</p>
+<h3 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h3><hr>
+<p>由于上面hexo文件夹下执行<code>hexo g &amp;&amp; hexo d</code>执行之后, 会更新github上你的网站目录的信息, 但是markdown文件并没有保存, 保存的是转换成静态文件<code>html</code>, 所以还是需要保存下你的原文件。因此在github上建了一个仓库专门保存博客的原文件。这样更新完博客以后，只要上传一下原文件就可以高枕无忧了。  <strong>:)</strong></p>
+<h2 id="四、安装中遇到问题"><a href="#四、安装中遇到问题" class="headerlink" title="四、安装中遇到问题"></a>四、安装中遇到问题</h2><hr>
+<ul>
+<li><p>上传操作<code>hexo d</code>报错<code>spawn git ENOENT</code>，添加<a href="http://www.brafox.com/post/2015/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/git-%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE.html" target="_blank" rel="external">Git环境变量</a>后可以了</p>
+</li>
+<li><p><code>hexo g</code> 报错，安装<code>hexo-delopyer-git</code>后解决。</p>
+</li>
+<li><p><code>hexo d</code> 提交到VPS网站目录里的文件并不是单独的public文件夹，检查hexo文件夹发现存在<code>.git</code>这个目录，删除<code>.git</code>文件夹即可（他是隐藏的哦）。</p>
+</li>
+<li><p><code>ssh git@ip</code>，被拒绝，是远程端口默认为<code>22</code>端口，而不是我VPS的<code>ssh</code>真正端口。<br>解决方法：在<code>.ssh</code>文件夹下（也就是生成公钥的文件夹）创建<code>config</code>文件，输入如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Host // VPS的IP</div><div class="line">HostName // VPS的IP</div><div class="line">User git</div><div class="line">Port // SSH端口</div><div class="line">IdentityFile ~/.ssh/id_rsa</div></pre></td></tr></table></figure>
+  <img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_10.png">
+</li>
+<li><p><code>ssh -T git@github.com</code>是否连接上<code>github</code><br><code>git config --list</code> 查看<code>git config</code>配置</p>
+</li>
+<li><p>ngix正常配置后，执行 <code>yum install nginx -y</code>。 如果失败，可能是源没有配置，在<code>/etc/yum.repos.d</code>目录下创建一个源配置文件`nginx.repo, 写入如下代码，然后再执行一次。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">[nginx]</div><div class="line">name=nginx repo</div><div class="line">baseurl=http://nginx.org/packages/centos/$releasever/$basearch/</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div><div class="line"></div><div class="line">最后查看版本号，验证完成 `nginx -v`</div></pre></td></tr></table></figure>
+  <img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_11.png">
+</li>
+<li><p>用<code>yum install git</code>安装<code>Git</code>出现问题：<code>/bin/bash: git: command not found</code><br>解决（修改安装命令为）：<code>yum install git git-svn git-email git-gui gitk -y</code></p>
+</li>
+<li><p>ssh配置后，ssh连接验证：<code>ssh: connect to host localhost port 22: Connection refused</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">错误原因：</div><div class="line">sshd 未安装：yum install openssh-server</div><div class="line">sshd 未启动：chkconfig sshd on</div><div class="line">防火墙：chkconfig iptables off(永久性生效，重启后不会复原)</div><div class="line">端口号没有设置为22(或者设置后没有重启：service sshd restart)</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>hero d</code>报错：<code>ERROR Deployer not found: git</code><br>解决：记得一定要在 blog 目录里 执行 <code>npm install hexo-deployer-git --save</code></p>
+<img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_12.png">
+</li>
+<li><p>查看<code>node</code>和<code>npm</code>版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node --version</div><div class="line">npm --version</div></pre></td></tr></table></figure>
+</li>
+<li><p>warning: LF will be replaced by CRLF | fatal: CRLF would be replaced by LF<br>解决办法：<a href="http://blog.csdn.net/feng88724/article/details/11600375" target="_blank" rel="external">http://blog.csdn.net/feng88724/article/details/11600375</a><br>遇到这两个错误，是因为Git的换行符检查功能<br>对于出现一些conflic，可以reset一些，再重新更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git reset --hard FETCH_HEAD</div><div class="line">git pull origin master</div></pre></td></tr></table></figure>
+</li>
+<li><p>hexo安装成功，并且正确运行，但是localhost:4000不能访问<br>解决办法：<a href="https://yq.aliyun.com/articles/58027" target="_blank" rel="external">https://yq.aliyun.com/articles/58027</a><br>遇到这个问题，是因为4000端口被占用了。如果你的电脑上不幸装了福昕阅读，恭喜你！它就是罪魁祸首….<br>胳膊拧不过大腿，对于这种流氓软件，我们别无他法，只能换端口。 :(</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">启动hexo s 的时候，用这个命令，换一个端口。</div><div class="line">hexo s -p 3600 // 随便指定一个端口号就好</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加多个key到git<br>Step1 添加到github账号： 打开<code>C:\Users\&lt;用户名&gt;\.ssh</code>文件夹，拷贝<code>id_rsa.pub</code>里的内容，在Github账号<code>Settings-&gt;SSH and GPG keys-&gt;New SSH key</code><br>Step2 <a href="https://askubuntu.com/questions/46424/adding-ssh-keys-to-authorized-keys" target="_blank" rel="external">添加到VPS</a>： 在<code>C:\Users\&lt;用户名&gt;\.ssh</code>文件夹下打开<code>Git Bash Here</code>, 执行<code>ssh-copy-id git@vps的IP</code></p>
+</li>
+<li><p>运行<code>hexo g &amp;&amp; hexo d</code>后没有触发<strong>git hooks</strong>解决方案<br>说实话这个问题困扰了我三四天了，之前都是<code>hexo g &amp;&amp; hexo d</code>之后，跑到VPS下的发布目录（<code>www/hexo/</code>）去手动download github上的<code>hexo.git</code>仓库完成发布的。<br>确实不爽，于是翻了好几条网页，终于解决了。方法如下：</p>
+</li>
+</ul>
+<ol>
+<li>检查你的本地public key有没有add 到github账号，并且<code>/home/git/.ssh/authorized_keys</code>里面已经加入了之前Winodws下申请的key</li>
+<li><p>hexo文件夹下，<code>_config.yml</code>的<a href="https://www.zhihu.com/question/38219432" target="_blank" rel="external">配置语句正确如下</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">- type: git</div><div class="line">  repo: git@VPS的IP地址:/home/git/hexo.git#VPS上对应的git仓库(包含git hooks的地址)</div><div class="line">  branch: master</div><div class="line">- type: git</div><div class="line">  repo: git@github.com:&#123;yourname&#125;/hexo.git#github上对应的保存静态文件的仓库</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+</li>
+<li><p>千万记得在本地博客路径<code>C:\hexo\</code>下一定要用<code>**Git Bash Here**</code>执行命令，而不是<strong>Windows的命令行窗口</strong>，否则会一直报“Permission denied, please try again.”</p>
+<img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_13.png">
+<p>运行<code>ssh -T git@github.com</code>，是否能正常访问github<br>运行<code>hexo g &amp;&amp; hexo d</code>，部署并提交代码到github，同时触发git hooks完成发布<br>过程中会弹出一个OpenSSH的对话框要你输入git的密码，输入完毕，点击ok。搞定！</p>
+</li>
+</ol>
+<ul>
+<li><p>本地博客路径<code>C:\hexo\</code>下有个<code>.gitignore</code> 文件，主要用于<code>git status</code>忽略一些列出的文件，但是筒子们有木有发现改了该文件之后，其实并没有作用。<br>百思不得其解之后，搜到<a href="https://stackoverflow.com/questions/25436312/gitignore-not-working" target="_blank" rel="external">某攻略</a>才豁然开朗：只改文件你列出的文件或目录在仓库中，需要执行以下命令手动移除。提交一版之后，整个世界就清净了 <strong>:)</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git rm -rf --cached .</div><div class="line">git add .</div><div class="line">git commit -m &quot;xxxxx&quot;</div><div class="line">git push origin master</div></pre></td></tr></table></figure>
+</li>
+<li><p>为 Next 主题文末添加版权等信息<br>看到别人博客里的版权信息，觉得有点意思，找了很多教程，效果都不是自己想要的。只能借用下<a href="http://notes.iissnan.com/2015/something-about-next/" target="_blank" rel="external">Next作者的格式和样式</a>。<br><strong>建立基础的HTML代码</strong><br>定位到本地博客文件夹下的<code>themes\next\layout\_macro\post.swig</code>文件，这个和于<code>layout</code>下的<code>post.swig</code>的区别是前者扶着具体的<code>post-content</code>的生成，而后者是调用前者。<br>然后补充类似comment第三方的模块的脚本。找到post-body所在的标签，并在其后加上如下代码：然后补充类似comment第三方的模块的脚本。找到post-body所在的标签，并在其后加上如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;</div><div class="line"> &#123;# 表示如果不在索引列表中加入后续的HTML代码 #&#125;</div><div class="line"> &#123;% if not is_index %&#125;</div><div class="line">	&lt;ul class=&quot;post-copyright&quot;&gt;</div><div class="line">	  &lt;li class=&quot;post-copyright-author&quot;&gt;</div><div class="line">		  &lt;strong&gt;本文作者：&lt;/strong&gt;&#123;&#123; theme.author &#125;&#125;</div><div class="line">	  &lt;/li&gt;</div><div class="line">	  &lt;li class=&quot;post-copyright-link&quot;&gt;</div><div class="line">		&lt;strong&gt;本文链接：&lt;/strong&gt;</div><div class="line">		&lt;a href=&quot;&#123;&#123; url_for(page.path) &#125;&#125;&quot; title=&quot;&#123;&#123; page.title &#125;&#125;&quot;&gt;&#123;&#123; page.permalink &#125;&#125;&lt;/a&gt;</div><div class="line">	  &lt;/li&gt;</div><div class="line">	  &lt;li class=&quot;post-copyright-license&quot;&gt;</div><div class="line">		&lt;strong&gt;版权声明： &lt;/strong&gt;</div><div class="line">		本博客所有文章除特别声明外，均采用 &lt;a href=&quot;http://creativecommons.org/licenses/by-nc-sa/3.0/cn/&quot; rel=&quot;external nofollow&quot; target=&quot;_blank&quot;&gt;CC BY-NC-SA 3.0 CN&lt;/a&gt; 许可协议。转载请注明出处！</div><div class="line">	  &lt;/li&gt;</div><div class="line">	&lt;/ul&gt;</div><div class="line"> &#123;% endif %&#125;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p>  <strong>增添样式</strong><br>  定位Next下的<code>source/css/_custom/custom.styl</code>,并在里面添加如下样式代码:</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.post-copyright &#123;</div><div class="line">	margin: 2em 0 0;</div><div class="line">	padding: 0.5em 1em;</div><div class="line">	border-left: 3px solid #ff1700;</div><div class="line">	background-color: #f9f9f9;</div><div class="line">	list-style: none;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="五、后记"><a href="#五、后记" class="headerlink" title="五、后记"></a>五、后记</h2><hr>
+<p>以下是自己搭建过程中查找的相关链接和信息，希望对大家有帮助。</p>
+<ol>
+<li><a href="https://dynamicer.com/how-to-deploy-hexo-blogs-with-git-hooks-on-vps/" target="_blank" rel="external">https://dynamicer.com/how-to-deploy-hexo-blogs-with-git-hooks-on-vps/</a></li>
+<li><a href="http://tiktoking.github.io/2016/01/26/hexo/" target="_blank" rel="external">http://tiktoking.github.io/2016/01/26/hexo/</a></li>
+<li><a href="http://blog.csdn.net/hanhailong726188/article/details/46738929" target="_blank" rel="external">http://blog.csdn.net/hanhailong726188/article/details/46738929</a></li>
+<li><a href="http://blog.ynxiu.com/2016/hexo-next-theme-optimize.html" target="_blank" rel="external">http://blog.ynxiu.com/2016/hexo-next-theme-optimize.html</a></li>
+<li><a href="https://arcecho.github.io/2017/04/08/Hexo-Next%E4%B8%8B%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E%E6%A8%A1%E5%9D%97/" target="_blank" rel="external">https://arcecho.github.io/2017/04/08/Hexo-Next%E4%B8%8B%E6%B7%BB%E5%8A%A0%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E%E6%A8%A1%E5%9D%97/</a></li>
+</ol>
+<h2 id="六、编辑工具"><a href="#六、编辑工具" class="headerlink" title="六、编辑工具"></a>六、编辑工具</h2><hr>
+<p>因为Hexo是支持Markdown的文件，而Markdown是一种极简的『标记语言』，将文本转为<code>HTML</code>，通常为我大码农所用。 简介好使是关键！以下为一些相关链接，希望对大家有帮助。</p>
+<p>Markdown语法</p>
+<ol>
+<li><a href="http://ibruce.info/2013/11/26/markdown/" target="_blank" rel="external">http://ibruce.info/2013/11/26/markdown/</a></li>
+<li><a href="https://maxiang.io/" target="_blank" rel="external">https://maxiang.io/</a></li>
+</ol>
+<p>Markdown编辑器</p>
+<ol>
+<li><a href="http://www.csdn.net/article/2014-05-05/2819623" target="_blank" rel="external">http://www.csdn.net/article/2014-05-05/2819623</a></li>
+<li><a href="https://maxiang.io/" target="_blank" rel="external">https://maxiang.io/</a></li>
+</ol>
+
+      
+    </div>
+
+	
+	<div>
+	  
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------本文结束<i class="fa fa-paw"></i>感谢阅读------</div>
+    
+</div>
+
+      
+	</div>
+	
+	
+	<div>    
+	 
+	 
+		<ul class="post-copyright">
+		  <li class="post-copyright-author">
+			  <strong>本文作者：</strong>sky_co
+		  </li>
+		  <li class="post-copyright-link">
+			<strong>本文链接：</strong>
+			<a href="/2017/07/21/Others/UseHexoToBuildBlog/" title="Hexo环境搭建个人博客">http://skyhacks.org/2017/07/21/Others/UseHexoToBuildBlog/</a>
+		  </li>
+		  <li class="post-copyright-license">
+			<strong>版权声明： </strong>
+			本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！
+		  </li>
+		</ul>
+	 
+	</div>
+	
+	
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward.jpg" alt="sky_co WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward.jpg" alt="sky_co Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Blog/" rel="tag"># Blog</a>
+          
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          
+            <a href="/tags/GitHub/" rel="tag"># GitHub]</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/01/Others/First-Blood/" rel="next" title="First Blood">
+                <i class="fa fa-chevron-left"></i> First Blood
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/02/Others/UseQiniudnToStorePic/" rel="prev" title="使用七牛为Hexo存储图片">
+                使用七牛为Hexo存储图片 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+      <div id="container" style="display:none"></div>
+      <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+      <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+      <script>
+      const myTheme = {
+        render(state, instance) {
+          const container = document.createElement('div');
+          container.lang = "en-US";
+          container.className = 'gitment-container gitment-root-container';
+          container.appendChild(instance.renderHeader(state, instance));
+          container.appendChild(instance.renderEditor(state, instance));
+          container.appendChild(instance.renderComments(state, instance));
+          container.appendChild(instance.renderFooter(state, instance));
+          return container;
+        }
+      }
+      function showGitment() {
+        $("#gitment_title").attr("style", "display:none");
+        $("#container").attr("style", "").addClass("gitment_container");
+        var gitment = new Gitment({
+          id: window.location.pathname,
+          theme: myTheme,
+          owner: 'sky-co',
+          repo: 'skyhacks-gitment',
+          oauth: {
+            client_id: '56772c16ec56100f287e',
+            client_secret: 'bf8cb5446e62a4aa83f141b25164bbeb5d9a2ef7'
+          }
+        });
+        gitment.render('container');
+      }
+      </script>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/avatar.jpg"
+               alt="sky_co" />
+          <p class="site-author-name" itemprop="name">sky_co</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://coolshell.cn/" title="酷壳" target="_blank">酷壳</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.codingnow.com/" title="云风的BLOG" target="_blank">云风的BLOG</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jellythink.com/" title="果冻想" target="_blank">果冻想</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.cppfans.org/" title="C++ 爱好者" target="_blank">C++ 爱好者</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://mindhacks.cn/" title="刘未鹏" target="_blank">刘未鹏</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ruanyifeng.com/home.html" title="阮一峰" target="_blank">阮一峰</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiezhenye.com/" title="神仙" target="_blank">神仙</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://jasontime.org/" title="Jason Time" target="_blank">Jason Time</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sky_co</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

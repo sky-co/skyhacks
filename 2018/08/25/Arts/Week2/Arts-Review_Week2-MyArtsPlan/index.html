@@ -1,0 +1,1051 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Arts,Review,Week2," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Practice Makes Perfect" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Remote Code Execution on a Facebook serverBy Blaklis I regularly search for vulnerabilities on big services that allow it and have a Bug Bounty program. Here is my first paper which covers a vulnerabi">
+<meta name="keywords" content="Arts,Review,Week2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Review_Week2 - Remote Code Execution on a Facebook server">
+<meta property="og:url" content="http://skyhacks.org/2018/08/25/Arts/Week2/Arts-Review_Week2-MyArtsPlan/index.html">
+<meta property="og:site_name" content="Practice Makes Perfect">
+<meta property="og:description" content="Remote Code Execution on a Facebook serverBy Blaklis I regularly search for vulnerabilities on big services that allow it and have a Bug Bounty program. Here is my first paper which covers a vulnerabi">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-08-28T15:51:45.790Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Review_Week2 - Remote Code Execution on a Facebook server">
+<meta name="twitter:description" content="Remote Code Execution on a Facebook serverBy Blaklis I regularly search for vulnerabilities on big services that allow it and have a Bug Bounty program. Here is my first paper which covers a vulnerabi">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://skyhacks.org/2018/08/25/Arts/Week2/Arts-Review_Week2-MyArtsPlan/"/>
+
+
+
+
+
+  <title> Review_Week2 - Remote Code Execution on a Facebook server | Practice Makes Perfect </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-64459895-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Practice Makes Perfect</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            Commonweal 404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://skyhacks.org/2018/08/25/Arts/Week2/Arts-Review_Week2-MyArtsPlan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="sky_co">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Practice Makes Perfect">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                Review_Week2 - Remote Code Execution on a Facebook server
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-25T00:07:10+08:00">
+                2018-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Arts/" itemprop="url" rel="index">
+                    <span itemprop="name">Arts</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Remote-Code-Execution-on-a-Facebook-server"><a href="#Remote-Code-Execution-on-a-Facebook-server" class="headerlink" title="Remote Code Execution on a Facebook server"></a><a href="https://blog.scrt.ch/2018/08/24/remote-code-execution-on-a-facebook-server/" target="_blank" rel="external">Remote Code Execution on a Facebook server</a></h2><p>By Blaklis</p>
+<p>I regularly search for vulnerabilities on big services that allow it and have a Bug Bounty program. Here is my first paper which covers a vulnerability I discovered on one of Facebook’s servers.<br>我经常在大型服务器中需找漏洞，并且有个bug赏金计划。这个是我的第一篇文章，其中介绍了一个我在一台Facebook的服务器上发现的漏洞。</p>
+<p>While scanning an IP range that belongs to Facebook (199.201.65.0/24), I found a Sentry service hosted on 199.201.65.36, with the hostname sentryagreements.thefacebook.com. Sentry is a log collection web application, written in Python with the Django framework.<br>当我在扫描属于Facebook（199.201.65.0/24）的IP范围时，我在199.201.65.36中找到了一个岗哨服务，主机名叫sentryagreements.thefacebook.com。岗哨是一个日子收集的网络程序，基于Django framework使用python开发的。</p>
+<p>While I was looking at the application, some stacktraces regularly popped on the page, for an unknown reason. The application seemed to be unstable regarding the user password reset feature, which occasionally crashed. Django debug mode was not turned off, which consequently prints the whole environment when a stacktrace occurs. However, Django snips critical information (passwords, secrets, key…) in those stacktraces, therefore avoiding a massive information leakage.<br>正当我在看这个应用的时候，不知道什么原因，一些stacktraces不时的在页面上弹出。关于用户密码重置这个特性来看，这个应用看起来很不稳定，不时的崩溃。Django debug mode并没有关闭， 结果是当stacktrace发生时，日志打印出整个环境信息。无论如何，Django抓取了一些诸如密码和秘密，还有密钥等的关键的信息</p>
+<p>However, by looking at the stacktrace a little more closely, some env keys were interesting :<br>无论如何，稍微仔细看了下stacktrace，一些环境的key值非常有意思：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">The SESSION_COOKIE_NAME is sentrysid</div><div class="line">SESSION_COOKIE_NAME是岗哨服务</div><div class="line">The SESSION_SERIALIZER is django.contrib.sessions.serializers.PickleSerializer</div><div class="line">SESSION_SERIALIZER是django.contrib.sessions.serializers.PickleSerializer</div><div class="line">The SESSION_ENGINE is django.contrib.sessions.backends.signed_cookies</div><div class="line">SESSION_ENGINE是django.contrib.sessions.backends.signed_cookies</div><div class="line">The SENTRY_OPTIONS key that contains some Sentry configuration in a list.</div><div class="line">SENTRY_OPTIONS键值包含了一些岗哨的在一个列表中的配置信息。</div></pre></td></tr></table></figure></p>
+<p>Pickle is a binary protocol for (un)serializing Python object structures, such as classes and methods in them. A comprehensive article that explains what Pickle is and its security implications is available here :<br><a href="https://www.balda.ch/posts/2013/Jun/23/python-web-frameworks-pickle/" target="_blank" rel="external">https://www.balda.ch/posts/2013/Jun/23/python-web-frameworks-pickle/</a><br>Pickle是一个用于python对象数据结构序列化和反序列化的协议，比如其中的类和方法。一篇关于Pickle和它的安全实现的文章地址如下：<br><a href="https://www.balda.ch/posts/2013/Jun/23/python-web-frameworks-pickle/" target="_blank" rel="external">https://www.balda.ch/posts/2013/Jun/23/python-web-frameworks-pickle/</a></p>
+<p>If we were able to forge our own session that contains arbitrary pickle content, we could execute commands on the system. However, the SECRET_KEY that is used by Django for signing session cookies is not available in the stacktrace. However, the SENTRY_OPTIONS list contains a key named system.secret-key, that is not snipped. Quoting the Sentry documentation, system.secret-key is “a secret key used for session signing. If this becomes compromised it’s important to regenerate it as otherwise its much easier to hijack user sessions.“; wow, it looks like it’s a sort of Django SECRET-KEY override!<br>如果我们可以在我们的session里包含一些任意的pickle的内容，我们就可以执行系统的命令。无论如何，stacktrace里的被Django用于单独签名的session cookiesSECRET_KEY是无效的的。无论如何，SENTRY_OPTIONS的键值里包含system.secret-key，这是逃不掉的。引用Sentry的文档，system.secret-key是用于session 签名的一个的密钥。如果这一问题被破坏，那么重新生成它是很重要的，否则就更容易劫持用户会话。wow, 这看起来就像 Django 的某个SECRET-KEY被覆写了。</p>
+<p>As we have everything to forge our own cookies with arbitrary pickle content, I wrote a little script that adds a payload into my own sentrysid cookie. Here it is :<br>我们想把一切东西都融合到我们包含arbitrary pickle的cookies里，我写了一个小脚本用于添加负载到我的sentrysid cookie里。如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line">import django.core.signing, django.contrib.sessions.serializers</div><div class="line">from django.http import HttpResponse</div><div class="line">import cPickle</div><div class="line">import os</div><div class="line"></div><div class="line">SECRET_KEY=&apos;[RETRIEVEDKEY]&apos;</div><div class="line">#Initial cookie I had on sentry when trying to reset a password</div><div class="line">cookie=&apos;gAJ9cQFYCgAAAHRlc3Rjb29raWVxAlgGAAAAd29ya2VkcQNzLg:1fjsBy:FdZ8oz3sQBnx2TPyncNt0LoyiAw&apos;</div><div class="line">newContent =  django.core.signing.loads(cookie,key=SECRET_KEY,serializer=django.contrib.sessions.serializers.PickleSerializer,salt=&apos;django.contrib.sessions.backends.signed_cookies&apos;)</div><div class="line">class PickleRce(object):</div><div class="line">    def __reduce__(self):</div><div class="line">        return (os.system,(&quot;sleep 30&quot;,))</div><div class="line">newContent[&apos;testcookie&apos;] = PickleRce()</div><div class="line"></div><div class="line">print django.core.signing.dumps(newContent,key=SECRET_KEY,serializer=django.contrib.sessions.serializers.PickleSerializer,salt=&apos;django.contrib.sessions.backends.signed_cookies&apos;,compress=True)</div></pre></td></tr></table></figure></p>
+<p>This code is a simple proof of concept; it takes the content of an existing sentrysid cookie, and replaces its content with an arbitrary object that will run a os.system(“sleep 30”) when unserialized.<br>这个代码是对概念的简单的证实。它获取了现存的sentrysid的cookie的内容，然后一个任意的对象替换了其中的内容，当反序列化的时候就会执行os.system(“sleep 30”)。</p>
+<p>When using this cookie, the page actually takes an additional 30 seconds to load, which confirms the presence of the flaw.<br>当使用这个cookie的时候，页面就会自然等待30秒的去加载，以上证实了缺陷的存在。</p>
+<p>Facebook acknowledged the vulnerability, took down the system until the flaw was patched, and then notified me about the patch being in place.<br>Facebook知道了这个漏洞，关闭了系统直到缺陷被打上补丁。然后通知我补丁已经就位。</p>
+<p>Here is the disclosure timeline, which also demonstrates that Facebook security staff is reactive:<br>下面是批露的一些时间线，更证实了Facebook安全人员是被动的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">30.07.2018 00:00 CEST : initial disclosure with every details.</div><div class="line">30.07.2018 00:00 CEST : 初始化泄漏所有的细节.</div><div class="line">30.07.2018 15:25 CEST : triaged and system takedown.</div><div class="line">30.07.2018 15:25 CEST : 系统修复和可拆卸.</div><div class="line">09.08.2018 18:10 CEST : patch in place.</div><div class="line">09.08.2018 18:10 CEST : 补丁就位.</div><div class="line">09.08.2018 20:10 CEST : a 5000$ bounty is awarded – the server was in a separate VLAN with no users’ specific data.</div><div class="line">09.08.2018 20:10 CEST : 一个5000美元的赏金被授予——服务器位于一个单独的VLAN中，没有用户的特定数据.</div></pre></td></tr></table></figure></p>
+<p>Thanks for reading!</p>
+
+      
+    </div>
+
+	
+	<div>
+	  
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">------本文结束<i class="fa fa-paw"></i>感谢阅读------</div>
+    
+</div>
+
+      
+	</div>
+	
+	
+	<div>    
+	 
+	 
+		<ul class="post-copyright">
+		  <li class="post-copyright-author">
+			  <strong>本文作者：</strong>sky_co
+		  </li>
+		  <li class="post-copyright-link">
+			<strong>本文链接：</strong>
+			<a href="/2018/08/25/Arts/Week2/Arts-Review_Week2-MyArtsPlan/" title="Review_Week2 - Remote Code Execution on a Facebook server">http://skyhacks.org/2018/08/25/Arts/Week2/Arts-Review_Week2-MyArtsPlan/</a>
+		  </li>
+		  <li class="post-copyright-license">
+			<strong>版权声明： </strong>
+			本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0 CN</a> 许可协议。转载请注明出处！
+		  </li>
+		</ul>
+	 
+	</div>
+	
+	
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechat-reward.jpg" alt="sky_co WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay-reward.jpg" alt="sky_co Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Arts/" rel="tag"># Arts</a>
+          
+            <a href="/tags/Review/" rel="tag"># Review</a>
+          
+            <a href="/tags/Week2/" rel="tag"># Week2</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/21/Arts/Week1/Arts-Share-Week1-HowToWork/" rel="next" title="Share_Week1-不做伪工作者">
+                <i class="fa fa-chevron-left"></i> Share_Week1-不做伪工作者
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/29/Arts/Week2/Arts-Tip-Week2-HexoDeployGithub/" rel="prev" title="Arts-Tip_Week2 - 使用Hexo和GitHub搭建博客，出现hexo -d报错解决方案">
+                Arts-Tip_Week2 - 使用Hexo和GitHub搭建博客，出现hexo -d报错解决方案 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div onclick="showGitment()" id="gitment_title" class="gitment_title">显示 Gitment 评论</div>
+      <div id="container" style="display:none"></div>
+      <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+      <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+      <script>
+      const myTheme = {
+        render(state, instance) {
+          const container = document.createElement('div');
+          container.lang = "en-US";
+          container.className = 'gitment-container gitment-root-container';
+          container.appendChild(instance.renderHeader(state, instance));
+          container.appendChild(instance.renderEditor(state, instance));
+          container.appendChild(instance.renderComments(state, instance));
+          container.appendChild(instance.renderFooter(state, instance));
+          return container;
+        }
+      }
+      function showGitment() {
+        $("#gitment_title").attr("style", "display:none");
+        $("#container").attr("style", "").addClass("gitment_container");
+        var gitment = new Gitment({
+          id: window.location.pathname,
+          theme: myTheme,
+          owner: 'sky-co',
+          repo: 'skyhacks-gitment',
+          oauth: {
+            client_id: '56772c16ec56100f287e',
+            client_secret: 'bf8cb5446e62a4aa83f141b25164bbeb5d9a2ef7'
+          }
+        });
+        gitment.render('container');
+      }
+      </script>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/avatar.jpg"
+               alt="sky_co" />
+          <p class="site-author-name" itemprop="name">sky_co</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">categories</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://coolshell.cn/" title="酷壳" target="_blank">酷壳</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.codingnow.com/" title="云风的BLOG" target="_blank">云风的BLOG</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jellythink.com/" title="果冻想" target="_blank">果冻想</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.cppfans.org/" title="C++ 爱好者" target="_blank">C++ 爱好者</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://mindhacks.cn/" title="刘未鹏" target="_blank">刘未鹏</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.ruanyifeng.com/home.html" title="阮一峰" target="_blank">阮一峰</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://xiezhenye.com/" title="神仙" target="_blank">神仙</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://jasontime.org/" title="Jason Time" target="_blank">Jason Time</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">sky_co</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
