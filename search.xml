@@ -28,18 +28,18 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Arts-Tip_Week2 - 使用Hexo和GitHub搭建博客，出现hexo -d报错解决方案]]></title>
+    <title><![CDATA[Tip_Week2 - 使用Hexo和GitHub搭建博客，出现hexo -d报错解决方案]]></title>
     <url>%2F2018%2F08%2F29%2FArts%2FWeek2%2FArts-Tip-Week2-HexoDeployGithub%2F</url>
     <content type="text"><![CDATA[一、背景 之前按照网上的教程，自己用Hexo搭建了一个博客。为了偷懒，写了一个hook的脚本，实现一行命令提交并且更新博客内容，见文稿:Hexo环境搭建个人博客。但是之前Hexo的部署方案有问题，隔了一段时间以后发现没办法提交Github和部署到自己的博客网站了。 二、解决方案 解决方法是修改根目录下的_config.yml配置下面是文档 中的写法12345deploy:type: gitrepo: &lt;repository url&gt;branch: [branch]message: [message] 修改为1234567deploy:- type: git repo: git@VPS的IP地址:/home/git/hexo.git#VPS上对应的git仓库(包含git hooks的地址) branch: master- type: git repo: git@github.com:&#123;yourname&#125;/hexo.git#github上对应的保存静态文件的仓库 branch: master 三、后记 以下是自己搭建过程中查找的相关链接和信息，希望对大家有帮助。 https://www.zhihu.com/question/38219432]]></content>
       <categories>
         <category>Arts</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
         <tag>Arts</tag>
-        <tag>Week2</tag>
+        <tag>Hexo</tag>
         <tag>Tip</tag>
         <tag>Git</tag>
+        <tag>Week2</tag>
       </tags>
   </entry>
   <entry>
@@ -51,8 +51,8 @@
       </categories>
       <tags>
         <tag>Arts</tag>
-        <tag>Week2</tag>
         <tag>Review</tag>
+        <tag>Week2</tag>
       </tags>
   </entry>
   <entry>
@@ -64,8 +64,8 @@
       </categories>
       <tags>
         <tag>Arts</tag>
-        <tag>Share</tag>
         <tag>Week1</tag>
+        <tag>Share</tag>
       </tags>
   </entry>
   <entry>
@@ -77,9 +77,9 @@
       </categories>
       <tags>
         <tag>Arts</tag>
+        <tag>Week1</tag>
         <tag>Tip</tag>
         <tag>Git</tag>
-        <tag>Week1</tag>
       </tags>
   </entry>
   <entry>
@@ -91,8 +91,8 @@
       </categories>
       <tags>
         <tag>Arts</tag>
-        <tag>Week1</tag>
         <tag>Review</tag>
+        <tag>Week1</tag>
       </tags>
   </entry>
   <entry>
@@ -112,7 +112,7 @@
   <entry>
     <title><![CDATA[ARTS - 左耳听风群的每周必做]]></title>
     <url>%2F2018%2F08%2F14%2FArts%2FMyArtsPlan%2F</url>
-    <content type="text"><![CDATA[Algorithm每周至少做一个leetcode算法题 week1: 832.Flipping an Image Review每周阅读至少一篇英文技术文章 week1: 马斯克在想什么？ Tip每周学习至少一个技术技巧, 最好是实际工作学到的 week1: Git换行符LF与CRLF转换问题 Share每周分享一篇有观点和思考的技术文章 week1: 不做伪工作者]]></content>
+    <content type="text"><![CDATA[Algorithm每周至少做一个leetcode算法题 week1: 832.Flipping an Image week2: 867. Transpose Matrix Review每周阅读至少一篇英文技术文章 week1: 马斯克在想什么？ week2: 在Facebook服务器上执行远程代码执行 Tip每周学习至少一个技术技巧, 最好是实际工作学到的 week1: Git换行符LF与CRLF转换问题 week2: 使用Hexo和GitHub搭建博客，出现hexo -d报错解决方案 Share每周分享一篇有观点和思考的技术文章 week1: 不做伪工作者 week2: 如何正确高效地问对问题]]></content>
       <categories>
         <category>Arts</category>
       </categories>
@@ -164,10 +164,10 @@
         <tag>Algorithms</tag>
         <tag>Data Structure</tag>
         <tag>Array</tag>
-        <tag>Sort</tag>
-        <tag>HashTable</tag>
         <tag>Majority Element</tag>
         <tag>Moore’s voting algorithm</tag>
+        <tag>Sort</tag>
+        <tag>HashTable</tag>
       </tags>
   </entry>
   <entry>
@@ -268,8 +268,8 @@
         <category>Others</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
         <tag>Next</tag>
+        <tag>Hexo</tag>
         <tag>Gitment</tag>
       </tags>
   </entry>
@@ -293,8 +293,8 @@
         <category>Others</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
         <tag>Blog</tag>
+        <tag>Hexo</tag>
         <tag>GitHub]</tag>
       </tags>
   </entry>

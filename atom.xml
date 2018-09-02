@@ -142,11 +142,11 @@
   </entry>
   
   <entry>
-    <title>Arts-Tip_Week2 - 使用Hexo和GitHub搭建博客，出现hexo -d报错解决方案</title>
+    <title>Tip_Week2 - 使用Hexo和GitHub搭建博客，出现hexo -d报错解决方案</title>
     <link href="http://skyhacks.org/2018/08/29/Arts/Week2/Arts-Tip-Week2-HexoDeployGithub/"/>
     <id>http://skyhacks.org/2018/08/29/Arts/Week2/Arts-Tip-Week2-HexoDeployGithub/</id>
     <published>2018-08-29T15:48:27.000Z</published>
-    <updated>2018-08-29T16:03:26.165Z</updated>
+    <updated>2018-09-02T16:28:31.144Z</updated>
     
     <content type="html"><![CDATA[<h2 id="一、背景"><a href="#一、背景" class="headerlink" title="一、背景"></a>一、背景</h2><hr>
 <p>之前按照网上的教程，自己用Hexo搭建了一个博客。为了偷懒，写了一个hook的脚本，实现一行命令提交并且更新博客内容，见文稿:<a href="http://skyhacks.org/2017/07/21/Others/UseHexoToBuildBlog/">Hexo环境搭建个人博客</a>。<br>但是之前Hexo的部署方案有问题，隔了一段时间以后发现没办法提交Github和部署到自己的博客网站了。</p>
@@ -170,15 +170,15 @@
       <category term="Arts" scheme="http://skyhacks.org/categories/Arts/"/>
     
     
-      <category term="Hexo" scheme="http://skyhacks.org/tags/Hexo/"/>
-    
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Week2" scheme="http://skyhacks.org/tags/Week2/"/>
+      <category term="Hexo" scheme="http://skyhacks.org/tags/Hexo/"/>
     
       <category term="Tip" scheme="http://skyhacks.org/tags/Tip/"/>
     
       <category term="Git" scheme="http://skyhacks.org/tags/Git/"/>
+    
+      <category term="Week2" scheme="http://skyhacks.org/tags/Week2/"/>
     
   </entry>
   
@@ -215,9 +215,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Week2" scheme="http://skyhacks.org/tags/Week2/"/>
-    
       <category term="Review" scheme="http://skyhacks.org/tags/Review/"/>
+    
+      <category term="Week2" scheme="http://skyhacks.org/tags/Week2/"/>
     
   </entry>
   
@@ -266,9 +266,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
-    
       <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
+    
+      <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
     
   </entry>
   
@@ -313,11 +313,11 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
+      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
+    
       <category term="Tip" scheme="http://skyhacks.org/tags/Tip/"/>
     
       <category term="Git" scheme="http://skyhacks.org/tags/Git/"/>
-    
-      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
     
   </entry>
   
@@ -365,9 +365,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
-    
       <category term="Review" scheme="http://skyhacks.org/tags/Review/"/>
+    
+      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
     
   </entry>
   
@@ -419,26 +419,30 @@
     <link href="http://skyhacks.org/2018/08/14/Arts/MyArtsPlan/"/>
     <id>http://skyhacks.org/2018/08/14/Arts/MyArtsPlan/</id>
     <published>2018-08-14T15:14:41.000Z</published>
-    <updated>2018-08-24T16:09:55.154Z</updated>
+    <updated>2018-09-02T16:31:47.711Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>每周至少做一个leetcode算法题</p>
 <ul>
 <li>week1: <a href="http://skyhacks.org/2018/08/21/Arts/Week1/Arts-Share-Week1-HowToWork/">832.Flipping an Image</a></li>
+<li>week2: <a href="http://skyhacks.org/2018/08/30/LeetCode/LeetCode-TransposeMatrix/">867. Transpose Matrix</a></li>
 </ul>
 <hr>
 <h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>每周阅读至少一篇英文技术文章</p>
 <ul>
 <li>week1: <a href="http://skyhacks.org/2018/08/20/Arts/Week1/Arts-Review_Week1-ElonMuskThinking/">马斯克在想什么？</a></li>
+<li>week2: <a href="http://skyhacks.org/2018/08/25/Arts/Week2/Arts-Review_Week2-MyArtsPlan/">在Facebook服务器上执行远程代码执行</a></li>
 </ul>
 <hr>
 <h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>每周学习至少一个技术技巧, 最好是实际工作学到的</p>
 <ul>
 <li>week1: <a href="http://skyhacks.org/2018/08/20/Arts/Week1/Arts-Tip_Week1-GitLineEndingCharacter/">Git换行符LF与CRLF转换问题</a></li>
+<li>week2: <a href="http://skyhacks.org/2018/08/29/Arts/Week2/Arts-Tip-Week2-HexoDeployGithub/">使用Hexo和GitHub搭建博客，出现hexo -d报错解决方案</a></li>
 </ul>
 <hr>
 <h2 id="Share"><a href="#Share" class="headerlink" title="Share"></a>Share</h2><p>每周分享一篇有观点和思考的技术文章</p>
 <ul>
 <li>week1: <a href="http://skyhacks.org/2018/08/21/Arts/Week1/Arts-Share-Week1-HowToWork/">不做伪工作者</a></li>
+<li>week2: <a href="http://skyhacks.org/2018/08/30/Arts/Week2/Arts-Share-Week2-HowToAskQuestions/">如何正确高效地问对问题</a></li>
 </ul>
 ]]></content>
     
@@ -616,13 +620,13 @@
     
       <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
     
-      <category term="Sort" scheme="http://skyhacks.org/tags/Sort/"/>
-    
-      <category term="HashTable" scheme="http://skyhacks.org/tags/HashTable/"/>
-    
       <category term="Majority Element" scheme="http://skyhacks.org/tags/Majority-Element/"/>
     
       <category term="Moore’s voting algorithm" scheme="http://skyhacks.org/tags/Moore%E2%80%99s-voting-algorithm/"/>
+    
+      <category term="Sort" scheme="http://skyhacks.org/tags/Sort/"/>
+    
+      <category term="HashTable" scheme="http://skyhacks.org/tags/HashTable/"/>
     
   </entry>
   
@@ -999,9 +1003,9 @@
       <category term="Others" scheme="http://skyhacks.org/categories/Others/"/>
     
     
-      <category term="Hexo" scheme="http://skyhacks.org/tags/Hexo/"/>
-    
       <category term="Next" scheme="http://skyhacks.org/tags/Next/"/>
+    
+      <category term="Hexo" scheme="http://skyhacks.org/tags/Hexo/"/>
     
       <category term="Gitment" scheme="http://skyhacks.org/tags/Gitment/"/>
     
