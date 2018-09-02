@@ -57,10 +57,10 @@
     <link href="http://skyhacks.org/2018/08/30/Arts/Week2/Arts-Share-Week2-HowToAskQuestions/"/>
     <id>http://skyhacks.org/2018/08/30/Arts/Week2/Arts-Share-Week2-HowToAskQuestions/</id>
     <published>2018-08-29T16:22:02.000Z</published>
-    <updated>2018-09-02T16:24:09.162Z</updated>
+    <updated>2018-09-02T16:34:01.810Z</updated>
     
     <content type="html"><![CDATA[<p>“Judge a man by his questions rather than by his answers.” ― Voltaire</p>
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>可能大家看到这个标题觉得很不以为然，不就是问问题么？谁不会啊！可你有想过高效正确的问对问题么？耗叔曾经写过一篇文章<a href="https://coolshell.cn/articles/10804.html" target="_blank" rel="external">&lt;<x-y problem="">&gt;</x-y></a>。今天选择聊这个话题也是因为最近接手的项目周期比较赶，文档缺失，但是又需要你能快速把握整个系统，所以就需要跟很多与这个项目有关联的人打交道，这个就挺考验提问的技巧。<br>言归正传，下面就开始谈谈怎么高效地问对问题。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>可能大家看到这个标题觉得很不以为然，不就是问问题么？谁不会啊！可你有想过高效正确的问对问题么？耗叔曾经写过一篇文章<a href="https://coolshell.cn/articles/10804.html" target="_blank" rel="external">X-Y Problem</a>。今天选择聊这个话题也是因为最近接手的项目周期比较赶，文档缺失，但是又需要你能快速把握整个系统，所以就需要跟很多与这个项目有关联的人打交道，这个就挺考验提问的技巧。<br>言归正传，下面就开始谈谈怎么高效地问对问题。</p>
 <h2 id="为什么要问问题"><a href="#为什么要问问题" class="headerlink" title="为什么要问问题"></a>为什么要问问题</h2><p>这个好像是废话，因为不懂，因为想知道为什么，好了下一个…</p>
 <h2 id="你想要的是什么"><a href="#你想要的是什么" class="headerlink" title="你想要的是什么"></a>你想要的是什么</h2><p>当你在想要问问题前，你必须先要知道你到底想要问的是什么，并且把一个问题放到一个合适的上下文环境中，这样才有助于回答者可以快速理解你的问题点并给出回答。</p>
 <h2 id="如何才能正确高效地问对问题"><a href="#如何才能正确高效地问对问题" class="headerlink" title="如何才能正确高效地问对问题"></a>如何才能正确高效地问对问题</h2><p>让我们先从一个例子开始：</p>
@@ -266,9 +266,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
-    
       <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
+    
+      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
     
   </entry>
   
@@ -365,9 +365,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Review" scheme="http://skyhacks.org/tags/Review/"/>
-    
       <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
+    
+      <category term="Review" scheme="http://skyhacks.org/tags/Review/"/>
     
   </entry>
   
