@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://skyhacks.org/"/>
-  <updated>2018-08-29T16:20:45.070Z</updated>
+  <updated>2018-09-09T16:17:42.530Z</updated>
   <id>http://skyhacks.org/</id>
   
   <author>
@@ -16,9 +16,245 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Tip_Week3 - Code Diff工具分享</title>
+    <link href="http://skyhacks.org/2018/09/09/Arts/Week3/Arts-Tip-Week3-CodeDiffTool/"/>
+    <id>http://skyhacks.org/2018/09/09/Arts/Week3/Arts-Tip-Week3-CodeDiffTool/</id>
+    <published>2018-09-09T15:48:27.000Z</published>
+    <updated>2018-09-09T16:17:42.530Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><hr>
+<p>Linux下比较常用的代码比较工具是Meld。Meld 是一个可视化的文本差异比较工具，它可以跟多个版本控制系统集成。<br>安装也极其便利：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install update</div><div class="line"></div><div class="line">sudo apt-get install meld</div></pre></td></tr></table></figure></p>
+<p>使用：<br>绿色表示没有的，蓝色表示不同的。<br>既然已经知道了不同之处，接下来就是合并了。<br>看到蓝色和绿色颜色区域的“-&gt;”和“&lt;-”箭头没，只需点一下，即可。<br>其他的一些例子和使用方法，可以参考： <a href="http://linux-commands-examples.com/meld" target="_blank" rel="external">http://linux-commands-examples.com/meld</a></p>
+<p>更多的一些Linux下的代码比较工具： <a href="https://www.fossmint.com/best-diff-merge-tools-for-linux/" target="_blank" rel="external">https://www.fossmint.com/best-diff-merge-tools-for-linux/</a></p>
+<h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><hr>
+<p>Windows下主要常用的是Beyond Compare，不过这个软件是付费的。但是相比同类产品还是比较便利。<br>对于Windows下Git的用户来说，使用图形客户端进行差异比较和合并冲突比较直观，因此使用Beyond Compare作为git的比对与合并工具。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>打开 C:\Users\Administrator.gitconfig 文件，添加如下内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[diff]</div><div class="line">    tool = bc4</div><div class="line">[difftool &quot;bc4&quot;]</div><div class="line">    cmd = &quot;\&quot;c:/Program Files/Beyond Compare 4/BComp.exe\&quot; \&quot;$LOCAL\&quot; \&quot;$REMOTE\&quot;&quot;</div><div class="line">[merge]</div><div class="line">    tool = bc4</div><div class="line">[mergetool &quot;bc4&quot;]</div><div class="line">    cmd = &quot;\&quot;c:/Program Files/Beyond Compare 4/BComp.exe\&quot; \&quot;$LOCAL\&quot; \&quot;$REMOTE\&quot; \&quot;$BASE\&quot; \&quot;$MERGED\&quot;&quot;</div></pre></td></tr></table></figure></p>
+<p>(其中bc4什么的根据你安装的/Beyond Compare版本来，以上举例是Beyond Compare4)</p>
+<p>也可以通过命令行来设置，命令如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#difftool 配置</div><div class="line">git config --global diff.tool bc4</div><div class="line">git config --global difftool.bc4.cmd &quot;\&quot;c:/program files (x86)/beyond compare 4/bcomp.exe\&quot; \&quot;$LOCAL\&quot; \&quot;$REMOTE\&quot;&quot;</div><div class="line"></div><div class="line">#mergeftool 配置</div><div class="line">git config --global merge.tool bc4</div><div class="line">git config --global mergetool.bc4.cmd &quot;\&quot;c:/program files (x86)/beyond compare 4/bcomp.exe\&quot; \&quot;$LOCAL\&quot; \&quot;$REMOTE\&quot; \&quot;$BASE\&quot; \&quot;$MERGED\&quot;&quot;</div><div class="line">git config --global mergetool.bc4.trustExitCode true</div></pre></td></tr></table></figure></p>
+<p>设置好后，使用命令是 git difftool 而不是之前的 git diff 了。</p>
+<p>使用<br>差异比较<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git difftool &lt;filename&gt;</div></pre></td></tr></table></figure></p>
+<p>合并冲突<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git mergetool</div></pre></td></tr></table></figure></p>
+<p>参考<br><a href="http://skyhacks.org/2017/07/21/Others/UseHexoToBuildBlog/">Windows下使用Beyond Compare作为git的比对与合并工具</a><br><a href="https://blog.csdn.net/mad1989/article/details/16885569" target="_blank" rel="external">Git下的冲突解决</a><br><a href="http://git-scm.com/docs/git-difftool.html" target="_blank" rel="external">git difftool说明文档</a><br><a href="http://www.beyondcompare.cc/jiqiao/wenjianjia-fuzhi.html" target="_blank" rel="external">浅析Beyond Compare复制文件的三种方式</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Linux&quot;&gt;&lt;a href=&quot;#Linux&quot; class=&quot;headerlink&quot; title=&quot;Linux&quot;&gt;&lt;/a&gt;Linux&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;Linux下比较常用的代码比较工具是Meld。Meld 是一个可视化的文本差异比较工具，它可以跟多个版本控
+    
+    </summary>
+    
+      <category term="Arts" scheme="http://skyhacks.org/categories/Arts/"/>
+    
+    
+      <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
+    
+      <category term="Tip" scheme="http://skyhacks.org/tags/Tip/"/>
+    
+      <category term="Git" scheme="http://skyhacks.org/tags/Git/"/>
+    
+      <category term="Week3" scheme="http://skyhacks.org/tags/Week3/"/>
+    
+      <category term="Linux" scheme="http://skyhacks.org/tags/Linux/"/>
+    
+      <category term="Windows" scheme="http://skyhacks.org/tags/Windows/"/>
+    
+      <category term="Meld" scheme="http://skyhacks.org/tags/Meld/"/>
+    
+      <category term="Beyond Compare" scheme="http://skyhacks.org/tags/Beyond-Compare/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Review_Week3 - How to think like a programmer — lessons in problem solving</title>
+    <link href="http://skyhacks.org/2018/09/07/Arts/Week3/Arts-Review_Week3-HowToThinkLikeProgrammer/"/>
+    <id>http://skyhacks.org/2018/09/07/Arts/Week3/Arts-Review_Week3-HowToThinkLikeProgrammer/</id>
+    <published>2018-09-06T16:07:10.000Z</published>
+    <updated>2018-09-05T16:12:10.562Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="How-to-think-like-a-programmer-—-lessons-in-problem-solving"><a href="#How-to-think-like-a-programmer-—-lessons-in-problem-solving" class="headerlink" title="How to think like a programmer — lessons in problem solving"></a><a href="https://medium.freecodecamp.org/how-to-think-like-a-programmer-lessons-in-problem-solving-d1d8bf1de7d2" target="_blank" rel="external">How to think like a programmer — lessons in problem solving</a></h2><p>By Richard Reis</p>
+<p>If you’re interested in programming, you may well have seen this quote before:</p>
+<p>“Everyone in this country should learn to program a computer, because it teaches you to think.” — Steve Jobs<br>You probably also wondered what does it mean, exactly, to think like a programmer? And how do you do it??</p>
+<p>Essentially, it’s all about a more effective way for problem solving.</p>
+<p>In this post, my goal is to teach you that way.</p>
+<p>By the end of it, you’ll know exactly what steps to take to be a better problem-solver.</p>
+<p>Why is this important?<br>Problem solving is the meta-skill.</p>
+<p>We all have problems. Big and small. How we deal with them is sometimes, well…pretty random.</p>
+<p>Unless you have a system, this is probably how you “solve” problems (which is what I did when I started coding):</p>
+<p>Try a solution.<br>If that doesn’t work, try another one.<br>If that doesn’t work, repeat step 2 until you luck out.<br>Look, sometimes you luck out. But that is the worst way to solve problems! And it’s a huge, huge waste of time.</p>
+<p>The best way involves a) having a framework and b) practicing it.</p>
+<p>“Almost all employers prioritize problem-solving skills first.<br>Problem-solving skills are almost unanimously the most important qualification that employers look for….more than programming languages proficiency, debugging, and system design.<br>Demonstrating computational thinking or the ability to break down large, complex problems is just as valuable (if not more so) than the baseline technical skills required for a job.” — Hacker Rank (2018 Developer Skills Report)<br>Have a framework<br>To find the right framework, I followed the advice in Tim Ferriss’ book on learning, “The 4-Hour Chef”.</p>
+<p>It led me to interview two really impressive people: C. Jordan Ball (ranked 1st or 2nd out of 65,000+ users on Coderbyte), and V. Anton Spraul (author of the book “Think Like a Programmer: An Introduction to Creative Problem Solving”).</p>
+<p>I asked them the same questions, and guess what? Their answers were pretty similar!</p>
+<p>Soon, you too will know them.</p>
+<p>Sidenote: this doesn’t mean they did everything the same way. Everyone is different. You’ll be different. But if you start with principles we all agree are good, you’ll get a lot further a lot quicker.</p>
+<p>“The biggest mistake I see new programmers make is focusing on learning syntax instead of learning how to solve problems.” — V. Anton Spraul<br>So, what should you do when you encounter a new problem?</p>
+<p>Here are the steps:</p>
+<ol>
+<li>Understand<br>Know exactly what is being asked. Most hard problems are hard because you don’t understand them (hence why this is the first step).</li>
+</ol>
+<p>How to know when you understand a problem? When you can explain it in plain English.</p>
+<p>Do you remember being stuck on a problem, you start explaining it, and you instantly see holes in the logic you didn’t see before?</p>
+<p>Most programmers know this feeling.</p>
+<p>This is why you should write down your problem, doodle a diagram, or tell someone else about it (or thing… some people use a rubber duck).</p>
+<p>“If you can’t explain something in simple terms, you don’t understand it.” — Richard Feynman</p>
+<ol>
+<li>Plan<br>Don’t dive right into solving without a plan (and somehow hope you can muddle your way through). Plan your solution!</li>
+</ol>
+<p>Nothing can help you if you can’t write down the exact steps.</p>
+<p>In programming, this means don’t start hacking straight away. Give your brain time to analyze the problem and process the information.</p>
+<p>To get a good plan, answer this question:</p>
+<p>“Given input X, what are the steps necessary to return output Y?”</p>
+<p>Sidenote: Programmers have a great tool to help them with this… Comments!</p>
+<ol>
+<li>Divide<br>Pay attention. This is the most important step of all.</li>
+</ol>
+<p>Do not try to solve one big problem. You will cry.</p>
+<p>Instead, break it into sub-problems. These sub-problems are much easier to solve.</p>
+<p>Then, solve each sub-problem one by one. Begin with the simplest. Simplest means you know the answer (or are closer to that answer).</p>
+<p>After that, simplest means this sub-problem being solved doesn’t depend on others being solved.</p>
+<p>Once you solved every sub-problem, connect the dots.</p>
+<p>Connecting all your “sub-solutions” will give you the solution to the original problem. Congratulations!</p>
+<p>This technique is a cornerstone of problem-solving. Remember it (read this step again, if you must).</p>
+<p>“If I could teach every beginning programmer one problem-solving skill, it would be the ‘reduce the problem technique.’<br>For example, suppose you’re a new programmer and you’re asked to write a program that reads ten numbers and figures out which number is the third highest. For a brand-new programmer, that can be a tough assignment, even though it only requires basic programming syntax.<br>If you’re stuck, you should reduce the problem to something simpler. Instead of the third-highest number, what about finding the highest overall? Still too tough? What about finding the largest of just three numbers? Or the larger of two?<br>Reduce the problem to the point where you know how to solve it and write the solution. Then expand the problem slightly and rewrite the solution to match, and keep going until you are back where you started.” — V. Anton Spraul</p>
+<ol>
+<li>Stuck?<br>By now, you’re probably sitting there thinking “Hey Richard… That’s cool and all, but what if I’m stuck and can’t even solve a sub-problem??”</li>
+</ol>
+<p>First off, take a deep breath. Second, that’s fair.</p>
+<p>Don’t worry though, friend. This happens to everyone!</p>
+<p>The difference is the best programmers/problem-solvers are more curious about bugs/errors than irritated.</p>
+<p>In fact, here are three things to try when facing a whammy:</p>
+<p>Debug: Go step by step through your solution trying to find where you went wrong. Programmers call this debugging (in fact, this is all a debugger does).<br>“The art of debugging is figuring out what you really told your program to do rather than what you thought you told it to do.”” — Andrew Singer<br>Reassess: Take a step back. Look at the problem from another perspective. Is there anything that can be abstracted to a more general approach?<br>“Sometimes we get so lost in the details of a problem that we overlook general principles that would solve the problem at a more general level. […]<br>The classic example of this, of course, is the summation of a long list of consecutive integers, 1 + 2 + 3 + … + n, which a very young Gauss quickly recognized was simply n(n+1)/2, thus avoiding the effort of having to do the addition.” — C. Jordan Ball<br>Sidenote: Another way of reassessing is starting anew. Delete everything and begin again with fresh eyes. I’m serious. You’ll be dumbfounded at how effective this is.</p>
+<p>Research: Ahh, good ol’ Google. You read that right. No matter what problem you have, someone has probably solved it. Find that person/ solution. In fact, do this even if you solved the problem! (You can learn a lot from other people’s solutions).<br>Caveat: Don’t look for a solution to the big problem. Only look for solutions to sub-problems. Why? Because unless you struggle (even a little bit), you won’t learn anything. If you don’t learn anything, you wasted your time.</p>
+<p>Practice<br>Don’t expect to be great after just one week. If you want to be a good problem-solver, solve a lot of problems!</p>
+<p>Practice. Practice. Practice. It’ll only be a matter of time before you recognize that “this problem could easily be solved with <insert concept="" here="">.”</insert></p>
+<p>How to practice? There are options out the wazoo!</p>
+<p>Chess puzzles, math problems, Sudoku, Go, Monopoly, video-games, cryptokitties, bla… bla… bla….</p>
+<p>In fact, a common pattern amongst successful people is their habit of practicing “micro problem-solving.” For example, Peter Thiel plays chess, and Elon Musk plays video-games.</p>
+<p>“Byron Reeves said ‘If you want to see what business leadership may look like in three to five years, look at what’s happening in online games.’<br>Fast-forward to today. Elon [Musk], Reid [Hoffman], Mark Zuckerberg and many others say that games have been foundational to their success in building their companies.” — Mary Meeker (2017 internet trends report)<br>Does this mean you should just play video-games? Not at all.</p>
+<p>But what are video-games all about? That’s right, problem-solving!</p>
+<p>So, what you should do is find an outlet to practice. Something that allows you to solve many micro-problems (ideally, something you enjoy).</p>
+<p>For example, I enjoy coding challenges. Every day, I try to solve at least one challenge (usually on Coderbyte).</p>
+<p>Like I said, all problems share similar patterns.</p>
+<p>Conclusion<br>That’s all folks!</p>
+<p>Now, you know better what it means to “think like a programmer.”</p>
+<p>You also know that problem-solving is an incredible skill to cultivate (the meta-skill).</p>
+<p>As if that wasn’t enough, notice how you also know what to do to practice your problem-solving skills!</p>
+<p>Phew… Pretty cool right?</p>
+<p>Finally, I wish you encounter many problems.</p>
+<p>You read that right. At least now you know how to solve them! (also, you’ll learn that with every solution, you improve).</p>
+<p>“Just when you think you’ve successfully navigated one obstacle, another emerges. But that’s what keeps life interesting.[…]<br>Life is a process of breaking through these impediments — a series of fortified lines that we must break through.<br>Each time, you’ll learn something.<br>Each time, you’ll develop strength, wisdom, and perspective.<br>Each time, a little more of the competition falls away. Until all that is left is you: the best version of you.” — Ryan Holiday (The Obstacle is the Way)<br>Now, go solve some problems!</p>
+<p>And best of luck 🙂</p>
+<p>Special thanks to C. Jordan Ball and V. Anton Spraul. All the good advice here came from them.</p>
+<p>Also, all the programming knowledge I’ve acquired in such a short time wouldn’t have happened without Lambda School. Can’t thank/ recommend them enough.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;How-to-think-like-a-programmer-—-lessons-in-problem-solving&quot;&gt;&lt;a href=&quot;#How-to-think-like-a-programmer-—-lessons-in-problem-solving&quot; 
+    
+    </summary>
+    
+      <category term="Arts" scheme="http://skyhacks.org/categories/Arts/"/>
+    
+    
+      <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
+    
+      <category term="Review" scheme="http://skyhacks.org/tags/Review/"/>
+    
+      <category term="Week3" scheme="http://skyhacks.org/tags/Week3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Share_Week3-如何高效的学习</title>
+    <link href="http://skyhacks.org/2018/09/06/Arts/Week3/Arts-Share-Week3-HowToStudy/"/>
+    <id>http://skyhacks.org/2018/09/06/Arts/Week3/Arts-Share-Week3-HowToStudy/</id>
+    <published>2018-09-05T16:22:02.000Z</published>
+    <updated>2018-09-09T15:28:34.916Z</updated>
+    
+    <content type="html"><![CDATA[<p>“万丈高楼平地起，勿在浮沙筑高台.” ― 侯捷</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>第一次见到这句话，应该是四年前读《深入浅出MFC》的时候，不知道这是不是侯捷先生的原创。<br>勿在浮沙筑高台。<br>问题一：学习是件逆人性的事，现在的生活工作节奏很快，时间都是碎片的，很容易就给自己一个借口：“没时间，太累了，想放松一下…”诸如此类的借口可以找一大堆。说实话就是“懒”。<br>问题二：书买了不少，也看了很多。大多数情况下，收效甚微。</p>
+<h2 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h2><p>这几天耗叔的专栏开始讲如何学习的主题，对此我也是很有兴趣。因为我想知道，在同样公平的时间下，为啥别人通过努力站在一个如今我只能仰望的角度。作为一个菜鸟，大神的学习和努力的过程总是充满神秘。这篇文章也算是对这个系列的总结吧。</p>
+<p>问题一解答：<br>在信息化的社会，像几十年前父辈一样，泡杯茶，端坐书桌前，摊开一本书细细品读个几个小时的生活已经一去不复返。现在生活工作节奏很快，如何利用好碎片时间提升自己，才可以在工作和生活中脱颖而出，至少比昨天的自己更进步一点。</p>
+<p>问题二解答：<br>学习不是努力读更多的书，盲目追求阅读的速度和数量，这会让人产生低层次的勤奋和成长的感觉，这只是在使蛮力。</p>
+<h2 id="学习的分类"><a href="#学习的分类" class="headerlink" title="学习的分类"></a>学习的分类</h2><p>人的学习分为被动学习和主动学习两种。<br>被动学习：如听讲、阅读、试听、演示，学习内容的平均留存率为5%、10%、20和30%。<br>主动学习：如通过讨论、实践、教授给他人，会将原来被动学习的内容留存率从5%提升到50%、75%和90%。</p>
+<p>人的记忆都是遵循艾宾浩斯遗忘曲线的，不过艾宾浩斯遗忘曲线对我们在实践学习中能起到的用处就是告诉我们以下2点:<br>1、我们的知识的遗忘是由规律的<br>2、遗忘的速度是先快后慢；<br>观察曲线，你会发现,学得的知识在一天后，如不抓紧复习,就只剩下原来的25%。随着时间的推移,遗忘的速度减慢，遗忘的数量也就减少，得一个多月后就几乎忘得差不多了;而刚刚学习过的知识，记忆内容在80%-100%。这个遗忘规律告诉我们，要想让所学到的知识内容保持80%以上的长期记忆，只有不断地重复记忆，因为每复习一次就是记忆保持在刚刚学过的状态80%以上，多次强化后，短时记忆会形成长时记忆，就不会再忘记了。<br>通过对知识内容的多次强化复习，记忆的内容会长期保持在80%以上。</p>
+<h2 id="如何才能正确高效地学习"><a href="#如何才能正确高效地学习" class="headerlink" title="如何才能正确高效地学习"></a>如何才能正确高效地学习</h2><p><strong>端正的学习态度和正确的学习观念</strong><br>学习不仅仅是为了找到答案，而是为了找到方法<br>学习不仅仅是为了知道，而更是我饿了思考和理解<br>学习不仅仅是为了开拓眼界，而更是为了找到自己的未知，为了了解自己<br>学习不仅仅是为了成长，而更是为了改变自己，改变自己的思考方式，改变自己的思维方式，改变自己与生俱来的那些垃圾和低效的算法</p>
+<p><strong>总结和掌握高效的学习方法</strong><br>学习三个步骤</p>
+<blockquote>
+<p>知识采集<br>高质量的信息源是非常重要的，获取信息源头、破解表面新的内在本质、多方数据影子呢个，是这个步骤的关键。<br>知识缝合<br>所谓知识缝合就是把信息组织起来，成为结构体的知识。这里，连接记忆，逻辑推理，知识梳理是很重要的三部分。把知识炼成地图，将自己的理解反述出来。不断地反思和思辨，与不同年龄段的人讨论。<br>技能转换<br>通过举一反三、实践和练习，以及传授教导，把知识会转化成自己的技能。这种技能可以让你比进入更高的阶层。</p>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>问问题也是一门艺术，其中有很多技巧，上面只是几个关键的点。在你下次问问题的时候，不妨换一个问法，相信你会有新的体验和收获。</p>
+<h2 id="拓展阅读"><a href="#拓展阅读" class="headerlink" title="拓展阅读"></a>拓展阅读</h2><ol>
+<li><a href="https://www.amazon.cn/dp/B005DSK4W8/ref=sr_1_1?ie=UTF8&amp;qid=1536421899&amp;sr=8-1&amp;keywords=%E6%9A%97%E6%97%B6%E9%97%B4" target="_blank" rel="external">暗时间</a></li>
+<li><a href="https://www.amazon.cn/dp/B00H2EBDM6/ref=sr_1_2?ie=UTF8&amp;qid=1536421899&amp;sr=8-2&amp;keywords=%E6%9A%97%E6%97%B6%E9%97%B4" target="_blank" rel="external">如何高效学习:1年完成麻省理工4年33门课程的整体性学习法</a></li>
+<li><a href="https://www.amazon.cn/dp/B00FF1Y8IE/ref=sr_1_1?ie=UTF8&amp;qid=1536506241&amp;sr=8-1&amp;keywords=%E6%8A%8A%E6%97%B6%E9%97%B4%E5%BD%93%E4%BD%9C%E6%9C%8B%E5%8F%8B" target="_blank" rel="external">把时间当作朋友</a></li>
+</ol>
+<p>以下是文章相关链接：<br><a href="https://time.geekbang.org/column/article/14271" target="_blank" rel="external">高效学习：端正学习态度</a><br><a href="https://time.geekbang.org/column/article/14380" target="_blank" rel="external">高效学习：如何学习和阅读代码</a><br><a href="https://time.geekbang.org/column/article/14360" target="_blank" rel="external">高效学习：深度，归纳和坚持实践</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;“万丈高楼平地起，勿在浮沙筑高台.” ― 侯捷&lt;/p&gt;
+&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;第一次见到这句话，应该是四年前读《深入浅出MFC》的时候，不知道这是不是侯捷先
+    
+    </summary>
+    
+      <category term="Arts" scheme="http://skyhacks.org/categories/Arts/"/>
+    
+    
+      <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
+    
+      <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
+    
+      <category term="Week3" scheme="http://skyhacks.org/tags/Week3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode 766. Toeplitz Matrix</title>
+    <link href="http://skyhacks.org/2018/09/05/LeetCode/LeetCode-TransposeMatrix/"/>
+    <id>http://skyhacks.org/2018/09/05/LeetCode/LeetCode-TransposeMatrix/</id>
+    <published>2018-09-05T01:40:59.000Z</published>
+    <updated>2018-09-05T16:03:31.672Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a><a href="https://leetcode.com/problems/toeplitz-matrix" target="_blank" rel="external">题目描述</a>：</h2><p>A matrix is Toeplitz if every diagonal from top-left to bottom-right has the same element.<br>Now given an M x N matrix, return True if and only if the matrix is Toeplitz.</p>
+<p><strong>Example 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,2,3,4],</div><div class="line">  [5,1,2,3],</div><div class="line">  [9,5,1,2]</div><div class="line">]</div><div class="line">Output: True</div><div class="line">Explanation:</div><div class="line">In the above grid, the diagonals are:</div><div class="line">&quot;[9]&quot;, &quot;[5, 5]&quot;, &quot;[1, 1, 1]&quot;, &quot;[2, 2, 2]&quot;, &quot;[3, 3]&quot;, &quot;[4]&quot;.</div><div class="line">In each diagonal all elements are the same, so the answer is True.</div></pre></td></tr></table></figure></p>
+<p><strong>Example 2:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,2],</div><div class="line">  [2,2]</div><div class="line">]</div><div class="line">Output: False</div><div class="line">Explanation:</div><div class="line">The diagonal &quot;[1, 2]&quot; has different elements.</div></pre></td></tr></table></figure></p>
+<p><strong>Note:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. matrix will be a 2D array of integers.</div><div class="line">2. matrix will have a number of rows and columns in range [1, 20].</div><div class="line">3. matrix[i][j] will be integers in range [0, 99].</div></pre></td></tr></table></figure></p>
+<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>Toeplitz（托普利茨）矩阵是指各条从左上到右下对角线元素均相等的矩阵。<br>给定M x N矩阵，判断是否为Toeplitz矩阵。</p>
+<h3 id="解题思路1："><a href="#解题思路1：" class="headerlink" title="解题思路1："></a>解题思路1：</h3><hr>
+<p>遍历除了最后一行和最后一列的元素，查看每个元素对角线上的下一个元素是否相等。<br>参考LeetCode Discuss：<br><a href="https://leetcode.com/problems/toeplitz-matrix/discuss/113417/Java-solution-4-liner" target="_blank" rel="external">https://leetcode.com/problems/toeplitz-matrix/discuss/113417/Java-solution-4-liner</a>.</p>
+<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isToeplitzMatrix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; matrix.size() - <span class="number">1</span>; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; matrix[i].size() - <span class="number">1</span>; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (matrix[i][j] != matrix[i + <span class="number">1</span>][j + <span class="number">1</span>]) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="解题思路2："><a href="#解题思路2：" class="headerlink" title="解题思路2："></a>解题思路2：</h3><hr>
+<p>除了逐个遍历元素以外，观察可得，只需要考虑第一行和第一列的元素（除第一行最后一个元素和第一列最后一个元素以外）是否存在对角线上元素与之相等。</p>
+<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isToeplitzMatrix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> row = matrix.size();</div><div class="line">        <span class="keyword">int</span> col = matrix[<span class="number">0</span>].size();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; row - <span class="number">1</span>; idx++) &#123;</div><div class="line">            <span class="keyword">int</span> i = idx;</div><div class="line">            <span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">            <span class="keyword">while</span>(i &lt; row &amp;&amp; j &lt; col) &#123;</div><div class="line">                <span class="keyword">if</span> (matrix[idx][<span class="number">0</span>] != matrix[i][j]) &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">                &#125;</div><div class="line">                i++;</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; col - <span class="number">1</span>; idx++) &#123;</div><div class="line">            <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">            <span class="keyword">int</span> j = idx;</div><div class="line">            <span class="keyword">while</span>(i &lt; row &amp;&amp; j &lt; col) &#123;</div><div class="line">                <span class="keyword">if</span> (matrix[<span class="number">0</span>][idx] != matrix[i][j]) &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">                &#125;</div><div class="line">                i++;</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目描述：&quot;&gt;&lt;a href=&quot;#题目描述：&quot; class=&quot;headerlink&quot; title=&quot;题目描述：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode.com/problems/toeplitz-matrix&quot; target=&quot;_blank&quot;
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://skyhacks.org/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://skyhacks.org/tags/LeetCode/"/>
+    
+      <category term="Algorithms" scheme="http://skyhacks.org/tags/Algorithms/"/>
+    
+      <category term="Data Structure" scheme="http://skyhacks.org/tags/Data-Structure/"/>
+    
+      <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
+    
+  </entry>
+  
+  <entry>
     <title>LeetCode 867. Transpose Matrix</title>
-    <link href="http://skyhacks.org/2018/08/30/LeetCode/LeetCode-TransposeMatrix/"/>
-    <id>http://skyhacks.org/2018/08/30/LeetCode/LeetCode-TransposeMatrix/</id>
+    <link href="http://skyhacks.org/2018/08/30/LeetCode/LeetCode-ToeplitzMatrix/"/>
+    <id>http://skyhacks.org/2018/08/30/LeetCode/LeetCode-ToeplitzMatrix/</id>
     <published>2018-08-30T01:40:59.000Z</published>
     <updated>2018-08-29T16:20:45.070Z</updated>
     
@@ -170,9 +406,9 @@
       <category term="Arts" scheme="http://skyhacks.org/categories/Arts/"/>
     
     
-      <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
-    
       <category term="Hexo" scheme="http://skyhacks.org/tags/Hexo/"/>
+    
+      <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
       <category term="Tip" scheme="http://skyhacks.org/tags/Tip/"/>
     
@@ -184,8 +420,8 @@
   
   <entry>
     <title>Review_Week2 - Remote Code Execution on a Facebook server</title>
-    <link href="http://skyhacks.org/2018/08/25/Arts/Week2/Arts-Review_Week2-MyArtsPlan/"/>
-    <id>http://skyhacks.org/2018/08/25/Arts/Week2/Arts-Review_Week2-MyArtsPlan/</id>
+    <link href="http://skyhacks.org/2018/08/25/Arts/Week2/Arts-Review_Week2-RemoteCodeExecution/"/>
+    <id>http://skyhacks.org/2018/08/25/Arts/Week2/Arts-Review_Week2-RemoteCodeExecution/</id>
     <published>2018-08-24T16:07:10.000Z</published>
     <updated>2018-08-28T15:51:45.790Z</updated>
     
@@ -266,9 +502,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
-    
       <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
+    
+      <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
     
   </entry>
   
@@ -365,9 +601,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
-    
       <category term="Review" scheme="http://skyhacks.org/tags/Review/"/>
+    
+      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
     
   </entry>
   
@@ -457,9 +693,9 @@
       <category term="Arts" scheme="http://skyhacks.org/categories/Arts/"/>
     
     
-      <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
-    
       <category term="Blog" scheme="http://skyhacks.org/tags/Blog/"/>
+    
+      <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
       <category term="GitHub" scheme="http://skyhacks.org/tags/GitHub/"/>
     
@@ -620,13 +856,13 @@
     
       <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
     
-      <category term="Majority Element" scheme="http://skyhacks.org/tags/Majority-Element/"/>
-    
-      <category term="Moore’s voting algorithm" scheme="http://skyhacks.org/tags/Moore%E2%80%99s-voting-algorithm/"/>
-    
       <category term="Sort" scheme="http://skyhacks.org/tags/Sort/"/>
     
       <category term="HashTable" scheme="http://skyhacks.org/tags/HashTable/"/>
+    
+      <category term="Majority Element" scheme="http://skyhacks.org/tags/Majority-Element/"/>
+    
+      <category term="Moore’s voting algorithm" scheme="http://skyhacks.org/tags/Moore%E2%80%99s-voting-algorithm/"/>
     
   </entry>
   
@@ -840,276 +1076,6 @@
       <category term="BFS" scheme="http://skyhacks.org/tags/BFS/"/>
     
       <category term="DFS" scheme="http://skyhacks.org/tags/DFS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 695. Max Area of Island</title>
-    <link href="http://skyhacks.org/2017/11/16/LeetCode/LeetCode-MaxAreaofIsland/"/>
-    <id>http://skyhacks.org/2017/11/16/LeetCode/LeetCode-MaxAreaofIsland/</id>
-    <published>2017-11-16T08:26:13.000Z</published>
-    <updated>2017-11-16T17:55:37.147Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a><a href="https://leetcode.com/problems/max-area-of-island/discuss/" target="_blank" rel="external">题目描述</a>：</h2><p>Given a non-empty 2D array grid of 0’s and 1’s, an island is a group of 1’s (representing land) connected 4-directionally (horizontal or vertical.) You may assume all four edges of the grid are surrounded by water.<br>Find the maximum area of an island in the given 2D array. (If there is no island, the maximum area is 0.)<br><strong>Example 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[[0,0,1,0,0,0,0,1,0,0,0,0,0],</div><div class="line">[0,0,0,0,0,0,0,1,1,1,0,0,0],</div><div class="line">[0,1,1,0,1,0,0,0,0,0,0,0,0],</div><div class="line">[0,1,0,0,1,1,0,0,1,0,1,0,0],</div><div class="line">[0,1,0,0,1,1,0,0,1,1,1,0,0],</div><div class="line">[0,0,0,0,0,0,0,0,0,0,1,0,0],</div><div class="line">[0,0,0,0,0,0,0,1,1,1,0,0,0],</div><div class="line">[0,0,0,0,0,0,0,1,1,0,0,0,0]]</div></pre></td></tr></table></figure></p>
-<p>Given the above grid, return 6. Note the answer is not 11, because the island must be connected 4-directionally.<br><strong>Example 2:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[[0,0,0,0,0,0,0,0]]</div></pre></td></tr></table></figure></p>
-<p>Given the above grid, return 0.<br><strong>Note:</strong></p>
-<pre><code>- The length of each dimension in the given grid does not exceed 50.
-</code></pre><h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给定二维格子grid，上下左右相邻的1组成岛屿，求岛屿的最大面积。</p>
-<h3 id="解题思路1："><a href="#解题思路1：" class="headerlink" title="解题思路1："></a>解题思路1：</h3><hr>
-<p>DFS：深度优先遍历（递归实现）<br>参考LeetCode Discuss：<br><a href="https://discuss.leetcode.com/topic/106301/java-c-straightforward-dfs-solution" target="_blank" rel="external">https://discuss.leetcode.com/topic/106301/java-c-straightforward-dfs-solution</a><br><a href="https://discuss.leetcode.com/topic/106261/java-c-clean-code" target="_blank" rel="external">https://discuss.leetcode.com/topic/106261/java-c-clean-code</a></p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxAreaOfIsland</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> m = grid.size();</div><div class="line">        <span class="keyword">int</span> n = grid[<span class="number">0</span>].size();</div><div class="line">        <span class="keyword">int</span> maxArea = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (<span class="number">1</span> == grid[i][j]) &#123;</div><div class="line">                    maxArea = max(maxArea, dfs(grid, i, j));</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> maxArea;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt;&amp; grid, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="number">0</span> &gt; i || i &gt;= grid.size() || <span class="number">0</span> &gt; j || j &gt;= grid[<span class="number">0</span>].size() || <span class="number">0</span> == grid[i][j])</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">        grid[i][j] = <span class="number">0</span>; <span class="comment">// mark the value to avoid duplication</span></div><div class="line">        <span class="keyword">return</span> <span class="number">1</span> + dfs(grid, i - <span class="number">1</span>, j) + dfs(grid, i + <span class="number">1</span>, j)</div><div class="line">        + dfs(grid, i, j - <span class="number">1</span>) + dfs(grid, i, j + <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong></p>
-<pre><code>1. 递归函数需要注意结束条件，即边界的处理。我们关心的是grid范围内，其值为1的元素
-2. 为避免重复计数，每统计一个grid[i][j]，将其值置为0
-3. 由于孤岛有四个维度，元素grid[i][j]的四个方向的下一个元素坐标分别为：[(i-1, j), (i+1, j), (i, j-1), (i, j+1)]
-</code></pre><h3 id="解题思路2："><a href="#解题思路2：" class="headerlink" title="解题思路2："></a>解题思路2：</h3><hr>
-<p>BFS：广度优先遍历（借助队列迭代实现）<br>参考LeetCode Discuss：<a href="https://discuss.leetcode.com/topic/106274/c-bfs-dfs-concise-code" target="_blank" rel="external">https://discuss.leetcode.com/topic/106274/c-bfs-dfs-concise-code</a></p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxAreaOfIsland</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> m = grid.size();</div><div class="line">        <span class="keyword">int</span> n = grid[<span class="number">0</span>].size();</div><div class="line">        <span class="keyword">int</span> maxArea = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (<span class="number">1</span> == grid[i][j]) &#123;</div><div class="line">                    maxArea = max(maxArea, bfs(grid, i, j));</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> maxArea;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">bfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="built_in">queue</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; q;</div><div class="line">        q.push(pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;(i, j));</div><div class="line">        <span class="keyword">int</span> maxArea = <span class="number">1</span>;</div><div class="line">        grid[i][j] = <span class="number">0</span>; <span class="comment">// mark the value to avoid duplication</span></div><div class="line"></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dir(&#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;);</div><div class="line">        <span class="keyword">while</span> (<span class="number">0</span> &lt; q.size()) &#123;</div><div class="line">            <span class="keyword">int</span> m = q.front().first; <span class="comment">// row index</span></div><div class="line">            <span class="keyword">int</span> n = q.front().second; <span class="comment">// col index</span></div><div class="line">            q.pop(); <span class="comment">// remove from queue</span></div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; dir.size() - <span class="number">1</span>; idx++) &#123;</div><div class="line">                <span class="keyword">int</span> rowIdx = m + dir[idx];</div><div class="line">                <span class="keyword">int</span> colIdx = n + dir[idx + <span class="number">1</span>];</div><div class="line">                <span class="keyword">if</span> (<span class="number">0</span>&lt;=rowIdx &amp;&amp; rowIdx&lt;grid.size() &amp;&amp; <span class="number">0</span>&lt;=colIdx &amp;&amp; colIdx&lt;grid[<span class="number">0</span>].size()</div><div class="line">                    &amp;&amp; <span class="number">1</span>==grid[rowIdx][colIdx]) &#123;</div><div class="line">                    q.push(pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;(rowIdx, colIdx));</div><div class="line">                    maxArea++;</div><div class="line">                    grid[rowIdx][colIdx] = <span class="number">0</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> maxArea;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong></p>
-<pre><code>1. BFS的处理需要借助数组实现，每一次将grid范围内其值为1的元素塞进数组（后续元素为当前grid[i][j]四个方向上的邻接元素）
-2. 为避免重复计数，每统计一个grid[i][j]，将其值置为0
-3. 由于孤岛有四个维度，元素grid[i][j]的四个方向的下一个元素坐标分别为：[(i-1, j), (i+1, j), (i, j-1), (i, j+1)]
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目描述：&quot;&gt;&lt;a href=&quot;#题目描述：&quot; class=&quot;headerlink&quot; title=&quot;题目描述：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode.com/problems/max-area-of-island/discuss/&quot; tar
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://skyhacks.org/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://skyhacks.org/tags/LeetCode/"/>
-    
-      <category term="Algorithms" scheme="http://skyhacks.org/tags/Algorithms/"/>
-    
-      <category term="Data Structure" scheme="http://skyhacks.org/tags/Data-Structure/"/>
-    
-      <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
-    
-      <category term="BFS" scheme="http://skyhacks.org/tags/BFS/"/>
-    
-      <category term="DFS" scheme="http://skyhacks.org/tags/DFS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 697. Degree of an Array</title>
-    <link href="http://skyhacks.org/2017/11/15/LeetCode/LeetCode-DegreeofanArray/"/>
-    <id>http://skyhacks.org/2017/11/15/LeetCode/LeetCode-DegreeofanArray/</id>
-    <published>2017-11-15T08:10:07.000Z</published>
-    <updated>2017-11-16T17:55:37.147Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a><a href="https://leetcode.com/problems/degree-of-an-array/description/" target="_blank" rel="external">题目描述</a>：</h2><p>Given a non-empty array of non-negative integers nums, the degree of this array is defined as the maximum frequency of any one of its elements.<br>Your task is to find the smallest possible length of a (contiguous) subarray of nums, that has the same degree as nums.<br><strong>Example 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Input: [1, 2, 2, 3, 1]</div><div class="line">Output: 2</div><div class="line">Explanation:</div><div class="line">    The input array has a degree of 2 because both elements 1 and 2 appear twice.</div><div class="line">    Of the subarrays that have the same degree:</div><div class="line">    [1, 2, 2, 3, 1], [1, 2, 2, 3], [2, 2, 3, 1], [1, 2, 2], [2, 2, 3], [2, 2]</div><div class="line">    The shortest length is 2. So return 2.</div></pre></td></tr></table></figure></p>
-<p><strong>Example 2:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,2,2,3,1,4,2]</div><div class="line">Output: 6</div></pre></td></tr></table></figure></p>
-<p><strong>Note:</strong></p>
-<pre><code>- nums.length will be between 1 and 50,000.
-- nums[i] will be an integer between 0 and 49,999.
-</code></pre><h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给定非空非负整数数组，数组的度是指元素的最大出现次数。<br>寻找最大连续区间，使得区间的度与原数组的度相同。</p>
-<h3 id="解题思路1："><a href="#解题思路1：" class="headerlink" title="解题思路1："></a>解题思路1：</h3><hr>
-<p>数组mapCnt记录元素的出现个数<br>数组mapMax记录元素的最大degree<br>startIdx和endIdx记录元素的最小和最大下标（length = endIdx - startIdx + 1）<br>遍历即可<br>参考LeetCode Discuss：<a href="https://discuss.leetcode.com/topic/107102/my-accepted-c-solution-o-n/3" target="_blank" rel="external">https://discuss.leetcode.com/topic/107102/my-accepted-c-solution-o-n/3</a></p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">findShortestSubArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; mapCnt;</div><div class="line">    <span class="keyword">int</span> max = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> min = <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (<span class="literal">true</span> == doFineSubArray(nums, mapCnt)) &#123;</div><div class="line">        <span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;::iterator it;</div><div class="line">        <span class="keyword">for</span> (it = mapCnt.begin(); it != mapCnt.end(); ++it) &#123;</div><div class="line">            <span class="keyword">if</span> (it-&gt;second &gt; max) max = it-&gt;second;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; mapMax;</div><div class="line">        <span class="keyword">for</span> (it = mapCnt.begin(); it != mapCnt.end(); ++it) &#123;</div><div class="line">            <span class="keyword">if</span> (it-&gt;second == max) mapMax.insert(pair&lt;<span class="keyword">int</span> , <span class="keyword">int</span>&gt;(it-&gt;first, it-&gt;second));</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        max = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (it = mapMax.begin(); it != mapMax.end(); ++it) &#123;</div><div class="line">            <span class="keyword">int</span> beginIdx = <span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; nums.size(); idx++) &#123;</div><div class="line">                <span class="keyword">if</span> (nums[idx] == it-&gt;first) &#123;</div><div class="line">                    beginIdx = idx;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">int</span> endIdx = <span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> idx = nums.size() - <span class="number">1</span>; <span class="number">0</span> &lt;= idx; idx--) &#123;</div><div class="line">                <span class="keyword">if</span> (nums[idx] == it-&gt;first) &#123;</div><div class="line">                    endIdx = idx;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">int</span> length = endIdx - beginIdx + <span class="number">1</span>;</div><div class="line">            <span class="keyword">if</span> (<span class="number">0</span> == min) min = length;</div><div class="line">            <span class="keyword">else</span> min = (min &lt; length) ? min : length;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> min;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">doFineSubArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&amp; mapCnt)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; nums.size(); idx++) &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="number">0</span> != mapCnt.count(nums[idx])) ++mapCnt[nums[idx]];</div><div class="line">        <span class="keyword">else</span> mapCnt.insert(pair&lt;<span class="keyword">int</span> , <span class="keyword">int</span>&gt;(nums[idx], <span class="number">1</span>));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (<span class="number">0</span> &lt; mapCnt.size()) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong></p>
-<pre><code>1. 这中解法如果出现nums={1, 2, 3}时候，最后的循环遍历时间复杂度会变成0(n^2)
-2. std::map的本质是红黑树，查找的时间复杂度是O(nlogn).
-3. C++中的hashtable，可以考虑unordered_map（C++11/14）.
-</code></pre><h3 id="解题思路2："><a href="#解题思路2：" class="headerlink" title="解题思路2："></a>解题思路2：</h3><hr>
-<p>数组unordered_map<int,vector<int>&gt; mapCnt用来记录数值和在数组nums中出现的下标<br>max找到最大的degree<br>min找到最短的subarray的length<br>遍历即可<br>参考LeetCode Discuss：<a href="https://discuss.leetcode.com/topic/107162/straightforward-c-solution-35ms" target="_blank" rel="external">https://discuss.leetcode.com/topic/107162/straightforward-c-solution-35ms</a></int,vector<int></p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">findShortestSubArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; mapCnt;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; nums.size(); idx++) mapCnt[nums[idx]].push_back(idx);</div><div class="line">    <span class="keyword">int</span> degree = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> it = mapCnt.begin(); it != mapCnt.end(); it++)</div><div class="line">        degree = max(degree, <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(it-&gt;second.size()));</div><div class="line">    <span class="keyword">int</span> shortest = nums.size();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> it = mapCnt.begin(); it != mapCnt.end(); ++it) &#123;</div><div class="line">        <span class="keyword">if</span> (degree == it-&gt;second.size()) &#123;</div><div class="line">            shortest = min(shortest, <span class="keyword">static_cast</span>&lt;<span class="keyword">int</span>&gt;(it-&gt;second.back() - it-&gt;second[<span class="number">0</span>] + <span class="number">1</span>));</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> shortest;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong></p>
-<pre><code>1. 这中解法如果出现nums={1, 2, 3}时候，最后的循环遍历时间复杂度会变成0(n^2)
-2. unordered_map（C++11/14）本质是hashtable，可以实现访问时间O(1)的时间复杂度.
-3. 第二个元素vector&lt;int&gt;用来存储元素出现的下标，同时该数组长度也是元素出现的个数，节省了上一个
-    算法的计数步骤，关键是，最后计算subarray的length的时候，收尾元素的差值+1就是shortest，灰常好使。
-</code></pre><h3 id="解题思路3："><a href="#解题思路3：" class="headerlink" title="解题思路3："></a>解题思路3：</h3><hr>
-<p>使用两个数组unordered_map<int,int><br>    数组startIndex用来记录每个元素在nums中的起始index<br>    数组count用来记录每个元素在nums中出现的degree<br>遍历即可，更新最大的frequency在遍历时，如果多个元素有相同的frequency，比较他们的长度，选择subarray的length最短那个<br>参考LeetCode Discuss：<a href="https://discuss.leetcode.com/topic/107216/concise-c-solution-using-hash-map-o-n-time" target="_blank" rel="external">https://discuss.leetcode.com/topic/107216/concise-c-solution-using-hash-map-o-n-time</a></int,int></p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">findShortestSubArray</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; mp;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.size();i++) mp[nums[i]].push_back(i);</div><div class="line">    <span class="keyword">int</span> degree=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it=mp.begin();it!=mp.end();it++) degree=max(degree,<span class="keyword">int</span>(it-&gt;second.size()));</div><div class="line">    <span class="keyword">int</span> shortest=nums.size();</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> it=mp.begin();it!=mp.end();it++)</div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span>(it-&gt;second.size()==degree)</div><div class="line">        &#123;</div><div class="line">            shortest=min(shortest,it-&gt;second.back()-it-&gt;second[<span class="number">0</span>]+<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> shortest;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong></p>
-<pre><code>1. 一个循环中用来记录元素的起始位置，并且更新元素的degree，同时计算出当前的最小len
-2. 如果两个元素拥有相同的degree，比较并取length最小的那个
-3. 遍历nums中每个元素的同时，如果元素的出现次数frequency大于当前fre，更新len和fre
-4. len的长度改变只有两个时候：两个元素的degree相同和元素的出现次数frequ&gt;当前fre时候
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目描述：&quot;&gt;&lt;a href=&quot;#题目描述：&quot; class=&quot;headerlink&quot; title=&quot;题目描述：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode.com/problems/degree-of-an-array/description/&quot;
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://skyhacks.org/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://skyhacks.org/tags/LeetCode/"/>
-    
-      <category term="Algorithms" scheme="http://skyhacks.org/tags/Algorithms/"/>
-    
-      <category term="Data Structure" scheme="http://skyhacks.org/tags/Data-Structure/"/>
-    
-      <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>给Hexo添加Gitment评论插件</title>
-    <link href="http://skyhacks.org/2017/08/04/Others/AddGitmentToNext/"/>
-    <id>http://skyhacks.org/2017/08/04/Others/AddGitmentToNext/</id>
-    <published>2017-08-04T09:32:52.000Z</published>
-    <updated>2017-11-16T17:55:37.146Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><hr>
-<p>今年六一略显不同，多说正式关闭服务, 蓝后，7月6号网易云跟帖也关了。在这个多事之秋。国内的评论系统纷纷倒闭。<br><img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-08-04/2017_08_04_1.png"><br>一直想给博客加个靠谱的评论系统，只能求助于谷歌，搜索一番之后，不经意间看到了，imsun实现的一款基于 GitHub Issues 的评论系统Gitment。<br><code>Gitment</code>是作者imsun实现的一款基于<code>GitHub Issues</code>的评论系统。 支持在前端直接引入, 不需要任何后端代码。 可以在页面进行登录、查看、评论、点赞等操作。同时有完整的 <code>Markdown / GFM</code> 和代码高亮支持，尤为适合各种基于 <code>GitHub Pages</code> 的静态博客或项目页面。<br>本篇文章仅介绍在<code>hexo-NexT</code>中添加<code>Gitment</code>评论插件, 并且增加一个点开显示评论的按钮, 对于 Gitment 的使用请参考<a href="https://imsun.net/posts/gitment-introduction/" target="_blank" rel="external">imsun的博客</a>。</p>
-<h2 id="一、注册github-OAuth-Application"><a href="#一、注册github-OAuth-Application" class="headerlink" title="一、注册github OAuth Application"></a>一、注册github OAuth Application</h2><hr>
-<p>Gitment是使用的GitHub Issues作为评论系统，在接入Gitment前，需要获得GitHub的授权，获得相应的客户端id和客户端私钥，以备站点使用。具体步骤如下图所示：<br><a href="https://github.com/settings/applications/new" target="_blank" rel="external">OAuth application注册接入</a>： 在github主页头像-&gt;setting下面，填入相关信息如下<br><img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-08-04/2017_08_04_2.png"><br>注册完毕，得到owner、client_id、client_secret。<br><img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-08-04/2017_08_04_3.png"></p>
-<h2 id="二、添加-Gitment-插件"><a href="#二、添加-Gitment-插件" class="headerlink" title="二、添加 Gitment 插件"></a>二、添加 Gitment 插件</h2><hr>
-<p>打开<code>/next/layout/_partials/comments.swig</code>文件, 在最后一个 elseif 代码块下面添加<code>Gitment</code>相关的内容。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">&#123;% elseif theme.changyan.appid and theme.changyan.appkey %&#125;</div><div class="line">   &lt;div id=&quot;SOHUCS&quot;&gt;&lt;/div&gt;</div><div class="line">&#123;% elseif theme.gitment.enable %&#125;</div><div class="line">    &lt;div onclick=&quot;showGitment()&quot; id=&quot;gitment_title&quot; class=&quot;gitment_title&quot;&gt;显示 Gitment 评论&lt;/div&gt;</div><div class="line">    &lt;div id=&quot;container&quot; style=&quot;display:none&quot;&gt;&lt;/div&gt;</div><div class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://imsun.github.io/gitment/style/default.css&quot;&gt;</div><div class="line">    &lt;script src=&quot;https://imsun.github.io/gitment/dist/gitment.browser.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script&gt;</div><div class="line">    const myTheme = &#123;</div><div class="line">      render(state, instance) &#123;</div><div class="line">        const container = document.createElement(&apos;div&apos;);</div><div class="line">        container.lang = &quot;en-US&quot;;</div><div class="line">        container.className = &apos;gitment-container gitment-root-container&apos;;</div><div class="line">        container.appendChild(instance.renderHeader(state, instance));</div><div class="line">        container.appendChild(instance.renderEditor(state, instance));</div><div class="line">        container.appendChild(instance.renderComments(state, instance));</div><div class="line">        container.appendChild(instance.renderFooter(state, instance));</div><div class="line">        return container;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    function showGitment() &#123;</div><div class="line">      $(&quot;#gitment_title&quot;).attr(&quot;style&quot;, &quot;display:none&quot;);</div><div class="line">      $(&quot;#container&quot;).attr(&quot;style&quot;, &quot;&quot;).addClass(&quot;gitment_container&quot;);</div><div class="line">      var gitment = new Gitment(&#123;</div><div class="line">        id: window.location.pathname,</div><div class="line">        theme: myTheme,</div><div class="line">        owner: &apos;&#123;&#123; theme.gitment.owner &#125;&#125;&apos;,</div><div class="line">        repo: &apos;&#123;&#123; theme.gitment.repo &#125;&#125;&apos;,</div><div class="line">        oauth: &#123;</div><div class="line">          client_id: &apos;&#123;&#123; theme.gitment.client_id &#125;&#125;&apos;,</div><div class="line">          client_secret: &apos;&#123;&#123; theme.gitment.client_secret &#125;&#125;&apos;</div><div class="line">        &#125;</div><div class="line">      &#125;);</div><div class="line">      gitment.render(&apos;container&apos;);</div><div class="line">    &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&#123;% endif %&#125;</div></pre></td></tr></table></figure></p>
-<p>然后打开<code>NexT</code>主题的<code>_config.yml</code>文件, 在评论区域添加以下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># Gitment comments</div><div class="line">gitment:</div><div class="line">  enable: true</div><div class="line">  owner: xxxx #your github ID</div><div class="line">  repo: xxxx #the name of repo to store comments()</div><div class="line">  client_id: xxxx #your client ID</div><div class="line">  client_secret: xxxx #your client</div></pre></td></tr></table></figure></p>
-<p>我的配置信息如下：<br><img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-08-04/2017_08_04_4.png"></p>
-<h2 id="三、“显示-Gitment-评论”-的按钮样式"><a href="#三、“显示-Gitment-评论”-的按钮样式" class="headerlink" title="三、“显示 Gitment 评论” 的按钮样式"></a>三、“显示 Gitment 评论” 的按钮样式</h2><hr>
-<p>在 next/source/css/_common/components 目录中新建一个 gitment.styl 的 css 样式文件, 复制以下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line">.gitment_title:hover &#123;</div><div class="line">    color: #fff;</div><div class="line">    background: #0a9caf;</div><div class="line">    background-image: initial;</div><div class="line">    background-position-x: initial;</div><div class="line">    background-position-y: initial;</div><div class="line">    background-size: initial;</div><div class="line">    background-repeat-x: initial;</div><div class="line">    background-repeat-y: initial;</div><div class="line">    background-attachment: initial;</div><div class="line">    background-origin: initial;</div><div class="line">    background-clip: initial;</div><div class="line">    background-color: rgb(10, 156, 175);</div><div class="line">&#125;</div><div class="line">.gitment_title &#123;</div><div class="line">    border: 1px solid #0a9caf;</div><div class="line">    border-top-color: rgb(10, 156, 175);</div><div class="line">    border-top-style: solid;</div><div class="line">    border-top-width: 1px;</div><div class="line">    border-right-color: rgb(10, 156, 175);</div><div class="line">    border-right-style: solid;</div><div class="line">    border-right-width: 1px;</div><div class="line">    border-bottom-color: rgb(10, 156, 175);</div><div class="line">    border-bottom-style: solid;</div><div class="line">    border-bottom-width: 1px;</div><div class="line">    border-left-color: rgb(10, 156, 175);</div><div class="line">    border-left-style: solid;</div><div class="line">    border-left-width: 1px;</div><div class="line">    border-image-source: initial;</div><div class="line">    border-image-slice: initial;</div><div class="line">    border-image-width: initial;</div><div class="line">    border-image-outset: initial;</div><div class="line">    border-image-repeat: initial;</div><div class="line">    border-radius: 4px;</div><div class="line">    border-top-left-radius: 4px;</div><div class="line">    border-top-right-radius: 4px;</div><div class="line">    border-bottom-right-radius: 4px;</div><div class="line">    border-bottom-left-radius: 4px;</div><div class="line">&#125;</div><div class="line">.gitment_title &#123;</div><div class="line">    display: inline-block;</div><div class="line">    padding: 0 15px;</div><div class="line">    padding-top: 0px;</div><div class="line">    padding-right: 15px;</div><div class="line">    padding-bottom: 0px;</div><div class="line">    padding-left: 15px;</div><div class="line">    color: #0a9caf;</div><div class="line">    cursor: pointer;</div><div class="line">    font-size: 14px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然后打开同目录中的 components.styl 文件, 找个顺眼的位置添加一句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@import &quot;gitment&quot;;</div></pre></td></tr></table></figure></p>
-<h2 id="四、为每篇博文初始化评论系统"><a href="#四、为每篇博文初始化评论系统" class="headerlink" title="四、为每篇博文初始化评论系统"></a>四、为每篇博文初始化评论系统</h2><hr>
-<p>由于gitment的原理是为每一遍博文以其URL作为标识创建一个<code>github issue</code>，对该篇博客的评论就是对这个issue的评论。因此，我们需要为每篇博文初始化一下评论系统， 初始化后，你可以在你的github上会创建相对应的issue。<br>前面的步骤完成，重新部署网站后，你就可以在你的博文页下面看到一个评论框，还有看到以下错误<code>Error: Comments Not Initialized</code>，提示该篇博文的评论系统还没初始化。</p>
-<ul>
-<li>点击<strong>Login with GitHub</strong>后，使用自己的github账号登录后， 就可以在上面错误信息处看到一个<strong>Initialize Comments</strong>的按钮。<br>  (注意: 由于要求回调URL和当前地址一样，故第2步不能在本地调试， 需把代码先上传部署到服务器以后再调试，即<code>hexo s</code>是看不到效果的，只有<code>hexo g &amp;&amp; hexo d</code>才行)。</li>
-<li>点击<strong>Initialize Comments</strong>按钮后，就可以开始对该篇博文开始评论了， 同时也可以在对应的github仓库看到相应的issue。  <img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-08-04/2017_08_04_5.png">
-</li>
-</ul>
-<h2 id="五、安装中遇到问题"><a href="#五、安装中遇到问题" class="headerlink" title="五、安装中遇到问题"></a>五、安装中遇到问题</h2><hr>
-<ul>
-<li>获取对应数据ID<br>  在配置owner的时候，可以在浏览器中输入：<code>https://api.github.com/users/GitHub用户名</code>，来获取对应数据id。</li>
-<li>配置主题文件_config.yml时，格式错误，比如gitment前有空格也会造成代码生成问题。</li>
-<li><code>Error: Not Found</code>问题，repo库填写问题，详见<a href="https://github.com/imsun/gitment/issues/18" target="_blank" rel="external">gitment issues 18</a>。<br>  Not Found问题，基本上是因为<code>NexT</code>主题的<code>_config.yml</code>文件里，配置信息不对。一般是Github ID填错，或者repo填错(git评论仓库的名称，不是git仓库地址)。</li>
-<li>其他问题，参见<a href="https://github.com/imsun/gitment/issues" target="_blank" rel="external">作者项目的Issue</a>。</li>
-</ul>
-<h2 id="四、后记"><a href="#四、后记" class="headerlink" title="四、后记"></a>四、后记</h2><hr>
-<p>以下是自己搭建过程中查找的相关链接和信息，希望对大家有帮助。</p>
-<ol>
-<li><a href="https://github.com/imsun/gitment" target="_blank" rel="external">https://github.com/imsun/gitment</a></li>
-<li><a href="https://imsun.net/posts/gitment-introduction/" target="_blank" rel="external">https://imsun.net/posts/gitment-introduction/</a></li>
-<li><a href="https://meesong.github.io/StaticBlog/2017/NexT+Gitment/" target="_blank" rel="external">https://meesong.github.io/StaticBlog/2017/NexT+Gitment/</a></li>
-<li><a href="https://zonghongyan.github.io/2017/06/29/201706292034/" target="_blank" rel="external">https://zonghongyan.github.io/2017/06/29/201706292034/</a></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;hr&gt;
-&lt;p&gt;今年六一略显不同，多说正式关闭服务, 蓝后，7月6号网易云跟帖也关了。在这个多事之秋。国内的评论系统纷纷倒闭。&lt;br&gt;&lt;img s
-    
-    </summary>
-    
-      <category term="Others" scheme="http://skyhacks.org/categories/Others/"/>
-    
-    
-      <category term="Next" scheme="http://skyhacks.org/tags/Next/"/>
-    
-      <category term="Hexo" scheme="http://skyhacks.org/tags/Hexo/"/>
-    
-      <category term="Gitment" scheme="http://skyhacks.org/tags/Gitment/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用七牛为Hexo存储图片</title>
-    <link href="http://skyhacks.org/2017/08/02/Others/UseQiniudnToStorePic/"/>
-    <id>http://skyhacks.org/2017/08/02/Others/UseQiniudnToStorePic/</id>
-    <published>2017-08-02T09:53:29.000Z</published>
-    <updated>2017-11-16T17:55:37.148Z</updated>
-    
-    <content type="html"><![CDATA[<p>搭建完博客之后一直使用本地图片（相对路径），这样不是很方便，毕竟事关逼格。网上搜索了一把，貌似七牛云做图床评价挺高。说干就干，咱也尝试着使用七牛作为博客的图床了。</p>
-<h2 id="一、七牛是什么"><a href="#一、七牛是什么" class="headerlink" title="一、七牛是什么"></a>一、七牛是什么</h2><hr>
-<p><a href="https://www.qiniu.com/" target="_blank" rel="external">七牛</a> 是一个云存储服务商，注册并实名认证之后，你将免费享有 10GB 存储空间，每月 10GB 下载流量、100 万次 GET 请求、 10 万次 <code>PUT/DELETE</code> 请求。这对于一个博客来说，完全足够了。<br><img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-08-02/2017_08_02_1.png"></p>
-<h2 id="二、为什么选用七牛"><a href="#二、为什么选用七牛" class="headerlink" title="二、为什么选用七牛"></a>二、为什么选用七牛</h2><hr>
-<p><strong>与直接部署到站点相比：</strong></p>
-<ul>
-<li>访问速度更快 （特别是对比部署到github的情况）。</li>
-<li>对个人用户而言空间和流量都十分阔绰。 Gitcafe有 512Mb 的总空间限制，Github虽没有找到类似的说明，但是在其上托管过多媒体资源也不是太合适的做法。而在七牛，你甚至可以通过邀请好友来增加每月下载流量（我的<a href="https://portal.qiniu.com/signup?code=3lg4nzgggsggi" target="_blank" rel="external">邀请链接</a>），每成功邀请一名朋友将增加5GB的下载流量，最高上限可达40GB。</li>
-<li>如果你爱折腾，还可以玩出更多花样3：</li>
-<li>防盗链；<br>  对图片、音视频等在线处理，不必自己做重复工作。通过调用接口，七牛可以帮你：加水印、自定义裁剪区域、旋转、调整图片质量、转换格式；<br>  分析下载量等详细数据，挖掘用户行为。</li>
-</ul>
-<p><strong>与其他上传站点相比：</strong></p>
-<ul>
-<li>更稳定：七牛毕竟是老牌服务商，数据的安全性和稳定性都较有保证。如果上传到什么小网站，哪天发现图片都打不开了才是人间惨剧~</li>
-<li>更灵活：配合 hexo-qiniu-sync 插件4，就算是七牛以后更改了空间域名，也不用一篇一篇地去改外链地址，只要在配置文件中修改外链前缀即可。</li>
-<li>更方便：配合 hexo-qiniu-sync 插件，不必”上传→复制链接→引用外链“，直接按照本地路径引用，然后键入一条命令同步到七牛就好。会自动识别哪些是新增、修改的文件需要上传，哪些是原有的文件不需改动，十分方便。</li>
-</ul>
-<p><strong>当然，虽然七牛有很多优点，但是有一些不足：</strong></p>
-<ul>
-<li>在线文件管理不支持目录。</li>
-<li>本地删除文件，云端不能同步删除文件。<br>尽管仍有欠缺，私以为七牛依旧是现在个人博客最佳的资源储存服务。</li>
-</ul>
-<h2 id="三、七牛存储空间的设置"><a href="#三、七牛存储空间的设置" class="headerlink" title="三、七牛存储空间的设置"></a>三、七牛存储空间的设置</h2><hr>
-<ol>
-<li><a href="https://portal.qiniu.com/create" target="_blank" rel="external">申请七牛账号</a></li>
-<li>选择<strong>对象存储</strong>创建存储空间 <img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-08-02/2017_08_02_2.png">
- 配置相关参数 <img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-08-02/2017_08_02_3.png"></li>
-<li>点击页面右上角头像→进入”个人中心“→选择”密钥管理“→复制当前使用中的<code>AK</code>和<code>SK</code>(待会设置插件时会用到)。 <img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-08-02/2017_08_02_4.png">
-</li>
-</ol>
-<h2 id="四、设置-hexo-qiniu-sync-插件"><a href="#四、设置-hexo-qiniu-sync-插件" class="headerlink" title="四、设置 hexo-qiniu-sync 插件"></a>四、设置 hexo-qiniu-sync 插件</h2><hr>
-<p>前人栽树，后人乘凉。有了插件<a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="external"><strong>hexo-qiniu-sync</strong></a>，可以不用手动上传文件到七牛，插件会自动帮你将本地目录的文件同步到七牛之前设定的存储空间下。</p>
-<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>在hexo主目录下运行以下命令进行安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-qiniu-sync --save</div></pre></td></tr></table></figure></p>
-<h3 id="添加插件配置信息"><a href="#添加插件配置信息" class="headerlink" title="添加插件配置信息"></a>添加插件配置信息</h3><p>在hexo主目录下找到配置文件 <code>_config.yml</code>, 加入以下配置信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">#七牛云存储设置</div><div class="line">qiniu:</div><div class="line">  offline: false</div><div class="line">  sync: true</div><div class="line">  bucket: bucket_name</div><div class="line">  secret_file: sec/qn.json or C:</div><div class="line">  access_key: AccessKey</div><div class="line">  secret_key: SecretKey</div><div class="line">  dirPrefix: static</div><div class="line">  urlPrefix: http://bucket_name.qiniudn.com/static</div><div class="line">  up_host: http://upload.qiniu.com</div><div class="line">  local_dir: static</div><div class="line">  update_exist: true</div><div class="line">  image: </div><div class="line">    folder: images</div><div class="line">    extend: </div><div class="line">  js:</div><div class="line">    folder: js</div><div class="line">  css:</div><div class="line">    folder: css</div><div class="line">  audio:</div><div class="line">    folder: audio</div></pre></td></tr></table></figure></p>
-<p><strong>几个注意点:</strong></p>
-<ul>
-<li><strong>bucket</strong> ：修改为你刚才申请的七牛空间名称</li>
-<li><strong>access_key 、 secret_key</strong> : 上传密钥<code>AccessKey、SecretKey</code>。即3 第3步复制的AK和SK。</li>
-<li><strong>urlPrefix</strong> : 七牛空间地址的前缀。 <strong>重要！必填！</strong><br>因为现在七牛已经取消了二级域名，外链前缀类似设置中的 <a href="http://7xqb0u.com1.z0.glb.clouddn.com" target="_blank" rel="external">http://7xqb0u.com1.z0.glb.clouddn.com</a> ，插件不能根据 bucket 自动生成外链前缀了。你可以进入自己创建的空间在域名设置中看到自己的七牛测试域名，也可以查看一个已上传的文件外链地址，确认前缀无误。这个参数的设置是保证解析成网页文件时，外链地址正确的关键之一！  <img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-08-02/2017_08_02_5.png"></li>
-<li>不要在plugins下面添加hexo-qiniu-sync的配置项，否则会导致错误，<a href="https://github.com/gyk001/hexo-qiniu-sync/issues/41#issuecomment-279229378" target="_blank" rel="external">详见</a> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 错误示例</div><div class="line">plugins:</div><div class="line">  - hexo-qiniu-sync</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>配置参数说明：</p>
-<ul>
-<li><strong>offline 参数：</strong><br>如果要使用同步到七牛空间的静态资源，请设置为 false。如果只想浏览在本地的静态资源文件，则设置为 true。</li>
-<li><strong>secret_file 参数： </strong><br>可有可无，貌似有了这个之后上面的两个参数就不需要配置了。这个路径是需要你自己建立一个json的文件存储上面的秘钥，然后把文件的路径写在这里就好</li>
-<li><strong>sync 参数：</strong><br>如果你想关掉七牛同步，将此参数设置为false即可，不过一般用不到修改这个参数。</li>
-<li><strong>dirPrefix 参数：</strong><br>将资源上传到七牛空间内这个目录下(说是目录会容易理解点)，默认为 <code>static</code> 目录。<br>可设置为空。该参数会影响外链的地址，如果设置为非空值，例如默认值 <code>static</code> ，则 <code>urlPrefix</code> 为保持一致需加上目录后缀 <code>/static</code> ，改为 <code>http://bucket_name.qiniudn.com/static</code> 。<br>(外链地址<a href="http://bucket_name.qiniudn.com，替换成自己地址" target="_blank" rel="external">http://bucket_name.qiniudn.com，替换成自己地址</a>)</li>
-<li><strong>urlPrefix 参数：</strong><br>七牛空间地址的前缀，会按默认格式自动生成地址，所以此参数可省略。<br>默认格式为 <code>http://bucket_name.qiniudn.com/static</code> ，如果你的七牛空间使用自定义域名或域名不是此格式的，请配置此参数。<br>当你设置了 <code>dirPrefix</code> 参数后，如<code>static</code>。则此<code>url</code>地址必须加上目录后缀 <code>/static</code> ， 即<code>http://bucket_name.qiniudn.com/static</code>，否则静态资源将无法访问。<br>如果没有设置 <code>dirPrefix</code> 参数，url地址不必加上目录后缀， 即<code>http://bucket_name.qiniudn.com</code>。<br>(外链地址<a href="http://bucket_name.qiniudn.com，替换成自己地址" target="_blank" rel="external">http://bucket_name.qiniudn.com，替换成自己地址</a>)</li>
-<li><strong>local_dir 参数：</strong><br>只填写一个目录名称即可，建立在hexo博客的主目录，不需要使用子目录。<br>当你在配置中填写好文件夹后，运行hexo时，会自动建立对应的目录。<br>如果你了解hexo文件夹的关系，担心这样会导致离线模式不能查看到图片，我可以告诉你你不需要担心这个问题。<br>在你以离线模式运行时，会自动使用软连接/联接方式帮你建立文件夹的引用，可以让你的离线浏览节省一倍的空间。</li>
-<li><strong>update_exist 参数：</strong><br>如果你的静态文件会进行修改或替换，并需要更新七牛空间上原先上传的文件，则设置为 true 。<br>是否更新空间上已上传的文件，是按照对比文件大小是否相同或者本地文件在上传到七牛空间之后进行过修改的规则进行判断的。</li>
-<li><strong>image/js/css ：</strong><br>子参数folder为不同静态资源种类的目录名称，一般不需要改动</li>
-<li><strong>image : extend 参数：</strong><br>这是个特殊参数，是文章内使用 qnimg 标签引用图片的默认图片处理操作。请参考 七牛开发者中心-图片处理。<br>可以使用 基本图片处理（imageView2）、高级图片处理（imageMogr2）、图片水印处理（watermark） 这三个图片处理接口，多个接口内容之间用 | 间隔。<br>例如 <code>?imageView2/2/w/500</code> 即生成宽度最多500px的缩略图。</li>
-</ul>
-<p>以下是我的配置文件<br><img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-08-02/2017_08_02_6.png"></p>
-<p>这样你在 <code>local_dir</code> 的<code>image命名</code>的文件夹中添加一张图片，之后运行<code>hexo（如hexo s）</code>，图片就可以在你的七牛存储空间的内容管理中看见了。<br>你会看到图片的外链URL就是<code>http://your_site/your_static(你的目录-dirPrefix参数的配置)/images/yourimage.png</code>。就是<code>域名+自定义的目录名+images（配置文件中image中folder指定的文件）+ 图片名</code><br><img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-08-02/2017_08_02_7.png"></p>
-<h2 id="五、引用七牛资源"><a href="#五、引用七牛资源" class="headerlink" title="五、引用七牛资源"></a>五、引用七牛资源</h2><hr>
-<h3 id="引用图片"><a href="#引用图片" class="headerlink" title="引用图片"></a>引用图片</h3><p>图片的引用是最典型的情况。让我们来看最简单的情况：如果你想引用储存在 <code>local_dir/images</code> 下的图片 <code>demo.jpg</code> ，只需在文章中插入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% qnimg demo.jpg %&#125;</div></pre></td></tr></table></figure></p>
-<p>生成站点时将被解析为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img src=&quot;http://7xqb0u.com1.z0.glb.clouddn.com/images/demo.jpg&quot;&gt;</div></pre></td></tr></table></figure></p>
-<p>这里，我们总结一下生成的图片外链地址规则。我们把引用实例概括为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% qnimg ImgFile %&#125;</div></pre></td></tr></table></figure></p>
-<p>则生成的图片外链地址规则为<code>urlPrefix + / + image.folder + / + ImgFile</code>。<br>因此，要想正确的引用外链，一定要注意每一个步骤的设置。如果最后外链不能正常显示，首先对比一下网站博客引用的地址和七牛的外链地址是否一致，如果不一致，则对照外链地址的生成规律，检查文件存放路径、 urlPrefix 、 dirPrefix 、 image.folder 设置是否正确。</p>
-<h3 id="图片引用的高阶版"><a href="#图片引用的高阶版" class="headerlink" title="图片引用的高阶版"></a>图片引用的高阶版</h3><p>高级用法的通用模版：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% qnimg imageFile [attr1:value1] [&apos;attr2:value21 value22 ...&apos;] [extend:... | normal:yes] %&#125;</div></pre></td></tr></table></figure></p>
-<p>[] 表示可选项，按需添加，也可以不写<br>| 表示二选一<br>extend:… 图片处理参数，表示对图片进行某种特定处理5，多个处理之间用 | 间隔。<br>normal:yes 表示使用原图，忽略 _config.yml 文件中的 image.extend 设置<br>实例 图片的本地路径为 cdn/images/test/demo.png ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% qnimg test/demo.png title:标题 alt:说明 &apos;class:class1 class2&apos; extend:?imageView2/2/w/600 %&#125;</div></pre></td></tr></table></figure></p>
-<p>解析为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;img title=&quot;标题&quot; alt=&quot;说明&quot; class=&quot;class1 class2&quot; src=&quot;http://7xqb0u.com1.z0.glb.clouddn.com/images/test/demo.png?imageView2/2/w/600&quot;&gt;</div></pre></td></tr></table></figure></p>
-<p>其中 ?imageView2/2/w/500 代表生成宽度最多500px的缩略图5。如果经常使用某种图片效果，可以在其七牛创建处理样式，以后直接将 extend 参数设置为 分隔符 + 样式名 就好。例如设置的分隔符为 - ，样式名为 new ，则 extend 参数为 -new 。</p>
-<h3 id="引用CSS和JS"><a href="#引用CSS和JS" class="headerlink" title="引用CSS和JS"></a>引用CSS和JS</h3><p>只是引用的标签名不同：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&#123;% qnjs jsFile attr1:value1 attr2:value2 &apos;attr3:value31 value32 value3n&apos; %&#125;</div><div class="line">&#123;% qncss cssFile attr1:value1 attr2:value2 &apos;attr3:value31 value32 value3n&apos; %&#125;</div></pre></td></tr></table></figure></p>
-<p><strong>注意</strong><br>在添加图片的时候，放在images文件夹下的图片，是可以创建子文件夹的。所以，为了方便以及同时兼容之前使用本地图片插件的方式，每一篇文章或者一个功能对应的图片最好放在一个子文件夹下，这样在日志文章中对图片进行引用的时候就可以直接设置成文件夹名/图片名.png的格式。这里建议文件夹名与文章名相同，便于管理</p>
-<h2 id="六、同步到七牛"><a href="#六、同步到七牛" class="headerlink" title="六、同步到七牛"></a>六、同步到七牛</h2><hr>
-<p>将文件上传到七牛云有两种方式 <code>hexo s</code> 和 <code>hexo qiniu sync|sync2</code> 的两个命令工具:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">qiniu sync plugin for hexo</div><div class="line">Usage: hexo qiniu  &lt;argument&gt;</div><div class="line">Description:</div><div class="line">hexo qiniu static files sync plugin</div><div class="line">Arguments:</div><div class="line">  info | i    Displays plugin version, aurthor or GitHub links</div><div class="line">  sync | s    Sync your static files to qiniu.</div><div class="line">  sync2 | s2  Sync your static files to qiniu.(And uploaded update files)</div></pre></td></tr></table></figure></p>
-<h2 id="七、后记"><a href="#七、后记" class="headerlink" title="七、后记"></a>七、后记</h2><hr>
-<p>以下是自己搭建过程中查找的相关链接和信息，希望对大家有帮助。</p>
-<ol>
-<li><a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="external">https://github.com/gyk001/hexo-qiniu-sync</a></li>
-<li><a href="http://www.ixirong.com/2016/10/31/how-to-use-hexo-qiniu-sync-plugin/" target="_blank" rel="external">http://www.ixirong.com/2016/10/31/how-to-use-hexo-qiniu-sync-plugin/</a></li>
-<li><a href="http://yuchen-lea.github.io/2016-01-21-use-qiniu-store-file-for-hexo/" target="_blank" rel="external">http://yuchen-lea.github.io/2016-01-21-use-qiniu-store-file-for-hexo/</a></li>
-<li><a href="http://error408.com/2016/08/02/Hexo%E4%B8%83%E7%89%9B%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8/" target="_blank" rel="external">http://error408.com/2016/08/02/Hexo%E4%B8%83%E7%89%9B%E5%9B%BE%E5%BA%8A%E4%BD%BF%E7%94%A8/</a></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;搭建完博客之后一直使用本地图片（相对路径），这样不是很方便，毕竟事关逼格。网上搜索了一把，貌似七牛云做图床评价挺高。说干就干，咱也尝试着使用七牛作为博客的图床了。&lt;/p&gt;
-&lt;h2 id=&quot;一、七牛是什么&quot;&gt;&lt;a href=&quot;#一、七牛是什么&quot; class=&quot;headerli
-    
-    </summary>
-    
-      <category term="Others" scheme="http://skyhacks.org/categories/Others/"/>
-    
-    
-      <category term="Hexo" scheme="http://skyhacks.org/tags/Hexo/"/>
-    
-      <category term="Qiniu" scheme="http://skyhacks.org/tags/Qiniu/"/>
     
   </entry>
   
