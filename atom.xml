@@ -523,9 +523,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
-    
       <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
+    
+      <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
     
   </entry>
   
@@ -570,9 +570,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
-    
       <category term="Tip" scheme="http://skyhacks.org/tags/Tip/"/>
+    
+      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
     
       <category term="Git" scheme="http://skyhacks.org/tags/Git/"/>
     
@@ -676,13 +676,13 @@
     <link href="http://skyhacks.org/2018/08/14/Arts/MyArtsPlan/"/>
     <id>http://skyhacks.org/2018/08/14/Arts/MyArtsPlan/</id>
     <published>2018-08-14T15:14:41.000Z</published>
-    <updated>2018-09-13T15:29:04.919Z</updated>
+    <updated>2018-09-13T15:34:16.951Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>每周至少做一个leetcode算法题</p>
 <ul>
 <li>week1: <a href="http://skyhacks.org/2018/08/21/Arts/Week1/Arts-Share-Week1-HowToWork/">832.Flipping an Image</a></li>
 <li>week2: <a href="http://skyhacks.org/2018/08/30/LeetCode/LeetCode-TransposeMatrix/">867. Transpose Matrix</a></li>
-<li>week3: <a href="http://skyhacks.org/2018/09/05/LeetCode/LeetCode-TransposeMatrix/">766. Toeplitz Matrix</a></li>
+<li>week3: <a href="http://skyhacks.org/2018/09/05/LeetCode/LeetCode-ToeplitzMatrix/">766. Toeplitz Matrix</a></li>
 </ul>
 <hr>
 <h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>每周阅读至少一篇英文技术文章</p>
@@ -881,13 +881,13 @@
     
       <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
     
-      <category term="Majority Element" scheme="http://skyhacks.org/tags/Majority-Element/"/>
-    
-      <category term="Moore’s voting algorithm" scheme="http://skyhacks.org/tags/Moore%E2%80%99s-voting-algorithm/"/>
-    
       <category term="Sort" scheme="http://skyhacks.org/tags/Sort/"/>
     
       <category term="HashTable" scheme="http://skyhacks.org/tags/HashTable/"/>
+    
+      <category term="Majority Element" scheme="http://skyhacks.org/tags/Majority-Element/"/>
+    
+      <category term="Moore’s voting algorithm" scheme="http://skyhacks.org/tags/Moore%E2%80%99s-voting-algorithm/"/>
     
   </entry>
   

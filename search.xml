@@ -122,8 +122,8 @@
       </categories>
       <tags>
         <tag>Arts</tag>
-        <tag>Share</tag>
         <tag>Week1</tag>
+        <tag>Share</tag>
       </tags>
   </entry>
   <entry>
@@ -135,8 +135,8 @@
       </categories>
       <tags>
         <tag>Arts</tag>
-        <tag>Week1</tag>
         <tag>Tip</tag>
+        <tag>Week1</tag>
         <tag>Git</tag>
       </tags>
   </entry>
@@ -222,10 +222,10 @@
         <tag>Algorithms</tag>
         <tag>Data Structure</tag>
         <tag>Array</tag>
-        <tag>Majority Element</tag>
-        <tag>Moore’s voting algorithm</tag>
         <tag>Sort</tag>
         <tag>HashTable</tag>
+        <tag>Majority Element</tag>
+        <tag>Moore’s voting algorithm</tag>
       </tags>
   </entry>
   <entry>
