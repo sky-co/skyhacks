@@ -128,7 +128,7 @@
 <meta property="og:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_11.png">
 <meta property="og:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_12.png">
 <meta property="og:image" content="http://otqlqfy9h.bkt.clouddn.com/images/2017-07-20/2017_07_20_13.png">
-<meta property="og:updated_time" content="2018-09-13T15:42:54.059Z">
+<meta property="og:updated_time" content="2018-09-13T15:44:59.043Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo环境搭建个人博客">
 <meta name="twitter:description" content="很早之前就计划搭建一个博客，但由于各方面原因（最主要还是懒），一直耽误着。终于几个月前看到同事在弄，自己也开始折腾起来。 一路跌跌撞撞，也算初步搞定。特此把中间踩过的坑记录下来，也算对后来的道友有个交代。 一、前期准备服务器购买 我是用的是VPS（虚拟专用服务器）作为网站的服务器，选择了口碑较好的搬瓦工VPS，因为其价格便宜，稳定性强，并且还支持支付宝付款。关键的关键是VPS上安装了Shadows">
@@ -555,10 +555,7 @@
 <li><p>查看<code>node</code>和<code>npm</code>版本</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node --version</div><div class="line">npm --version</div></pre></td></tr></table></figure>
 </li>
-<li><p>warning: LF will be replaced by CRLF | fatal: CRLF would be replaced by LF<br>解决办法：</p>
-<pre><code>http://blog.csdn.net/feng88724/article/details/11600375
-http://skyhacks.org/2018/08/20/Arts/Week1/Arts-Tip_Week1-GitLineEndingCharacter/
-</code></pre><p>遇到这两个错误，是因为Git的换行符检查功能<br>对于出现一些conflic，可以reset一些，再重新更新</p>
+<li><p>warning: LF will be replaced by CRLF | fatal: CRLF would be replaced by LF<br>解决办法：<br><a href="http://blog.csdn.net/feng88724/article/details/11600375" target="_blank" rel="external">http://blog.csdn.net/feng88724/article/details/11600375</a><br><a href="http://skyhacks.org/2018/08/20/Arts/Week1/Arts-Tip_Week1-GitLineEndingCharacter/">http://skyhacks.org/2018/08/20/Arts/Week1/Arts-Tip_Week1-GitLineEndingCharacter/</a><br>遇到这两个错误，是因为Git的换行符检查功能<br>对于出现一些conflic，可以reset一些，再重新更新</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git reset --hard FETCH_HEAD</div><div class="line">git pull origin master</div></pre></td></tr></table></figure>
 </li>
 <li><p>hexo安装成功，并且正确运行，但是localhost:4000不能访问<br>解决办法：<a href="https://yq.aliyun.com/articles/58027" target="_blank" rel="external">https://yq.aliyun.com/articles/58027</a><br>遇到这个问题，是因为4000端口被占用了。如果你的电脑上不幸装了福昕阅读，恭喜你！它就是罪魁祸首….<br>胳膊拧不过大腿，对于这种流氓软件，我们别无他法，只能换端口。 :(</p>
