@@ -89,7 +89,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Arts,Share,Week2," />
+  <meta name="keywords" content="LeetCode,Algorithms,Data Structure,Array," />
 
 
 
@@ -107,18 +107,18 @@
 
 
 
-<meta name="description" content="“Judge a man by his questions rather than by his answers.” ― Voltaire 背景可能大家看到这个标题觉得很不以为然，不就是问问题么？谁不会啊！可你有想过高效正确的问对问题么？耗叔曾经写过一篇文章X-Y Problem。今天选择聊这个话题也是因为最近接手的项目周期比较赶，文档缺失，但是又需要你能快速把握整个系统，所以就需要跟很多与这个项">
-<meta name="keywords" content="Arts,Share,Week2">
+<meta name="description" content="题目描述：A matrix is Toeplitz if every diagonal from top-left to bottom-right has the same element.Now given an M x N matrix, return True if and only if the matrix is Toeplitz. Example 1:1234567891011Inpu">
+<meta name="keywords" content="LeetCode,Algorithms,Data Structure,Array">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Share_Week2-如何正确高效地问对问题">
-<meta property="og:url" content="http://skyhacks.org/2018/08/30/Arts/Week2/Arts-Share-Week2-HowToAskQuestions/index.html">
+<meta property="og:title" content="LeetCode 766. Toeplitz Matrix">
+<meta property="og:url" content="http://skyhacks.org/2018/09/05/LeetCode/LeetCode-ToeplitzMatrix/index.html">
 <meta property="og:site_name" content="Practice Makes Perfect">
-<meta property="og:description" content="“Judge a man by his questions rather than by his answers.” ― Voltaire 背景可能大家看到这个标题觉得很不以为然，不就是问问题么？谁不会啊！可你有想过高效正确的问对问题么？耗叔曾经写过一篇文章X-Y Problem。今天选择聊这个话题也是因为最近接手的项目周期比较赶，文档缺失，但是又需要你能快速把握整个系统，所以就需要跟很多与这个项">
+<meta property="og:description" content="题目描述：A matrix is Toeplitz if every diagonal from top-left to bottom-right has the same element.Now given an M x N matrix, return True if and only if the matrix is Toeplitz. Example 1:1234567891011Inpu">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-09-02T16:34:01.810Z">
+<meta property="og:updated_time" content="2018-09-13T15:31:41.726Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Share_Week2-如何正确高效地问对问题">
-<meta name="twitter:description" content="“Judge a man by his questions rather than by his answers.” ― Voltaire 背景可能大家看到这个标题觉得很不以为然，不就是问问题么？谁不会啊！可你有想过高效正确的问对问题么？耗叔曾经写过一篇文章X-Y Problem。今天选择聊这个话题也是因为最近接手的项目周期比较赶，文档缺失，但是又需要你能快速把握整个系统，所以就需要跟很多与这个项">
+<meta name="twitter:title" content="LeetCode 766. Toeplitz Matrix">
+<meta name="twitter:description" content="题目描述：A matrix is Toeplitz if every diagonal from top-left to bottom-right has the same element.Now given an M x N matrix, return True if and only if the matrix is Toeplitz. Example 1:1234567891011Inpu">
 
 
 
@@ -146,13 +146,13 @@
 
 
 
-  <link rel="canonical" href="http://skyhacks.org/2018/08/30/Arts/Week2/Arts-Share-Week2-HowToAskQuestions/"/>
+  <link rel="canonical" href="http://skyhacks.org/2018/09/05/LeetCode/LeetCode-ToeplitzMatrix/"/>
 
 
 
 
 
-  <title> Share_Week2-如何正确高效地问对问题 | Practice Makes Perfect </title>
+  <title> LeetCode 766. Toeplitz Matrix | Practice Makes Perfect </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -334,7 +334,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://skyhacks.org/2018/08/30/Arts/Week2/Arts-Share-Week2-HowToAskQuestions/">
+    <link itemprop="mainEntityOfPage" href="http://skyhacks.org/2018/09/05/LeetCode/LeetCode-ToeplitzMatrix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="sky_co">
@@ -355,7 +355,7 @@
             
             
               
-                Share_Week2-如何正确高效地问对问题
+                LeetCode 766. Toeplitz Matrix
               
             
           </h2>
@@ -370,8 +370,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-30T00:22:02+08:00">
-                2018-08-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-05T09:40:59+08:00">
+                2018-09-05
               </time>
             
 
@@ -393,8 +393,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Arts/" itemprop="url" rel="index">
-                    <span itemprop="name">Arts</span>
+                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
                   </a>
                 </span>
 
@@ -433,68 +433,17 @@
       
 
       
-        <p>“Judge a man by his questions rather than by his answers.” ― Voltaire</p>
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>可能大家看到这个标题觉得很不以为然，不就是问问题么？谁不会啊！可你有想过高效正确的问对问题么？耗叔曾经写过一篇文章<a href="https://coolshell.cn/articles/10804.html" target="_blank" rel="external">X-Y Problem</a>。今天选择聊这个话题也是因为最近接手的项目周期比较赶，文档缺失，但是又需要你能快速把握整个系统，所以就需要跟很多与这个项目有关联的人打交道，这个就挺考验提问的技巧。<br>言归正传，下面就开始谈谈怎么高效地问对问题。</p>
-<h2 id="为什么要问问题"><a href="#为什么要问问题" class="headerlink" title="为什么要问问题"></a>为什么要问问题</h2><p>这个好像是废话，因为不懂，因为想知道为什么，好了下一个…</p>
-<h2 id="你想要的是什么"><a href="#你想要的是什么" class="headerlink" title="你想要的是什么"></a>你想要的是什么</h2><p>当你在想要问问题前，你必须先要知道你到底想要问的是什么，并且把一个问题放到一个合适的上下文环境中，这样才有助于回答者可以快速理解你的问题点并给出回答。</p>
-<h2 id="如何才能正确高效地问对问题"><a href="#如何才能正确高效地问对问题" class="headerlink" title="如何才能正确高效地问对问题"></a>如何才能正确高效地问对问题</h2><p>让我们先从一个例子开始：</p>
-<blockquote>
-<p>你: “老板，我需要怎样做才能得到提升啊?”<br>老板:“你必须按期完成我们需要的目标！”<br>呵呵，这不是开玩笑。老板的回答的确回答了你的问题, 但是可能并不是你所期望的回答。你只能疑惑地离开，想着老板是不是对你的工作和进步不太在意?</p>
-</blockquote>
-<p>让我们换另一种方法:</p>
-<blockquote>
-<p>你: “老板, 假设我按期完成了目标，如果我想要得到提升，那么在其他方面我还需要做什么？”<br>老板: “呃，你也确实应该涉及决策部门了，而不仅仅是完成任务。”</p>
-</blockquote>
-<p>正如你看到的，你的措辞对你得到的答复影响很大。所以，聪明的问问题方法是：把对方会显而易见的回答变成自己的陈述包含在你问的问题中。让别人顺着你“设计好的圈套”回答你想知道的答案。这就是问问题的技巧。</p>
-<p><strong>问问题的场合</strong><br>不同的场合和形势下，你问问题所用的方法也会不同。不同场合需要换位思考，别人是否方便回答你的问题，比如以下几个场合就不是很方便：</p>
-<ol>
-<li>在别人打电话的时候；</li>
-<li>—非常忙碌的时候；</li>
-<li>正在休息的时候；</li>
-<li>开会的时候；</li>
-<li>会见客人的时候；</li>
-<li>处理私人问题的时候；</li>
-</ol>
-<p>当然首先语言上一定要注意礼貌问题，打招呼时先说你好。这样不会引起别人的反感。<br>其次，且不说别人给出的答案是否100%正确，当别人花时间给你解释和回答了问题，结束时候记得要感谢别人，礼尚往来。</p>
-<p><strong>问可供选择的问题</strong><br>这个技巧其实是很多做销售的人惯用的技巧。不要问只有“是”与“否”两个答案的问题，除非你十分肯定答案是“是”。<br>例如：不要问：“你想买双门轿车吗?”；要问：“你想要双门还是四门轿车?”<br>如果你用后面这种二选一的问题，回答问题的人就无法拒绝你。</p>
-<p><strong>要问具体的内容</strong><br>不要问太泛的问题，因为这些问题的回答往往也是可有可无，你得不到有价值的答案。所以，尽量问你所关心的具体内容，有针对性的去问问题，每个问题最好都集中针对某个具体的点。<br>同时，对于问题的描述一定要言简意赅，最简单概括的语言把你的问题说出来，让人家听懂，这样也给对方一个思考的时间。</p>
-<p><strong>学会聆听</strong></p>
-<blockquote>
-<p>Silence is golden.<br>问问题是一个相互沟通的过程，成为一个好的听众也很重要。尤其是别人正在说话或者回答问题时候，贸然的打断显得很不礼貌，同时也可能打乱别人的逻辑。</p>
-</blockquote>
-<p><strong>换位思考问自己</strong><br>花一秒钟的时间思考一下你将如何回答你将要问的问题，换位思考，假如你是对方，你会怎么回答这个问题？ 这个问题的描述是否准备，措辞是否得当？ 如果不合适，请考虑换个措辞或者修改问题的描述。<br>国外有个很著名的<a href="http://www.ituring.com.cn/article/195788" target="_blank" rel="external">橡皮鸭子解决问题法</a>, 大意就是提交问题的人应该在提问前多花点时间研究一下他们的问题，整理思路，对着一只橡皮鸭提出的问题。在提问的过程中思考，自己的问题是否是自己想要的问的东西？在这个过程中，说不定不用找别人提问，自己就有了答案。</p>
-<p><strong>确认是否听懂了回答</strong><br>如果问题很重要，你必须反复确认你是否听明白了回答，你可以用下面的办法确认你听到的回答：</p>
-<ol>
-<li><p>重复<br>“哦，你的意思是说如果X和Y发生的话，Z就会发生。对吗？”</p>
-</li>
-<li><p>装不懂：<br>“好的，你可以稍微再解释一下吗（我只想确定我是否听明白了）？”</p>
-</li>
-<li><p>换做自己的话说：<br>“嗯，不错。如果X和Y发生的话，我应该期望Z会发生，因为…”<br>使用和回答者不同的措辞，并把你认为的话添加在后面。即使你所认为的事情可能并没有在会话中出现，但是，加上你说的话会使这场谈话更有价值。</p>
-</li>
-</ol>
-<p><strong>训练</strong><br>在问别人前，先按照以下方法向自己发问，通过平时稍加训练，有助于你成为更好的思考者。</p>
-<blockquote>
-<ol>
-<li>Focus: What specifically do I want to know? What information am I missing? Is this more than a simple YES or NO question? Am I going for deeper knowledge?</li>
-<li>Purpose: Why am I asking this? Do I want to gather facts or opinions? Do I need simple clarification? Do I want to offer a different perspective?</li>
-<li>Intent: How do I want people to respond? Do I want the answer to be of help to others? Am I asking to start an argument or open a discussion? Is the question superficial and not really useful or important? Am I asking out of frustration or curiosity? Do I really care about the answer? Am I willing to show respect/deference to the person I’m asking?</li>
-<li>Framing: Am I using easily understandable terms and wording? Is my question neutral or does it contain bias or opinion? Is it too long or too short? Does it contain the focus of what I want to know? Does the question focus on only one thing? Is it muddled with other inquiries that don’t belong?</li>
-<li>Follow-up: Do I have any more specific questions to add? Will the person I’m asking be available for other questions if need be? If I still don’t have the answer I need, what’s my plan? What can I do if I still don’t understand?</li>
-</ol>
-</blockquote>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>问问题也是一门艺术，其中有很多技巧，上面只是几个关键的点。在你下次问问题的时候，不妨换一个问法，相信你会有新的体验和收获。</p>
-<p>以下是文章相关链接：</p>
-<ol>
-<li><a href="https://www.douban.com/group/topic/8100581/" target="_blank" rel="external">https://www.douban.com/group/topic/8100581/</a></li>
-<li><a href="https://jingyan.baidu.com/article/fdbd4277a5d7e8b89f3f485a.html" target="_blank" rel="external">https://jingyan.baidu.com/article/fdbd4277a5d7e8b89f3f485a.html</a></li>
-<li><a href="https://www.entrepreneur.com/article/254264" target="_blank" rel="external">https://www.entrepreneur.com/article/254264</a></li>
-<li><a href="https://hbr.org/2009/05/real-leaders-ask.html" target="_blank" rel="external">https://hbr.org/2009/05/real-leaders-ask.html</a></li>
-<li><a href="https://www.lifehack.org/articles/communication/how-amazingly-good-asking-questions.html" target="_blank" rel="external">https://www.lifehack.org/articles/communication/how-amazingly-good-asking-questions.html</a></li>
-<li><a href="https://www.inc.com/rhett-power/great-leaders-ask-the-right-questions.html" target="_blank" rel="external">https://www.inc.com/rhett-power/great-leaders-ask-the-right-questions.html</a></li>
-<li><a href="https://www.coachingforchange.com/pub10.html" target="_blank" rel="external">https://www.coachingforchange.com/pub10.html</a></li>
-<li><a href="https://medium.com/personal-growth/are-you-asking-the-right-questions-48c7de027de" target="_blank" rel="external">https://medium.com/personal-growth/are-you-asking-the-right-questions-48c7de027de</a></li>
-<li><a href="https://globaldigitalcitizen.org/ask-good-questions-infographic" target="_blank" rel="external">https://globaldigitalcitizen.org/ask-good-questions-infographic</a></li>
-</ol>
+        <h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a><a href="https://leetcode.com/problems/toeplitz-matrix" target="_blank" rel="external">题目描述</a>：</h2><p>A matrix is Toeplitz if every diagonal from top-left to bottom-right has the same element.<br>Now given an M x N matrix, return True if and only if the matrix is Toeplitz.</p>
+<p><strong>Example 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,2,3,4],</div><div class="line">  [5,1,2,3],</div><div class="line">  [9,5,1,2]</div><div class="line">]</div><div class="line">Output: True</div><div class="line">Explanation:</div><div class="line">In the above grid, the diagonals are:</div><div class="line">&quot;[9]&quot;, &quot;[5, 5]&quot;, &quot;[1, 1, 1]&quot;, &quot;[2, 2, 2]&quot;, &quot;[3, 3]&quot;, &quot;[4]&quot;.</div><div class="line">In each diagonal all elements are the same, so the answer is True.</div></pre></td></tr></table></figure></p>
+<p><strong>Example 2:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Input:</div><div class="line">matrix = [</div><div class="line">  [1,2],</div><div class="line">  [2,2]</div><div class="line">]</div><div class="line">Output: False</div><div class="line">Explanation:</div><div class="line">The diagonal &quot;[1, 2]&quot; has different elements.</div></pre></td></tr></table></figure></p>
+<p><strong>Note:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1. matrix will be a 2D array of integers.</div><div class="line">2. matrix will have a number of rows and columns in range [1, 20].</div><div class="line">3. matrix[i][j] will be integers in range [0, 99].</div></pre></td></tr></table></figure></p>
+<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>Toeplitz（托普利茨）矩阵是指各条从左上到右下对角线元素均相等的矩阵。<br>给定M x N矩阵，判断是否为Toeplitz矩阵。</p>
+<h3 id="解题思路1："><a href="#解题思路1：" class="headerlink" title="解题思路1："></a>解题思路1：</h3><hr>
+<p>遍历除了最后一行和最后一列的元素，查看每个元素对角线上的下一个元素是否相等。<br>参考LeetCode Discuss：<br><a href="https://leetcode.com/problems/toeplitz-matrix/discuss/113417/Java-solution-4-liner" target="_blank" rel="external">https://leetcode.com/problems/toeplitz-matrix/discuss/113417/Java-solution-4-liner</a>.</p>
+<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isToeplitzMatrix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; matrix.size() - <span class="number">1</span>; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; matrix[i].size() - <span class="number">1</span>; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (matrix[i][j] != matrix[i + <span class="number">1</span>][j + <span class="number">1</span>]) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="解题思路2："><a href="#解题思路2：" class="headerlink" title="解题思路2："></a>解题思路2：</h3><hr>
+<p>除了逐个遍历元素以外，观察可得，只需要考虑第一行和第一列的元素（除第一行最后一个元素和第一列最后一个元素以外）是否存在对角线上元素与之相等。</p>
+<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isToeplitzMatrix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; matrix)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> row = matrix.size();</div><div class="line">        <span class="keyword">int</span> col = matrix[<span class="number">0</span>].size();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; row - <span class="number">1</span>; idx++) &#123;</div><div class="line">            <span class="keyword">int</span> i = idx;</div><div class="line">            <span class="keyword">int</span> j = <span class="number">0</span>;</div><div class="line">            <span class="keyword">while</span>(i &lt; row &amp;&amp; j &lt; col) &#123;</div><div class="line">                <span class="keyword">if</span> (matrix[idx][<span class="number">0</span>] != matrix[i][j]) &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">                &#125;</div><div class="line">                i++;</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; col - <span class="number">1</span>; idx++) &#123;</div><div class="line">            <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">            <span class="keyword">int</span> j = idx;</div><div class="line">            <span class="keyword">while</span>(i &lt; row &amp;&amp; j &lt; col) &#123;</div><div class="line">                <span class="keyword">if</span> (matrix[<span class="number">0</span>][idx] != matrix[i][j]) &#123;</div><div class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">                &#125;</div><div class="line">                i++;</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -521,7 +470,7 @@
 		  </li>
 		  <li class="post-copyright-link">
 			<strong>本文链接：</strong>
-			<a href="/2018/08/30/Arts/Week2/Arts-Share-Week2-HowToAskQuestions/" title="Share_Week2-如何正确高效地问对问题">http://skyhacks.org/2018/08/30/Arts/Week2/Arts-Share-Week2-HowToAskQuestions/</a>
+			<a href="/2018/09/05/LeetCode/LeetCode-ToeplitzMatrix/" title="LeetCode 766. Toeplitz Matrix">http://skyhacks.org/2018/09/05/LeetCode/LeetCode-ToeplitzMatrix/</a>
 		  </li>
 		  <li class="post-copyright-license">
 			<strong>版权声明： </strong>
@@ -572,11 +521,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Arts/" rel="tag"># Arts</a>
+            <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
           
-            <a href="/tags/Share/" rel="tag"># Share</a>
+            <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
           
-            <a href="/tags/Week2/" rel="tag"># Week2</a>
+            <a href="/tags/Data-Structure/" rel="tag"># Data Structure</a>
+          
+            <a href="/tags/Array/" rel="tag"># Array</a>
           
         </div>
       
@@ -589,8 +540,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/29/Arts/Week2/Arts-Tip-Week2-HexoDeployGithub/" rel="next" title="Tip_Week2 - 使用Hexo和GitHub搭建博客，出现hexo -d报错解决方案">
-                <i class="fa fa-chevron-left"></i> Tip_Week2 - 使用Hexo和GitHub搭建博客，出现hexo -d报错解决方案
+              <a href="/2018/08/30/LeetCode/LeetCode-TransposeMatrix/" rel="next" title="LeetCode 867. Transpose Matrix">
+                <i class="fa fa-chevron-left"></i> LeetCode 867. Transpose Matrix
               </a>
             
           </div>
@@ -599,8 +550,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/30/LeetCode/LeetCode-TransposeMatrix/" rel="prev" title="LeetCode 867. Transpose Matrix">
-                LeetCode 867. Transpose Matrix <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/06/Arts/Week3/Arts-Share-Week3-HowToStudy/" rel="prev" title="Share_Week3-如何高效的学习">
+                Share_Week3-如何高效的学习 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
