@@ -570,9 +570,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Tip" scheme="http://skyhacks.org/tags/Tip/"/>
-    
       <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
+    
+      <category term="Tip" scheme="http://skyhacks.org/tags/Tip/"/>
     
       <category term="Git" scheme="http://skyhacks.org/tags/Git/"/>
     
@@ -622,9 +622,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
-    
       <category term="Review" scheme="http://skyhacks.org/tags/Review/"/>
+    
+      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
     
   </entry>
   
