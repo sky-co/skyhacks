@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://skyhacks.org/"/>
-  <updated>2018-09-09T16:17:42.530Z</updated>
+  <updated>2018-09-25T15:18:23.251Z</updated>
   <id>http://skyhacks.org/</id>
   
   <author>
@@ -14,6 +14,187 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 905. Sort Array By Parity</title>
+    <link href="http://skyhacks.org/2018/09/24/LeetCode/LeetCode-SortArrayByParity/"/>
+    <id>http://skyhacks.org/2018/09/24/LeetCode/LeetCode-SortArrayByParity/</id>
+    <published>2018-09-24T01:40:59.000Z</published>
+    <updated>2018-09-25T15:18:23.251Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a><a href="https://leetcode.com/problems/sort-array-by-parity/description/" target="_blank" rel="external">题目描述</a>：</h2><p>Given an array A of non-negative integers, return an array consisting of all the even elements of A, followed by all the odd elements of A.</p>
+<p>You may return any answer array that satisfies this condition.</p>
+<p><strong>Example 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Input: [3,1,2,4]</div><div class="line">Output: [2,4,3,1]</div><div class="line">The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.</div></pre></td></tr></table></figure></p>
+<p><strong>Note:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1 &lt;= A.length &lt;= 5000</div><div class="line">0 &lt;= A[i] &lt;= 5000</div></pre></td></tr></table></figure></p>
+<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给定一个包含非负数整数的数组，返回一个数组，数组内包含所有的偶数，偶数后跟着A所有的奇数元素。</p>
+<h3 id="解题思路1："><a href="#解题思路1：" class="headerlink" title="解题思路1："></a>解题思路1：</h3><p>其实就是判断奇偶数，然后索引值对调。</p>
+<hr>
+<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; sortArrayByParity(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A) &#123;</div><div class="line">        <span class="keyword">int</span> size = A.size();</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v(size, <span class="number">0</span>);</div><div class="line">        <span class="keyword">int</span> startIdx = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> endIdx = size - <span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; size; idx++) &#123;</div><div class="line">            <span class="keyword">if</span> (A[idx] &amp; <span class="number">1</span>) v[endIdx--] = A[idx];</div><div class="line">            <span class="keyword">else</span> v[startIdx++] = A[idx];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> v;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="解题思路2："><a href="#解题思路2：" class="headerlink" title="解题思路2："></a>解题思路2：</h3><p>相比第一种解法，思路2的方法差不多，时间复杂度O(n)，不同之处在于，思路2没有新增加空间，空间复杂度不变，原地操作元素。</p>
+<hr>
+<p>参考LeetCode Discuss：<br><a href="https://leetcode.com/problems/sort-array-by-parity/discuss/170734/C++Java-In-Place-Swap" target="_blank" rel="external">https://leetcode.com/problems/sort-array-by-parity/discuss/170734/C++Java-In-Place-Swap</a></p>
+<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; sortArrayByParity(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; A) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; j &lt; A.size(); j++)</div><div class="line">            <span class="keyword">if</span> (A[j] % <span class="number">2</span> == <span class="number">0</span>) swap(A[i++], A[j]);</div><div class="line">        <span class="keyword">return</span> A;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="数字奇偶性判定："><a href="#数字奇偶性判定：" class="headerlink" title="数字奇偶性判定："></a>数字奇偶性判定：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">数字num</div><div class="line">1. num % 2 == 0（偶数）； num % 2 != 0（奇数）</div><div class="line">2. num &amp; 1 == 0（偶数）； num &amp; 1 != 0（奇数）</div><div class="line">3. n &amp; (n-1) == 0 （偶数）；  n &amp; (n-1) ！= 0 （奇数）</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目描述：&quot;&gt;&lt;a href=&quot;#题目描述：&quot; class=&quot;headerlink&quot; title=&quot;题目描述：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode.com/problems/sort-array-by-parity/description
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://skyhacks.org/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://skyhacks.org/tags/LeetCode/"/>
+    
+      <category term="Algorithms" scheme="http://skyhacks.org/tags/Algorithms/"/>
+    
+      <category term="Data Structure" scheme="http://skyhacks.org/tags/Data-Structure/"/>
+    
+      <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tip_Week4 - 文件的拷贝工具分享</title>
+    <link href="http://skyhacks.org/2018/09/20/Arts/Week4/Arts-Tip-Week4-CopyLargeFiles/"/>
+    <id>http://skyhacks.org/2018/09/20/Arts/Week4/Arts-Tip-Week4-CopyLargeFiles/</id>
+    <published>2018-09-20T15:48:27.000Z</published>
+    <updated>2018-10-07T15:39:26.447Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><hr>
+<p>文件的拷贝复制大家都不陌生，但如果是10GB以上的文件呢？大文件拷贝了解一下嘛。有过经验的同学都知道过程岂止一个“慢”字了得。尤其是，万一中途出个啥岔子，重新来吧…..</p>
+<h2 id="解决途径"><a href="#解决途径" class="headerlink" title="解决途径"></a>解决途径</h2><hr>
+<p>现在救星来了，听说过Beyond Compare可以用来比较文件的差异，但是你知道么，在比较文件夹下的文件差异的时候，Beyond Compare还可以做的更多，可以用它来拷贝和移动大量的文件，并且关键的一点是不会出现拷贝一半挂了，只能从头开始的尴尬情况，因为假如中途拷贝停止，你完全可以重新通过Beyond Compare比较下文件夹的差异，只拷贝缺失的那部分文件。<br>当然，肯定还有其他方法和途径完成上述操作，欢迎大家来一起分享和讨论。</p>
+<h2 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h2><hr>
+<p>打开Beyond Compare软件，选择文件夹比较会话，打开会话操作界面。单击“浏览文件夹”按钮选择需要比较的文件夹。对比文件夹之间的差异部分以不同颜色标注显示。</p>
+<p><strong>复制文件时保持相对文件夹结构</strong><br>复制文件时保持相对文件夹结构的意思是，确定所有选定的文件路径之间的最小差，并创建在目标文件夹中。<br>当您在复制文件时，您可以自定义目标位置存档文件，如果归档文件不存在，Beyond Compare将会为您创建它。</p>
+<p><strong>复制文件时保持基点文件夹结构</strong><br>在复制文件时，如果您选择以保持基点文件夹结构的方法复制文件，那么目标文件夹将会创建完整路径。</p>
+<p><strong>复制文件时不保持文件夹结构</strong><br>选择“复制文件时不保持文件夹结构”的方式复制文件夹，可以忽略所有的路径信息，直接将所有选定的文件复制到目标文件夹中。</p>
+<p>参考<br><a href="http://www.beyondcompare.cc/wenti/wenjian-baogao.html" target="_blank" rel="external">使用Beyond Compare如何生成文件比较报告</a><br><a href="http://www.beyondcompare.cc/support.html" target="_blank" rel="external">Beyond Compare使用教程</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;原因&quot;&gt;&lt;a href=&quot;#原因&quot; class=&quot;headerlink&quot; title=&quot;原因&quot;&gt;&lt;/a&gt;原因&lt;/h2&gt;&lt;hr&gt;
+&lt;p&gt;文件的拷贝复制大家都不陌生，但如果是10GB以上的文件呢？大文件拷贝了解一下嘛。有过经验的同学都知道过程岂止一个“慢”字了得。尤其
+    
+    </summary>
+    
+      <category term="Arts" scheme="http://skyhacks.org/categories/Arts/"/>
+    
+    
+      <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
+    
+      <category term="Tip" scheme="http://skyhacks.org/tags/Tip/"/>
+    
+      <category term="Beyond Compare" scheme="http://skyhacks.org/tags/Beyond-Compare/"/>
+    
+      <category term="Week4" scheme="http://skyhacks.org/tags/Week4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Share_Week4-学习的感悟</title>
+    <link href="http://skyhacks.org/2018/09/20/Arts/Week4/Arts-Share-Week4-GoForward/"/>
+    <id>http://skyhacks.org/2018/09/20/Arts/Week4/Arts-Share-Week4-GoForward/</id>
+    <published>2018-09-19T16:22:02.000Z</published>
+    <updated>2018-10-07T15:41:12.675Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天看到新的数据结构和算法的专栏出来后，大家纷纷讨论和订阅，群里的一番讨论之后，有感记下。</p>
+<blockquote>
+<p>基础的算法和数据结构，在这世界上有不知多少本书，有不知多少专业的人讲，还有不知多少个动画演示，如果这些都无法让你学会，为什么一个收费的专栏能呢？<br>我成长的时候，只有几本为数不多的书，翻译的又烂，还没电脑学，上网也不方便，找不到人讨论交流，也没学习小组，也没人告诉我方法，就死啃，看一遍不懂就看两遍，再不懂就先放下，过段时间再来……从没什么问题。好些东西就是这样，死磕磕到一定时候你就开窍 了。（不过我那时没今天这么干扰）。</p>
+<p><strong>不破不立，破而后立</strong><br>蛹如果想变成美丽的蝴蝶，就要脱离它那安全而又温暖的巢穴，虽然这样会有一定的痛苦，并且会脱离这个安适的环境，但是在一定意义上来说却是获得了新生。<br>人在面对一个舒适安逸的环境时，总会渐渐地沉迷于其中流连忘返，那么他的成就也就只能仅限于此了，无法再进一步，最终只能断送在这个安逸的环境中。<br>走出舒适区，迎接新的开始，只有这样才会成长，才能追上这个时代发展的脚步，不辜负这个信息化的时代。</p>
+<p><strong>黄沙百战穿金甲，不破楼兰终不还</strong><br>很多人开始学习一段时间后，因为学习太枯燥，耐不住寂寞，最终放弃，看看各大图书网站卖的最好的永远是入门书籍，就可以知道大多数人都停留在入门阶段就止步不前。<br>在此引用耗叔专栏里的<a href="https://time.geekbang.org/column/article/8136" target="_blank" rel="external">一段话</a>：<br>一定要坚持，要保持长时间学习，甚至终生学习的态度。<br>一定要动手，不管例子多么简单，建议至少自己动手敲一遍看看是否理解力透的细枝末节。<br>一定要学会思考，思考为什么要这样，而不是那样。还要举一反三地思考。<br>不要乱买书，不要追新技术新名词，基础的东西经过很长积累，会在未来至少10年通用。<br>回顾一下历史，看看历史时间线上技术的发展，你才能明白明天会是什么样的。</p>
+</blockquote>
+<p><strong>反思</strong><br>订阅耗叔的专栏开始是冲着大神的名头去的，哪不知，入坑很深，干活很多。反思自己之前的学习模式：</p>
+<ol>
+<li>书买很多，看不完，囤着</li>
+<li>书看很多，很杂，没有系统性</li>
+<li>看书满足低级心理需求，实践不多，只看不练，提升缓慢</li>
+<li>曾经也看过几本经典的，缺乏持续坚持下去的决心，最终放弃<br>现在需要沉下心来，补补基础，万丈高楼平地起，坚持学习，持续学习，动手实践，加油～</li>
+</ol>
+<blockquote>
+<p>取法于上，得乎其中；取法其中，得乎其下！<br>There are long roads ahead. I will explore all fronts in search of the destination.<br>不讨论， 不实践，不思考，不归纳，看再多的书都没用。ARTS走起!</p>
+</blockquote>
+<p><strong>拓展阅读</strong></p>
+<ol>
+<li><a href="http://norvig.com/21-days.html" target="_blank" rel="external">Teach Yourself Programming in Ten Years</a><a href="https://liuyandong.com/2017/10/25/122/" target="_blank" rel="external">中文版</a></li>
+<li><a href="https://coolshell.cn/articles/4235.html" target="_blank" rel="external">程序员的谎谬之言还是至理名言？</a></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天看到新的数据结构和算法的专栏出来后，大家纷纷讨论和订阅，群里的一番讨论之后，有感记下。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;基础的算法和数据结构，在这世界上有不知多少本书，有不知多少专业的人讲，还有不知多少个动画演示，如果这些都无法让你学会，为什么一个收费的专栏能呢
+    
+    </summary>
+    
+      <category term="Arts" scheme="http://skyhacks.org/categories/Arts/"/>
+    
+    
+      <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
+    
+      <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
+    
+      <category term="Week4" scheme="http://skyhacks.org/tags/Week4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Review_Week4 - 科学研究表明为什么晚起的人比早起的人更聪明和富于创造力</title>
+    <link href="http://skyhacks.org/2018/09/20/Arts/Week4/Arts-Review_Week4-EveningPeopleAreSmarter/"/>
+    <id>http://skyhacks.org/2018/09/20/Arts/Week4/Arts-Review_Week4-EveningPeopleAreSmarter/</id>
+    <published>2018-09-19T16:07:10.000Z</published>
+    <updated>2018-10-07T15:40:28.327Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Why-Evening-People-Are-Smarter-and-More-Creative-Than-Morning-People-According-to-Science"><a href="#Why-Evening-People-Are-Smarter-and-More-Creative-Than-Morning-People-According-to-Science" class="headerlink" title="Why Evening People Are Smarter and More Creative Than Morning People, According to Science"></a><a href="https://medium.com/@melissachu/why-evening-people-are-smarter-and-more-creative-than-morning-people-according-to-science-159476d89e6f" target="_blank" rel="external">Why Evening People Are Smarter and More Creative Than Morning People, According to Science</a></h2><p>By Melissa Chu</p>
+<p>You know how people associate sleeping in with laziness?<br>你知道人们是怎么把睡觉和懒惰联系在一起的吗？</p>
+<p>I used to have a terrible habit of not going to bed until the early hours of the morning. Whether I was up all night doing work, studying, surfing the net, or reading articles, it always felt like there weren’t enough hours in the day.<br>我以前有一个很坏的习惯，就是不上床睡觉，直到凌晨。不管我整晚都在做工作、学习、上网或阅读文章，总感觉一天中没有足够的时间。</p>
+<p>Besides, I seemed to feel more awake at 2 a.m. than at 9 a.m. While most people had their lights out, there I was, wide awake at my computer.<br>此外，我在凌晨2点时似乎比上午9点更清醒。当大多数人都把灯关掉的时候，我却在电脑前完全清醒。</p>
+<p>Unfortunately, I would wake up the next day and realize that most of the morning had gone. Not to mention, people often associated my late rising habit with laziness.<br>很不幸，当我我第二天醒来时，意识到大部分的早晨已经过去了。更不用说，人们总是把我的晚起的习惯和懒惰联系在一起。</p>
+<p>If you’ve ever been in the same boat as me, there’s good news.<br>如果你曾经和我有同样的遭遇，那就有好消息了。</p>
+<p>People who sleep and wake up late tend to be smarter.<br>Psychologist Satoshi Kanazawa set out to determine whether children’s sleeping habits correlated with intelligence. He recruited 20,745 adolescents from 80 high schools and 52 middle schools for his study.<br>晚睡晚起的人往往更聪明一些。<br>心理学家Satoshi Kanazawa开始着手研究儿童的睡眠习惯是否与智力有关。他从80所高中和52所中学招募了 20,745名青少年为他的研究工作。</p>
+<p>The first meeting took place in their homes, where the students were asked to take an intelligence test. Five years later, he interviewed 15,197 of the original respondents again. This time, they reported when they went to bed and when they woke up on both the weekdays and weekends.<br>第一次会议在他们的家里举行，学生们被要求进行智力测试。五年后，他又采访了15,197名原报名参与的志愿者。这一次，他们报告了他们上床睡觉的时间，包括他们在工作日和周末都醒来的时间。</p>
+<p>He found that people with high intelligence are likelier to be night owls. This applied across a wide span of demographic variables, such as ethnicity, education, and religion. As Kanazawa explains it, sleeping late at night was rare back in our ancestors’ day, making it “evolutionarily novel.”<br>他发现智商高的人更有可能成为夜猫子。这适用于广泛的人口统计学变量，如种族、教育和宗教。正如Kanazawa所说的那样，在我们的祖先的日子里，晚睡是很少见的，这使它成为“进化的小说”。</p>
+<p>Evolutionarily novel — is a good thing, as his research suggests that intelligent people are more likely to adapt such behaviors.<br>从进化的角度来看，这是一件好事，因为他的研究表明，聪明的人更有可能去适应这种行为。</p>
+<p>How’s that for waking up late? But there’s more.<br>起床晚又怎么样呢？接下来还有更多。</p>
+<p>Night owls are mentally alert for a longer part of the day than early birds.<br>People tend to think night owls are unproductive creatures since they sleep in while the early birds are already sitting at their desks. A 2009 study, however, shows that the opposite is true.<br>夜猫子在思维敏捷的时间的保持上要比早起的鸟儿有更长的时间。<br>人们倾向于认为夜猫子是一种没有效率的生物，因为他们睡觉的时候，早起的鸟儿已经坐在他们的办公桌前。然而，2009年的一项研究表明，事实恰恰相反。</p>
+<p>Researchers at the University of Liege in Belgium monitored 15 extreme night owls and 16 extreme early birds in a lab. The volunteers had their brain activity measured an hour and a half after waking up, and again 10.5 hours after waking up.<br>比利时Liege大学的研究人员在实验室里监测了15个极端的夜猫子和16个极端的早起鸟，这些志愿者在醒来后1.5小时后的大脑活动，醒来后10个小时的大脑活动。</p>
+<p>In the morning test, the early birds and the night owls performed nearly the same in their responsiveness. But there was a gap 10.5 hours later: the night owls later showed faster reaction times and were more awake than the early birds.<br>在早晨的测试中，早期的鸟类和夜猫子在反应能力上几乎是一样的。但10个小时后出现了一个差异：夜猫子们的反应时间比早起的鸟儿要快，而且比早起的鸟儿更清醒。</p>
+<p>Appearances can be deceiving. While the early risers look like they’re hard at work throughout the day, the night owls seem to be more consistent overall in their productivity levels.<br>外表可能是骗人的。虽然早起的人看起来一整天都在努力工作，但夜猫子们在他们的生产力水平上似乎更加一致。</p>
+<p>Working late at night helps people find creative solutions.<br>Researchers at the Catholic University of the Sacred Heart in Miami found that evening-oriented people are also more creative than their morning and intermediate counterparts.<br>在深夜工作可以帮助人们找到创造性的解决方案。<br>迈阿密圣心天主教大学的研究人员发现，即使是面向人的人也比他们的早起和介于中间的人更有创造力。</p>
+<p>As Professor Marina Giampietro explains,<br>正如Marina Giampietro教授所解释的那样，</p>
+<p>“[being in a nocturnal environment] may encourage the development of a non-conventional spirit and of the ability to find alternative and original solutions.”<br>Not only are evening types smarter, but their unusual habits also help them to find creative solutions and alternatives. Non-conventional spirit, indeed. Who wouldn’t want to be a night owl?<br>“在夜间活动环境中，可能会鼓励非传统精神的发展，以及寻找替代和原始解决方案的能力。”<br>夜猫子们不仅更聪明，而且他们不同寻常的习惯也帮助他们找到创造性的解决方案和替代方案。非传统的精神,是的。谁不想当夜猫子？</p>
+<p>Quick disclaimer about that last part, though. Whether you’re morning or evening-oriented is dictated by genetics, not by choice. As it turns out, a small group of brain cells is in charge of our internal clock and preferences for the time of day.<br>不过，关于最后一部分的免责声明。无论你是早起还是晚起，都是由基因决定的，而不是由选择决定的。事实证明，一小群脑细胞负责我们的生物钟和一天中的时间偏好。</p>
+<p>So, what’s the key takeaway from all this?<br>那么，这一切的关键是什么呢？</p>
+<p>Work according to your energy levels.<br>As a night owl, it’s easy to feel pressured into working “normal” hours. That is, according to the standard workday of 9 am to 5 pm. But some of us aren’t built like that.<br>根据你的精力水平工作。<br>作为一个夜猫子，你很容易感到有压力在“正常”的工作时间。也就是每天早上9点到下午5点的标准工作日。但是我们中的一些人并不是这样的。</p>
+<p>Some people work better at midnight, while others do their best work early in the morning. And, of course, there are those who lie somewhere in between.<br>有些人在午夜工作得更好，而另一些人则在清晨做最好的工作。当然，也有一些人介于两者之间。</p>
+<p>So if you tend to get your best ideas at a certain time of the day, take advantage of it and use that period to perform your most important tasks.<br>因此，如果你倾向于在一天中的某一时刻得到最好的想法，利用它，利用这段时间来完成你最重要的任务。</p>
+<p>You shouldn’t feel like you have to work or sleep according to a preconceived notion of working hours. If you freelance or work independently, this shouldn’t be too difficult to achieve. If you work in a full-time job, see if your boss is open to the idea of you working remotely from time to time.<br>你不应该觉得你必须按照预先设想的工作时间来工作或睡觉。如果你是自由职业者或者独立工作者，这不难实现。如果你在一份全职工作中工作，看看你的老板是否对你时不时地远程工作的想法持开放态度。</p>
+<p>The bottom line is: pay attention to your energy levels during the day and work with, rather than against it.<br>底线是：关注你白天的精力水平，并与之合作，而不是对抗它。</p>
+<p>The next time someone criticizes you for waking up late, remind that person that you’re not lazy, you’re evolutionarily progressive. Nighttime is for those who create, innovate and think out of the box.<br>下次有人批评你起床晚了，提醒那个人你不是懒惰，而是进化的进步。夜晚是属于那些创造，创新和跳出思维定势思考的人。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Why-Evening-People-Are-Smarter-and-More-Creative-Than-Morning-People-According-to-Science&quot;&gt;&lt;a href=&quot;#Why-Evening-People-Are-Smarter-
+    
+    </summary>
+    
+      <category term="Arts" scheme="http://skyhacks.org/categories/Arts/"/>
+    
+    
+      <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
+    
+      <category term="Review" scheme="http://skyhacks.org/tags/Review/"/>
+    
+      <category term="Week4" scheme="http://skyhacks.org/tags/Week4/"/>
+    
+  </entry>
   
   <entry>
     <title>Tip_Week3 - Code Diff工具分享</title>
@@ -392,9 +573,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
-    
       <category term="Week2" scheme="http://skyhacks.org/tags/Week2/"/>
+    
+      <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
     
   </entry>
   
@@ -472,9 +653,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Week2" scheme="http://skyhacks.org/tags/Week2/"/>
-    
       <category term="Review" scheme="http://skyhacks.org/tags/Review/"/>
+    
+      <category term="Week2" scheme="http://skyhacks.org/tags/Week2/"/>
     
   </entry>
   
@@ -570,11 +751,11 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
+      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
+    
       <category term="Tip" scheme="http://skyhacks.org/tags/Tip/"/>
     
       <category term="Git" scheme="http://skyhacks.org/tags/Git/"/>
-    
-      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
     
   </entry>
   
@@ -881,226 +1062,13 @@
     
       <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
     
-      <category term="Majority Element" scheme="http://skyhacks.org/tags/Majority-Element/"/>
-    
-      <category term="Moore’s voting algorithm" scheme="http://skyhacks.org/tags/Moore%E2%80%99s-voting-algorithm/"/>
-    
       <category term="Sort" scheme="http://skyhacks.org/tags/Sort/"/>
     
       <category term="HashTable" scheme="http://skyhacks.org/tags/HashTable/"/>
     
-  </entry>
-  
-  <entry>
-    <title>LeetCode 121. Best Time to Buy and Sell Stock</title>
-    <link href="http://skyhacks.org/2017/11/23/LeetCode/LeetCode-BestTimetoBuyandSellStock/"/>
-    <id>http://skyhacks.org/2017/11/23/LeetCode/LeetCode-BestTimetoBuyandSellStock/</id>
-    <published>2017-11-23T04:11:53.000Z</published>
-    <updated>2018-08-14T15:31:31.445Z</updated>
+      <category term="Majority Element" scheme="http://skyhacks.org/tags/Majority-Element/"/>
     
-    <content type="html"><![CDATA[<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/" target="_blank" rel="external">题目描述</a>：</h2><p>Say you have an array for which the ith element is the price of a given stock on day i.<br>If you were only permitted to complete at most one transaction (ie, buy one and sell one share of the stock), design an algorithm to find the maximum profit.</p>
-<p><strong>Example 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: [7, 1, 5, 3, 6, 4]</div><div class="line">Output: 5</div><div class="line"></div><div class="line">max. difference = 6-1 = 5 (not 7-1 = 6, as selling price needs to be larger than buying price)</div></pre></td></tr></table></figure></p>
-<p><strong>Example 2:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Input: [7, 6, 4, 3, 1]</div><div class="line">Output: 0</div><div class="line"></div><div class="line">In this case, no transaction is done, i.e. max profit = 0.</div></pre></td></tr></table></figure></p>
-<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给一个数组prices[]，prices[i]代表股票在第i天的售价，求出只做一次交易(一次买入和卖出)能得到的最大收益。 </p>
-<h3 id="解题思路1："><a href="#解题思路1：" class="headerlink" title="解题思路1："></a>解题思路1：</h3><hr>
-<p>Brute &amp; Force（直观做法）: 两个循环，逐一找到每两个元素的差值，取最大的即为为maxProfit，时间复杂度O(n^2)</p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> maxProfit = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.size(); i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; prices.size(); j++) &#123;</div><div class="line">                <span class="keyword">if</span> (<span class="number">0</span> &lt; prices[j] - prices[i])</div><div class="line">                    maxProfit = max(prices[j] - prices[i], maxProfit);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> maxProfit;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong></p>
-<pre><code>1. 遍历数组，找到MaxProfit（效率较低）
-2. 保证每一次比较的差值都是正值即可
-</code></pre><h3 id="解题思路2："><a href="#解题思路2：" class="headerlink" title="解题思路2："></a>解题思路2：</h3><hr>
-<p>根据题目意思，只需要找出一次交易的最大的差值。对于此题就是要找到最小值（下限）和最大值（上限）。<br>只要能固定住其中之一，就可以通过一次遍历，时间复杂度O(n)，找到maxProfit.<br>参考LeetCode Discuss：<br><a href="https://discuss.leetcode.com/topic/5863/sharing-my-simple-and-clear-c-solution/2" target="_blank" rel="external">https://discuss.leetcode.com/topic/5863/sharing-my-simple-and-clear-c-solution/2</a><br><a href="https://discuss.leetcode.com/topic/2763/a-o-1-n-solution" target="_blank" rel="external">https://discuss.leetcode.com/topic/2763/a-o-1-n-solution</a></p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> maxProfit = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> minPrice = INT_MAX;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.size(); i++) &#123;</div><div class="line">            minPrice = min(minPrice, prices[i]);</div><div class="line">            maxProfit = max(maxProfit, prices[i] - minPrice);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> maxProfit;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong></p>
-<pre><code>1. 将如何获得maxProfit的问题转化为：取出maxProfit和prices[i] - minPrice之间的最大差值
-2. 通过观察发现并不是每一次迭代都需要去计算minPrice，可以优化为以下代码
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; prices)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> maxProfit = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> minPrice = INT_MAX;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; prices.size(); i++) &#123;</div><div class="line">            <span class="keyword">if</span> (prices[i] &lt; minPrice)</div><div class="line">                minPrice = min(minPrice , prices[i]);</div><div class="line">            maxProfit = max(maxProfit, prices[i] - minPrice);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> maxProfit;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</code></pre><p><strong>拓展:</strong><br>    <a href="https://discuss.leetcode.com/topic/19853/kadane-s-algorithm-since-no-one-has-mentioned-about-this-so-far-in-case-if-interviewer-twists-the-input/5" target="_blank" rel="external">Kadane’s Algorithm</a></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目描述：&quot;&gt;&lt;a href=&quot;#题目描述：&quot; class=&quot;headerlink&quot; title=&quot;题目描述：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://skyhacks.org/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://skyhacks.org/tags/LeetCode/"/>
-    
-      <category term="Algorithms" scheme="http://skyhacks.org/tags/Algorithms/"/>
-    
-      <category term="Data Structure" scheme="http://skyhacks.org/tags/Data-Structure/"/>
-    
-      <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
-    
-      <category term="Kadane&#39;s Algorithm" scheme="http://skyhacks.org/tags/Kadane-s-Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 122. Best Time to Buy and Sell Stock II</title>
-    <link href="http://skyhacks.org/2017/11/21/LeetCode/LeetCode-BestTimetoBuyandSellStockII/"/>
-    <id>http://skyhacks.org/2017/11/21/LeetCode/LeetCode-BestTimetoBuyandSellStockII/</id>
-    <published>2017-11-21T02:30:50.000Z</published>
-    <updated>2018-08-14T15:31:31.445Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/description/" target="_blank" rel="external">题目描述</a>：</h2><p>Say you have an array for which the ith element is the price of a given stock on day i.<br>Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).</p>
-<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>假设有一个数组，它的第i个元素是一个给定的股票在第i天的价格。设计一个算法来找到最大的利润。你可以完成尽可能多的交易(多次买卖股票)。然而,你不能同时参与多个交易(你必须在再次购买前出售股票)。<br>给出一个数组样例[2,1,2,0,1], 返回 2</p>
-<h3 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h3><hr>
-<p>这个是一道DP(动态规划)的题。总的来说就是如何N天的总利润如何最大呢？就是一旦有获利空间就去赚钱，所以就是把每两天的价格增长量加起来就是总利润了，如果存在两天的价格增长量为负，那么就不进行交易。同一天买卖，收益为0，所以需要隔天买卖，保证利润增值。<br>参考LeetCode Discuss：<br><a href="https://discuss.leetcode.com/topic/17081/three-lines-in-c-with-explanation" target="_blank" rel="external">https://discuss.leetcode.com/topic/17081/three-lines-in-c-with-explanation</a></p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxProfit</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;prices)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> p = <span class="number">1</span>; p &lt; prices.size(); ++p)</div><div class="line">          <span class="comment">// Only consider positive value to make sure get max profit</span></div><div class="line">          ret += max(prices[p] - prices[p - <span class="number">1</span>], <span class="number">0</span>); </div><div class="line">        <span class="keyword">return</span> ret;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong></p>
-<pre><code>1. 题意为给定一个数组，数组中第i个元素的值对应着第i天的股票，你可以完成多次交易，但是每次交易只能买入一次并卖出,求进行
-多次交易所能得到的最大利润。该题为Best Time to Buy and Sell Stock的加强版。
-2. 与Best Time to Buy and Sell Stock类似，该题同样考查的是最大差值。只不过该题考查数组中所有相邻且递增元素
-的数值之差的总和。只要第i+1天的值大于第i天的值，则可买入，求得利润（差值），遍历整个数组，得到所用差值之和即为总的利润。
-负值则跳过。充分体现了DP的精髓，局部最优就是整体最优解。
-3. 假设有四个数字，&quot;a &lt;= b &lt;= c &lt;= d&quot;, the profit is &quot;d - a = (b - a) + (c - b) + (d - c)&quot;。
-例如[5,8,9,10],maxProfit=(8-5)+(9-8)+(10-9)=10-5=5; // 这是理想情况
-假如其中有负值，则跳过这几个元素，直到获取正值，保证利润都是递增。
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目描述：&quot;&gt;&lt;a href=&quot;#题目描述：&quot; class=&quot;headerlink&quot; title=&quot;题目描述：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode.com/problems/best-time-to-buy-and-sell-stock-
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://skyhacks.org/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://skyhacks.org/tags/LeetCode/"/>
-    
-      <category term="Algorithms" scheme="http://skyhacks.org/tags/Algorithms/"/>
-    
-      <category term="Data Structure" scheme="http://skyhacks.org/tags/Data-Structure/"/>
-    
-      <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
-    
-      <category term="DP" scheme="http://skyhacks.org/tags/DP/"/>
-    
-      <category term="Dynamic Programming" scheme="http://skyhacks.org/tags/Dynamic-Programming/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 463. Island Perimeter</title>
-    <link href="http://skyhacks.org/2017/11/17/LeetCode/LeetCode-IslandPerimeter/"/>
-    <id>http://skyhacks.org/2017/11/17/LeetCode/LeetCode-IslandPerimeter/</id>
-    <published>2017-11-17T08:09:05.000Z</published>
-    <updated>2017-11-20T13:16:51.145Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a><a href="https://leetcode.com/problems/island-perimeter/description/" target="_blank" rel="external">题目描述</a>：</h2><p>You are given a map in form of a two-dimensional integer grid where 1 represents land and 0 represents water. Grid cells are connected horizontally/vertically (not diagonally). The grid is completely surrounded by water, and there is exactly one island (i.e., one or more connected land cells). The island doesn’t have “lakes” (water inside that isn’t connected to the water around the island). One cell is a square with side length 1. The grid is rectangular, width and height don’t exceed 100. Determine the perimeter of the island.<br><strong>Example:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[[0,1,0,0],</div><div class="line">[1,1,1,0],</div><div class="line">[0,1,0,0],</div><div class="line">[1,1,0,0]]</div><div class="line"></div><div class="line">Answer: 16</div></pre></td></tr></table></figure></p>
-<p>Explanation: The perimeter is the 16 yellow stripes in the image below:<br><img src="http://otqlqfy9h.bkt.clouddn.com/images/2017-11-17/2017_11_17_1.png"></p>
-<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给定一个二维地图，1表示陆地，0表示水域。单元格水平或者竖直相连（不含对角线）。地图完全被水域环绕，只包含一个岛屿（也就是说，一个或者多个相连的陆地单元格）。岛屿没有湖泊（岛屿内部环绕的水域）。单元格是边长为1的正方形。地图是矩形，长宽不超过100。计算岛屿的周长。</p>
-<h3 id="解题思路1："><a href="#解题思路1：" class="headerlink" title="解题思路1："></a>解题思路1：</h3><hr>
-<p>DFS：深度优先遍历（递归实现）, 虑每个元素的四个方向，如果是边界或者0，则perimeter+1。<br>参考LeetCode Discuss：<br><a href="https://discuss.leetcode.com/topic/106301/java-c-straightforward-dfs-solution" target="_blank" rel="external">https://discuss.leetcode.com/topic/106301/java-c-straightforward-dfs-solution</a><br><a href="https://discuss.leetcode.com/topic/106261/java-c-clean-code" target="_blank" rel="external">https://discuss.leetcode.com/topic/106261/java-c-clean-code</a></p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">islandPerimeter</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt;&amp; grid)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> m = grid.size();</div><div class="line">        <span class="keyword">int</span> n = grid[<span class="number">0</span>].size();</div><div class="line">        <span class="keyword">int</span> nums = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (<span class="number">1</span> == grid[i][j])</div><div class="line">                    nums += bfs(grid, i, j);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> nums;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt;&amp; grid, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (i &lt; <span class="number">0</span> || i &gt;= grid.size() || j &lt; <span class="number">0</span> || j &gt;= grid[<span class="number">0</span>].size()</div><div class="line">            || <span class="number">0</span> == grid[i][j])</div><div class="line">            <span class="keyword">return</span> <span class="number">1</span>; <span class="comment">// stripes</span></div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="number">-1</span> == grid[i][j])</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            grid[i][j] = <span class="number">-1</span>; <span class="comment">// mark visited</span></div><div class="line">            <span class="keyword">return</span> dfs(grid, i - <span class="number">1</span>, j) + dfs(grid, i + <span class="number">1</span>, j)</div><div class="line">            + dfs(grid, i, j - <span class="number">1</span>) + dfs(grid, i, j + <span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong></p>
-<pre><code>1. 递归函数需要注意结束条件，即边界的处理。我们关心的是grid范围内，其值为1的元素
-2. 由于孤岛有四个维度，元素grid[i][j]的四个方向的下一个元素坐标分别为：[(i-1, j), (i+1, j), (i, j-1), (i, j+1)]
-3. 如果是边界点或者grid[i][j]为0的情况，则perimeter + 1
-4. 访问过的元素置为-1，与原数组元素值区分。
-5. 二维数组的vector表示
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> arr[<span class="number">4</span>][<span class="number">4</span>] = &#123;&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;&#125;;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; grid(<span class="number">4</span>);</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.size(); i++)</div><div class="line">    grid[i].resize(<span class="number">4</span>);</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++) &#123;</div><div class="line">        grid[i][j] = arr[i][j];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><h3 id="解题思路2："><a href="#解题思路2：" class="headerlink" title="解题思路2："></a>解题思路2：</h3><hr>
-<p>BFS：广度优先遍历（借助队列迭代实现）<br>参考LeetCode Discuss：</p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">islandPerimeter</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt;&amp; grid)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">int</span> m = grid.size();</div><div class="line">        <span class="keyword">int</span> n = grid[<span class="number">0</span>].size();</div><div class="line">        <span class="keyword">int</span> nums = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (<span class="number">1</span> == grid[i][j])</div><div class="line">                    nums += bfs(grid, i, j);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> nums;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">bfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt;&amp; grid, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="built_in">queue</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; &gt; q;</div><div class="line">        grid[i][j] = <span class="number">-1</span>; <span class="comment">// visited</span></div><div class="line"></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dir(&#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;); <span class="comment">// c++11/14</span></div><div class="line">        <span class="comment">// int nums[] = &#123;-1, 0, 1, 0, -1&#125;;</span></div><div class="line">        <span class="comment">// vector&lt;int&gt; dir(nums, nums + sizeof(nums) / sizeof(int));</span></div><div class="line">        q.push(pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;(i, j));</div><div class="line">        <span class="keyword">int</span> nums = <span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span> (<span class="number">0</span> &lt; q.size()) &#123;</div><div class="line">            <span class="keyword">int</span> m = q.front().first; <span class="comment">// row index</span></div><div class="line">            <span class="keyword">int</span> n = q.front().second; <span class="comment">// col index</span></div><div class="line">            q.pop(); <span class="comment">// remove from queue</span></div><div class="line"></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; dir.size() - <span class="number">1</span>; idx++) &#123;</div><div class="line">                <span class="keyword">int</span> rowIdx = m + dir[idx]; <span class="comment">// row index</span></div><div class="line">                <span class="keyword">int</span> colIdx = n + dir[idx + <span class="number">1</span>]; <span class="comment">// col index</span></div><div class="line">                <span class="keyword">if</span> (rowIdx &lt; <span class="number">0</span> || rowIdx &gt;= grid.size() || colIdx &lt; <span class="number">0</span> || colIdx &gt;= grid[<span class="number">0</span>].size()</div><div class="line">                    || <span class="number">0</span> == grid[rowIdx][colIdx])</div><div class="line">                    nums++; <span class="comment">//  accumulate stripes</span></div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (<span class="number">-1</span> == grid[rowIdx][colIdx])</div><div class="line">                    <span class="keyword">continue</span>; <span class="comment">// skip visted item</span></div><div class="line">                <span class="keyword">else</span> &#123;</div><div class="line">                    q.push(pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;(rowIdx, colIdx));</div><div class="line">                    grid[rowIdx][colIdx] = <span class="number">-1</span>; <span class="comment">// mark visited</span></div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> nums;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong></p>
-<pre><code>1. 递归函数需要注意结束条件，即边界的处理。我们关心的是grid范围内，其值为1的元素
-2. 由于孤岛有四个维度，元素grid[i][j]的四个方向的下一个元素坐标分别为：[(i-1, j), (i+1, j), (i, j-1), (i, j+1)]
-3. 如果是边界点或者grid[i][j]为0的情况，则perimeter + 1
-4. 访问过的元素置为-1，与原数组元素值区分。
-5. 二维数组的vector表示
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> arr[<span class="number">4</span>][<span class="number">4</span>] = &#123;&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>&#125;,&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;,&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>&#125;&#125;;</div><div class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &gt; grid(<span class="number">4</span>);</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.size(); i++)</div><div class="line">    grid[i].resize(<span class="number">4</span>);</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++) &#123;</div><div class="line">        grid[i][j] = arr[i][j];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</code></pre><h3 id="解题思路3："><a href="#解题思路3：" class="headerlink" title="解题思路3："></a>解题思路3：</h3><hr>
-<p>代码简洁的全遍历，复杂度O(n)。<br>参考LeetCode Discuss：<br><a href="https://discuss.leetcode.com/topic/111260/c-short-and-fast-beats-93" target="_blank" rel="external">https://discuss.leetcode.com/topic/111260/c-short-and-fast-beats-93</a></p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">islandPerimeter</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> p = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.size(); ++i)</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[i].size(); ++j)</div><div class="line">                <span class="keyword">if</span> (grid[i][j] == <span class="number">1</span>)</div><div class="line">                    p += (i == <span class="number">0</span> || grid[i - <span class="number">1</span>][j] == <span class="number">0</span>) + (i == grid.size() - <span class="number">1</span> || grid[i + <span class="number">1</span>][j] == <span class="number">0</span>) +</div><div class="line">                         (j == <span class="number">0</span> || grid[i][j - <span class="number">1</span>] == <span class="number">0</span>) + (j == grid[i].size() - <span class="number">1</span> || grid[i][j + <span class="number">1</span>] == <span class="number">0</span>);</div><div class="line">        <span class="keyword">return</span> p;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong></p>
-<pre><code>1. 代的方式进行全遍历，代码比较简洁。不过就是循环内嵌套过多的逻辑判断，效率比较低。
-2. 关注点在确定当前grid[i][j]为1后，观察四个方向的元素是否为0，如果是则+1.如果是i = 0或者j=0的边界则直接+1；
-</code></pre><h3 id="解题思路4："><a href="#解题思路4：" class="headerlink" title="解题思路4："></a>解题思路4：</h3><hr>
-<pre><code>1. 确定“1”的个数，如果没有相邻包围的元素的话，perimeter为“1”的个数×4
-2. 确定相邻的元素边界墙的个数，需要减去从上述结果中减去2×边界墙个数
-</code></pre><p>参考LeetCode Discuss：<br><a href="https://discuss.leetcode.com/topic/68845/c-solution-with-explanation" target="_blank" rel="external">https://discuss.leetcode.com/topic/68845/c-solution-with-explanation</a></p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">islandPerimeter</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> count=<span class="number">0</span>, repeat=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;grid.size();i++)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>; j&lt;grid[i].size();j++)</div><div class="line">                &#123;</div><div class="line">                    <span class="keyword">if</span>(grid[i][j]==<span class="number">1</span>)</div><div class="line">                    &#123;</div><div class="line">                        count ++;</div><div class="line">                        <span class="keyword">if</span>(i!=<span class="number">0</span> &amp;&amp; grid[i<span class="number">-1</span>][j] == <span class="number">1</span>) repeat++;</div><div class="line">                        <span class="keyword">if</span>(j!=<span class="number">0</span> &amp;&amp; grid[i][j<span class="number">-1</span>] == <span class="number">1</span>) repeat++;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="number">4</span>*count-repeat*<span class="number">2</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong><br>总周长perimeter的解法一般两种：</p>
-<pre><code>1. “1”元素总长-相邻边×2
-2. perimeter=边界元素个数+与“0”相邻元素个数
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目描述：&quot;&gt;&lt;a href=&quot;#题目描述：&quot; class=&quot;headerlink&quot; title=&quot;题目描述：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode.com/problems/island-perimeter/description/&quot; t
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://skyhacks.org/tags/LeetCode/"/>
-    
-      <category term="Algorithms" scheme="http://skyhacks.org/tags/Algorithms/"/>
-    
-      <category term="Data Structure" scheme="http://skyhacks.org/tags/Data-Structure/"/>
-    
-      <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
-    
-      <category term="BFS" scheme="http://skyhacks.org/tags/BFS/"/>
-    
-      <category term="DFS" scheme="http://skyhacks.org/tags/DFS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 200. Number of Islands</title>
-    <link href="http://skyhacks.org/2017/11/17/LeetCode/LeetCode-NumberofIslands/"/>
-    <id>http://skyhacks.org/2017/11/17/LeetCode/LeetCode-NumberofIslands/</id>
-    <published>2017-11-17T01:40:59.000Z</published>
-    <updated>2017-11-20T13:16:51.146Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a><a href="https://leetcode.com/problems/number-of-islands/description/" target="_blank" rel="external">题目描述</a>：</h2><p>Given a 2d grid map of ‘1’s (land) and ‘0’s (water), count the number of islands. An island is surrounded by water and is formed by connecting adjacent lands horizontally or vertically. You may assume all four edges of the grid are all surrounded by water.<br><strong>Example 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">11110</div><div class="line">11010</div><div class="line">11000</div><div class="line">00000</div></pre></td></tr></table></figure></p>
-<p>Answer: 1<br><strong>Example 2:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">11000</div><div class="line">11000</div><div class="line">00100</div><div class="line">00011</div></pre></td></tr></table></figure></p>
-<p>Answer: 3</p>
-<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给定一个由字符‘1’（陆地）和‘0’（水域）组成的二维网格地图，计算岛屿的个数。岛屿被水域环绕，由竖直或者水平方向邻接的陆地构成。你可以假设网格地图的四条边都被水域包围。<br>测试样例见题目描述</p>
-<h3 id="解题思路1："><a href="#解题思路1：" class="headerlink" title="解题思路1："></a>解题思路1：</h3><hr>
-<p>DFS：深度优先遍历（递归实现）<br>参考LeetCode Discuss：<br><a href="https://discuss.leetcode.com/topic/106261/java-c-clean-code" target="_blank" rel="external">https://discuss.leetcode.com/topic/106261/java-c-clean-code</a><br><a href="https://discuss.leetcode.com/topic/13045/my-accepted-c-solution-may-be-trivial" target="_blank" rel="external">https://discuss.leetcode.com/topic/13045/my-accepted-c-solution-may-be-trivial</a></p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; &gt;&amp; grid)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="number">0</span> == grid.size() || <span class="number">0</span> == grid[<span class="number">0</span>].size())</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> numIslands = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.size(); i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[<span class="number">0</span>].size(); j++) &#123;</div><div class="line">                <span class="keyword">if</span> (<span class="string">'1'</span> == grid[i][j]) &#123;</div><div class="line">                    numIslands++;</div><div class="line">                    bfs(grid, i, j);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> numIslands;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; &gt;&amp; grid, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="number">0</span> &gt; i || i &gt;= grid.size() || <span class="number">0</span> &gt; j || j &gt;= grid[<span class="number">0</span>].size() || <span class="string">'0'</span> == grid[i][j])</div><div class="line">            <span class="keyword">return</span>;</div><div class="line"></div><div class="line">        grid[i][j] = <span class="string">'0'</span>; <span class="comment">// mark the value to avoid duplication</span></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dir(&#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;); <span class="comment">// c++11/14</span></div><div class="line">        <span class="comment">// int nums[] = &#123;-1, 0, 1, 0, -1&#125;;</span></div><div class="line">        <span class="comment">// vector&lt;int&gt; dir(nums, nums + sizeof(nums) / sizeof(int));</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; dir.size() - <span class="number">1</span>; idx++) &#123;</div><div class="line">            <span class="keyword">int</span> rowIdx = i + dir[idx]; <span class="comment">// row index</span></div><div class="line">            <span class="keyword">int</span> colIdx = j + dir[idx + <span class="number">1</span>]; <span class="comment">// col index</span></div><div class="line">            dfs(grid, rowIdx, colIdx);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong></p>
-<pre><code>1. 递归函数需要注意结束条件，即边界的处理。我们关心的是grid范围内，其值为1的元素
-2. 为避免重复计数，每统计一个grid[i][j]，将其值置为0
-3. 由于孤岛有四个维度，元素grid[i][j]的四个方向的下一个元素坐标分别为：[(i-1, j), (i+1, j), (i, j-1), (i, j+1)]
-4. 由于是字符数组，在dfs迭代过程中，先要判断是否存在空数组情况，即‘[]’.
-</code></pre><h3 id="解题思路2："><a href="#解题思路2：" class="headerlink" title="解题思路2："></a>解题思路2：</h3><hr>
-<p>BFS：广度优先遍历（借助队列迭代实现）<br>参考LeetCode Discuss：<br><a href="https://discuss.leetcode.com/topic/11589/dfs-and-bfs-in-c" target="_blank" rel="external">https://discuss.leetcode.com/topic/11589/dfs-and-bfs-in-c</a></p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></div><div class="line">&#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numIslands</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; &gt;&amp; grid)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="number">0</span> == grid.size() || <span class="number">0</span> == grid[<span class="number">0</span>].size())</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line"></div><div class="line">        <span class="keyword">int</span> numIslands = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; grid.size(); i++) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; grid[<span class="number">0</span>].size(); j++) &#123;</div><div class="line">                <span class="keyword">if</span> (<span class="string">'1'</span> == grid[i][j]) &#123;</div><div class="line">                    numIslands++;</div><div class="line">                    bfs(grid, i, j);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> numIslands;</div><div class="line">    &#125;</div><div class="line"></div><div class="line"><span class="keyword">private</span>:</div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">bfs</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">char</span>&gt; &gt;&amp; grid, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="built_in">queue</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; &gt; q;</div><div class="line">        q.push(pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;(i, j));</div><div class="line">        grid[i][j] = <span class="string">'0'</span>; <span class="comment">// mark the value to avoid duplication</span></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; dir(&#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">-1</span>&#125;); <span class="comment">// c++11/14</span></div><div class="line">        <span class="comment">// int nums[] = &#123;-1, 0, 1, 0, -1&#125;;</span></div><div class="line">        <span class="comment">// vector&lt;int&gt; dir(nums, nums + sizeof(nums) / sizeof(int));</span></div><div class="line">        <span class="keyword">while</span> (<span class="number">0</span> &lt; q.size()) &#123;</div><div class="line">            <span class="keyword">int</span> m = q.front().first; <span class="comment">// row index</span></div><div class="line">            <span class="keyword">int</span> n = q.front().second; <span class="comment">// col index</span></div><div class="line">            q.pop(); <span class="comment">// remove from queue</span></div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> idx = <span class="number">0</span>; idx &lt; dir.size() - <span class="number">1</span>; idx++) &#123;</div><div class="line">                <span class="keyword">int</span> rowIdx = m + dir[idx];</div><div class="line">                <span class="keyword">int</span> colIdx = n + dir[idx + <span class="number">1</span>];</div><div class="line">                <span class="keyword">if</span> (<span class="number">0</span>&lt;=rowIdx &amp;&amp; rowIdx&lt;grid.size() &amp;&amp; <span class="number">0</span>&lt;=colIdx &amp;&amp; colIdx&lt;grid[<span class="number">0</span>].size()</div><div class="line">                    &amp;&amp; <span class="string">'1'</span>==grid[rowIdx][colIdx]) &#123;</div><div class="line">                    q.push(pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;(rowIdx, colIdx));</div><div class="line">                    grid[rowIdx][colIdx] = <span class="string">'0'</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong></p>
-<pre><code>1. BFS的处理需要借助数组实现，每一次将grid范围内其值为1的元素塞进数组（后续元素为当前grid[i][j]四个方向上的邻接元素）
-2. 为避免重复计数，每统计一个grid[i][j]，将其值置为0
-3. 由于孤岛有四个维度，元素grid[i][j]的四个方向的下一个元素坐标分别为：[(i-1, j), (i+1, j), (i, j-1), (i, j+1)]
-4. 由于是字符数组，在dfs迭代过程中，先要判断是否存在空数组情况，即‘[]’.
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目描述：&quot;&gt;&lt;a href=&quot;#题目描述：&quot; class=&quot;headerlink&quot; title=&quot;题目描述：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode.com/problems/number-of-islands/description/&quot; 
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://skyhacks.org/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://skyhacks.org/tags/LeetCode/"/>
-    
-      <category term="Algorithms" scheme="http://skyhacks.org/tags/Algorithms/"/>
-    
-      <category term="Data Structure" scheme="http://skyhacks.org/tags/Data-Structure/"/>
-    
-      <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
-    
-      <category term="BFS" scheme="http://skyhacks.org/tags/BFS/"/>
-    
-      <category term="DFS" scheme="http://skyhacks.org/tags/DFS/"/>
+      <category term="Moore’s voting algorithm" scheme="http://skyhacks.org/tags/Moore%E2%80%99s-voting-algorithm/"/>
     
   </entry>
   

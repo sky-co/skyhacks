@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[LeetCode 905. Sort Array By Parity]]></title>
+    <url>%2F2018%2F09%2F24%2FLeetCode%2FLeetCode-SortArrayByParity%2F</url>
+    <content type="text"><![CDATA[题目描述：Given an array A of non-negative integers, return an array consisting of all the even elements of A, followed by all the odd elements of A. You may return any answer array that satisfies this condition. Example 1:123Input: [3,1,2,4]Output: [2,4,3,1]The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted. Note:121 &lt;= A.length &lt;= 50000 &lt;= A[i] &lt;= 5000 题目大意：给定一个包含非负数整数的数组，返回一个数组，数组内包含所有的偶数，偶数后跟着A所有的奇数元素。 解题思路1：其实就是判断奇偶数，然后索引值对调。 C++代码：1234567891011121314class Solution &#123;public: vector&lt;int&gt; sortArrayByParity(vector&lt;int&gt;&amp; A) &#123; int size = A.size(); vector&lt;int&gt; v(size, 0); int startIdx = 0; int endIdx = size - 1; for (int idx = 0; idx &lt; size; idx++) &#123; if (A[idx] &amp; 1) v[endIdx--] = A[idx]; else v[startIdx++] = A[idx]; &#125; return v; &#125;&#125;; 解题思路2：相比第一种解法，思路2的方法差不多，时间复杂度O(n)，不同之处在于，思路2没有新增加空间，空间复杂度不变，原地操作元素。 参考LeetCode Discuss：https://leetcode.com/problems/sort-array-by-parity/discuss/170734/C++Java-In-Place-Swap C++代码：12345678class Solution &#123;public: vector&lt;int&gt; sortArrayByParity(vector&lt;int&gt; A) &#123; for (int i = 0, j = 0; j &lt; A.size(); j++) if (A[j] % 2 == 0) swap(A[i++], A[j]); return A; &#125;&#125;; 数字奇偶性判定：1234数字num1. num % 2 == 0（偶数）； num % 2 != 0（奇数）2. num &amp; 1 == 0（偶数）； num &amp; 1 != 0（奇数）3. n &amp; (n-1) == 0 （偶数）； n &amp; (n-1) ！= 0 （奇数）]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+        <tag>Algorithms</tag>
+        <tag>Data Structure</tag>
+        <tag>Array</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Tip_Week4 - 文件的拷贝工具分享]]></title>
+    <url>%2F2018%2F09%2F20%2FArts%2FWeek4%2FArts-Tip-Week4-CopyLargeFiles%2F</url>
+    <content type="text"><![CDATA[原因 文件的拷贝复制大家都不陌生，但如果是10GB以上的文件呢？大文件拷贝了解一下嘛。有过经验的同学都知道过程岂止一个“慢”字了得。尤其是，万一中途出个啥岔子，重新来吧….. 解决途径 现在救星来了，听说过Beyond Compare可以用来比较文件的差异，但是你知道么，在比较文件夹下的文件差异的时候，Beyond Compare还可以做的更多，可以用它来拷贝和移动大量的文件，并且关键的一点是不会出现拷贝一半挂了，只能从头开始的尴尬情况，因为假如中途拷贝停止，你完全可以重新通过Beyond Compare比较下文件夹的差异，只拷贝缺失的那部分文件。当然，肯定还有其他方法和途径完成上述操作，欢迎大家来一起分享和讨论。 具体操作 打开Beyond Compare软件，选择文件夹比较会话，打开会话操作界面。单击“浏览文件夹”按钮选择需要比较的文件夹。对比文件夹之间的差异部分以不同颜色标注显示。 复制文件时保持相对文件夹结构复制文件时保持相对文件夹结构的意思是，确定所有选定的文件路径之间的最小差，并创建在目标文件夹中。当您在复制文件时，您可以自定义目标位置存档文件，如果归档文件不存在，Beyond Compare将会为您创建它。 复制文件时保持基点文件夹结构在复制文件时，如果您选择以保持基点文件夹结构的方法复制文件，那么目标文件夹将会创建完整路径。 复制文件时不保持文件夹结构选择“复制文件时不保持文件夹结构”的方式复制文件夹，可以忽略所有的路径信息，直接将所有选定的文件复制到目标文件夹中。 参考使用Beyond Compare如何生成文件比较报告Beyond Compare使用教程]]></content>
+      <categories>
+        <category>Arts</category>
+      </categories>
+      <tags>
+        <tag>Arts</tag>
+        <tag>Tip</tag>
+        <tag>Beyond Compare</tag>
+        <tag>Week4</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Share_Week4-学习的感悟]]></title>
+    <url>%2F2018%2F09%2F20%2FArts%2FWeek4%2FArts-Share-Week4-GoForward%2F</url>
+    <content type="text"><![CDATA[今天看到新的数据结构和算法的专栏出来后，大家纷纷讨论和订阅，群里的一番讨论之后，有感记下。 基础的算法和数据结构，在这世界上有不知多少本书，有不知多少专业的人讲，还有不知多少个动画演示，如果这些都无法让你学会，为什么一个收费的专栏能呢？我成长的时候，只有几本为数不多的书，翻译的又烂，还没电脑学，上网也不方便，找不到人讨论交流，也没学习小组，也没人告诉我方法，就死啃，看一遍不懂就看两遍，再不懂就先放下，过段时间再来……从没什么问题。好些东西就是这样，死磕磕到一定时候你就开窍 了。（不过我那时没今天这么干扰）。 不破不立，破而后立蛹如果想变成美丽的蝴蝶，就要脱离它那安全而又温暖的巢穴，虽然这样会有一定的痛苦，并且会脱离这个安适的环境，但是在一定意义上来说却是获得了新生。人在面对一个舒适安逸的环境时，总会渐渐地沉迷于其中流连忘返，那么他的成就也就只能仅限于此了，无法再进一步，最终只能断送在这个安逸的环境中。走出舒适区，迎接新的开始，只有这样才会成长，才能追上这个时代发展的脚步，不辜负这个信息化的时代。 黄沙百战穿金甲，不破楼兰终不还很多人开始学习一段时间后，因为学习太枯燥，耐不住寂寞，最终放弃，看看各大图书网站卖的最好的永远是入门书籍，就可以知道大多数人都停留在入门阶段就止步不前。在此引用耗叔专栏里的一段话：一定要坚持，要保持长时间学习，甚至终生学习的态度。一定要动手，不管例子多么简单，建议至少自己动手敲一遍看看是否理解力透的细枝末节。一定要学会思考，思考为什么要这样，而不是那样。还要举一反三地思考。不要乱买书，不要追新技术新名词，基础的东西经过很长积累，会在未来至少10年通用。回顾一下历史，看看历史时间线上技术的发展，你才能明白明天会是什么样的。 反思订阅耗叔的专栏开始是冲着大神的名头去的，哪不知，入坑很深，干活很多。反思自己之前的学习模式： 书买很多，看不完，囤着 书看很多，很杂，没有系统性 看书满足低级心理需求，实践不多，只看不练，提升缓慢 曾经也看过几本经典的，缺乏持续坚持下去的决心，最终放弃现在需要沉下心来，补补基础，万丈高楼平地起，坚持学习，持续学习，动手实践，加油～ 取法于上，得乎其中；取法其中，得乎其下！There are long roads ahead. I will explore all fronts in search of the destination.不讨论， 不实践，不思考，不归纳，看再多的书都没用。ARTS走起! 拓展阅读 Teach Yourself Programming in Ten Years中文版 程序员的谎谬之言还是至理名言？]]></content>
+      <categories>
+        <category>Arts</category>
+      </categories>
+      <tags>
+        <tag>Arts</tag>
+        <tag>Share</tag>
+        <tag>Week4</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Review_Week4 - 科学研究表明为什么晚起的人比早起的人更聪明和富于创造力]]></title>
+    <url>%2F2018%2F09%2F20%2FArts%2FWeek4%2FArts-Review_Week4-EveningPeopleAreSmarter%2F</url>
+    <content type="text"><![CDATA[Why Evening People Are Smarter and More Creative Than Morning People, According to ScienceBy Melissa Chu You know how people associate sleeping in with laziness?你知道人们是怎么把睡觉和懒惰联系在一起的吗？ I used to have a terrible habit of not going to bed until the early hours of the morning. Whether I was up all night doing work, studying, surfing the net, or reading articles, it always felt like there weren’t enough hours in the day.我以前有一个很坏的习惯，就是不上床睡觉，直到凌晨。不管我整晚都在做工作、学习、上网或阅读文章，总感觉一天中没有足够的时间。 Besides, I seemed to feel more awake at 2 a.m. than at 9 a.m. While most people had their lights out, there I was, wide awake at my computer.此外，我在凌晨2点时似乎比上午9点更清醒。当大多数人都把灯关掉的时候，我却在电脑前完全清醒。 Unfortunately, I would wake up the next day and realize that most of the morning had gone. Not to mention, people often associated my late rising habit with laziness.很不幸，当我我第二天醒来时，意识到大部分的早晨已经过去了。更不用说，人们总是把我的晚起的习惯和懒惰联系在一起。 If you’ve ever been in the same boat as me, there’s good news.如果你曾经和我有同样的遭遇，那就有好消息了。 People who sleep and wake up late tend to be smarter.Psychologist Satoshi Kanazawa set out to determine whether children’s sleeping habits correlated with intelligence. He recruited 20,745 adolescents from 80 high schools and 52 middle schools for his study.晚睡晚起的人往往更聪明一些。心理学家Satoshi Kanazawa开始着手研究儿童的睡眠习惯是否与智力有关。他从80所高中和52所中学招募了 20,745名青少年为他的研究工作。 The first meeting took place in their homes, where the students were asked to take an intelligence test. Five years later, he interviewed 15,197 of the original respondents again. This time, they reported when they went to bed and when they woke up on both the weekdays and weekends.第一次会议在他们的家里举行，学生们被要求进行智力测试。五年后，他又采访了15,197名原报名参与的志愿者。这一次，他们报告了他们上床睡觉的时间，包括他们在工作日和周末都醒来的时间。 He found that people with high intelligence are likelier to be night owls. This applied across a wide span of demographic variables, such as ethnicity, education, and religion. As Kanazawa explains it, sleeping late at night was rare back in our ancestors’ day, making it “evolutionarily novel.”他发现智商高的人更有可能成为夜猫子。这适用于广泛的人口统计学变量，如种族、教育和宗教。正如Kanazawa所说的那样，在我们的祖先的日子里，晚睡是很少见的，这使它成为“进化的小说”。 Evolutionarily novel — is a good thing, as his research suggests that intelligent people are more likely to adapt such behaviors.从进化的角度来看，这是一件好事，因为他的研究表明，聪明的人更有可能去适应这种行为。 How’s that for waking up late? But there’s more.起床晚又怎么样呢？接下来还有更多。 Night owls are mentally alert for a longer part of the day than early birds.People tend to think night owls are unproductive creatures since they sleep in while the early birds are already sitting at their desks. A 2009 study, however, shows that the opposite is true.夜猫子在思维敏捷的时间的保持上要比早起的鸟儿有更长的时间。人们倾向于认为夜猫子是一种没有效率的生物，因为他们睡觉的时候，早起的鸟儿已经坐在他们的办公桌前。然而，2009年的一项研究表明，事实恰恰相反。 Researchers at the University of Liege in Belgium monitored 15 extreme night owls and 16 extreme early birds in a lab. The volunteers had their brain activity measured an hour and a half after waking up, and again 10.5 hours after waking up.比利时Liege大学的研究人员在实验室里监测了15个极端的夜猫子和16个极端的早起鸟，这些志愿者在醒来后1.5小时后的大脑活动，醒来后10个小时的大脑活动。 In the morning test, the early birds and the night owls performed nearly the same in their responsiveness. But there was a gap 10.5 hours later: the night owls later showed faster reaction times and were more awake than the early birds.在早晨的测试中，早期的鸟类和夜猫子在反应能力上几乎是一样的。但10个小时后出现了一个差异：夜猫子们的反应时间比早起的鸟儿要快，而且比早起的鸟儿更清醒。 Appearances can be deceiving. While the early risers look like they’re hard at work throughout the day, the night owls seem to be more consistent overall in their productivity levels.外表可能是骗人的。虽然早起的人看起来一整天都在努力工作，但夜猫子们在他们的生产力水平上似乎更加一致。 Working late at night helps people find creative solutions.Researchers at the Catholic University of the Sacred Heart in Miami found that evening-oriented people are also more creative than their morning and intermediate counterparts.在深夜工作可以帮助人们找到创造性的解决方案。迈阿密圣心天主教大学的研究人员发现，即使是面向人的人也比他们的早起和介于中间的人更有创造力。 As Professor Marina Giampietro explains,正如Marina Giampietro教授所解释的那样， “[being in a nocturnal environment] may encourage the development of a non-conventional spirit and of the ability to find alternative and original solutions.”Not only are evening types smarter, but their unusual habits also help them to find creative solutions and alternatives. Non-conventional spirit, indeed. Who wouldn’t want to be a night owl?“在夜间活动环境中，可能会鼓励非传统精神的发展，以及寻找替代和原始解决方案的能力。”夜猫子们不仅更聪明，而且他们不同寻常的习惯也帮助他们找到创造性的解决方案和替代方案。非传统的精神,是的。谁不想当夜猫子？ Quick disclaimer about that last part, though. Whether you’re morning or evening-oriented is dictated by genetics, not by choice. As it turns out, a small group of brain cells is in charge of our internal clock and preferences for the time of day.不过，关于最后一部分的免责声明。无论你是早起还是晚起，都是由基因决定的，而不是由选择决定的。事实证明，一小群脑细胞负责我们的生物钟和一天中的时间偏好。 So, what’s the key takeaway from all this?那么，这一切的关键是什么呢？ Work according to your energy levels.As a night owl, it’s easy to feel pressured into working “normal” hours. That is, according to the standard workday of 9 am to 5 pm. But some of us aren’t built like that.根据你的精力水平工作。作为一个夜猫子，你很容易感到有压力在“正常”的工作时间。也就是每天早上9点到下午5点的标准工作日。但是我们中的一些人并不是这样的。 Some people work better at midnight, while others do their best work early in the morning. And, of course, there are those who lie somewhere in between.有些人在午夜工作得更好，而另一些人则在清晨做最好的工作。当然，也有一些人介于两者之间。 So if you tend to get your best ideas at a certain time of the day, take advantage of it and use that period to perform your most important tasks.因此，如果你倾向于在一天中的某一时刻得到最好的想法，利用它，利用这段时间来完成你最重要的任务。 You shouldn’t feel like you have to work or sleep according to a preconceived notion of working hours. If you freelance or work independently, this shouldn’t be too difficult to achieve. If you work in a full-time job, see if your boss is open to the idea of you working remotely from time to time.你不应该觉得你必须按照预先设想的工作时间来工作或睡觉。如果你是自由职业者或者独立工作者，这不难实现。如果你在一份全职工作中工作，看看你的老板是否对你时不时地远程工作的想法持开放态度。 The bottom line is: pay attention to your energy levels during the day and work with, rather than against it.底线是：关注你白天的精力水平，并与之合作，而不是对抗它。 The next time someone criticizes you for waking up late, remind that person that you’re not lazy, you’re evolutionarily progressive. Nighttime is for those who create, innovate and think out of the box.下次有人批评你起床晚了，提醒那个人你不是懒惰，而是进化的进步。夜晚是属于那些创造，创新和跳出思维定势思考的人。]]></content>
+      <categories>
+        <category>Arts</category>
+      </categories>
+      <tags>
+        <tag>Arts</tag>
+        <tag>Review</tag>
+        <tag>Week4</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Tip_Week3 - Code Diff工具分享]]></title>
     <url>%2F2018%2F09%2F09%2FArts%2FWeek3%2FArts-Tip-Week3-CodeDiffTool%2F</url>
     <content type="text"><![CDATA[Linux Linux下比较常用的代码比较工具是Meld。Meld 是一个可视化的文本差异比较工具，它可以跟多个版本控制系统集成。安装也极其便利：123sudo apt-get install updatesudo apt-get install meld 使用：绿色表示没有的，蓝色表示不同的。既然已经知道了不同之处，接下来就是合并了。看到蓝色和绿色颜色区域的“-&gt;”和“&lt;-”箭头没，只需点一下，即可。其他的一些例子和使用方法，可以参考： http://linux-commands-examples.com/meld 更多的一些Linux下的代码比较工具： https://www.fossmint.com/best-diff-merge-tools-for-linux/ Windows Windows下主要常用的是Beyond Compare，不过这个软件是付费的。但是相比同类产品还是比较便利。对于Windows下Git的用户来说，使用图形客户端进行差异比较和合并冲突比较直观，因此使用Beyond Compare作为git的比对与合并工具。 配置打开 C:\Users\Administrator.gitconfig 文件，添加如下内容12345678[diff] tool = bc4[difftool &quot;bc4&quot;] cmd = &quot;\&quot;c:/Program Files/Beyond Compare 4/BComp.exe\&quot; \&quot;$LOCAL\&quot; \&quot;$REMOTE\&quot;&quot;[merge] tool = bc4[mergetool &quot;bc4&quot;] cmd = &quot;\&quot;c:/Program Files/Beyond Compare 4/BComp.exe\&quot; \&quot;$LOCAL\&quot; \&quot;$REMOTE\&quot; \&quot;$BASE\&quot; \&quot;$MERGED\&quot;&quot; (其中bc4什么的根据你安装的/Beyond Compare版本来，以上举例是Beyond Compare4) 也可以通过命令行来设置，命令如下：12345678#difftool 配置git config --global diff.tool bc4git config --global difftool.bc4.cmd &quot;\&quot;c:/program files (x86)/beyond compare 4/bcomp.exe\&quot; \&quot;$LOCAL\&quot; \&quot;$REMOTE\&quot;&quot;#mergeftool 配置git config --global merge.tool bc4git config --global mergetool.bc4.cmd &quot;\&quot;c:/program files (x86)/beyond compare 4/bcomp.exe\&quot; \&quot;$LOCAL\&quot; \&quot;$REMOTE\&quot; \&quot;$BASE\&quot; \&quot;$MERGED\&quot;&quot;git config --global mergetool.bc4.trustExitCode true 设置好后，使用命令是 git difftool 而不是之前的 git diff 了。 使用差异比较1git difftool &lt;filename&gt; 合并冲突1git mergetool 参考Windows下使用Beyond Compare作为git的比对与合并工具Git下的冲突解决git difftool说明文档浅析Beyond Compare复制文件的三种方式]]></content>
@@ -81,8 +135,8 @@
       </categories>
       <tags>
         <tag>Arts</tag>
-        <tag>Share</tag>
         <tag>Week2</tag>
+        <tag>Share</tag>
       </tags>
   </entry>
   <entry>
@@ -109,8 +163,8 @@
       </categories>
       <tags>
         <tag>Arts</tag>
-        <tag>Week2</tag>
         <tag>Review</tag>
+        <tag>Week2</tag>
       </tags>
   </entry>
   <entry>
@@ -135,9 +189,9 @@
       </categories>
       <tags>
         <tag>Arts</tag>
+        <tag>Week1</tag>
         <tag>Tip</tag>
         <tag>Git</tag>
-        <tag>Week1</tag>
       </tags>
   </entry>
   <entry>
@@ -222,10 +276,10 @@
         <tag>Algorithms</tag>
         <tag>Data Structure</tag>
         <tag>Array</tag>
-        <tag>Majority Element</tag>
-        <tag>Moore’s voting algorithm</tag>
         <tag>Sort</tag>
         <tag>HashTable</tag>
+        <tag>Majority Element</tag>
+        <tag>Moore’s voting algorithm</tag>
       </tags>
   </entry>
   <entry>
