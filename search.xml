@@ -176,9 +176,9 @@
       <tags>
         <tag>Arts</tag>
         <tag>Hexo</tag>
+        <tag>Week2</tag>
         <tag>Tip</tag>
         <tag>Git</tag>
-        <tag>Week2</tag>
       </tags>
   </entry>
   <entry>
@@ -203,8 +203,8 @@
       </categories>
       <tags>
         <tag>Arts</tag>
-        <tag>Share</tag>
         <tag>Week1</tag>
+        <tag>Share</tag>
       </tags>
   </entry>
   <entry>
@@ -230,8 +230,8 @@
       </categories>
       <tags>
         <tag>Arts</tag>
-        <tag>Week1</tag>
         <tag>Review</tag>
+        <tag>Week1</tag>
       </tags>
   </entry>
   <entry>
@@ -303,10 +303,10 @@
         <tag>Algorithms</tag>
         <tag>Data Structure</tag>
         <tag>Array</tag>
-        <tag>Sort</tag>
-        <tag>HashTable</tag>
         <tag>Majority Element</tag>
         <tag>Moore’s voting algorithm</tag>
+        <tag>Sort</tag>
+        <tag>HashTable</tag>
       </tags>
   </entry>
   <entry>
@@ -407,8 +407,8 @@
         <category>Others</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
         <tag>Next</tag>
+        <tag>Hexo</tag>
         <tag>Gitment</tag>
       </tags>
   </entry>
