@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://skyhacks.org/"/>
-  <updated>2018-09-25T15:18:23.251Z</updated>
+  <updated>2018-10-15T15:35:24.017Z</updated>
   <id>http://skyhacks.org/</id>
   
   <author>
@@ -14,6 +14,99 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode 896. Monotonic Array</title>
+    <link href="http://skyhacks.org/2018/10/10/LeetCode/LeetCode-MonotonicArray/"/>
+    <id>http://skyhacks.org/2018/10/10/LeetCode/LeetCode-MonotonicArray/</id>
+    <published>2018-10-10T01:40:59.000Z</published>
+    <updated>2018-10-15T15:35:24.017Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a><a href="https://leetcode.com/problems/monotonic-array" target="_blank" rel="external">题目描述</a>：</h2><p>An array is monotonic if it is either monotone increasing or monotone decreasing.</p>
+<p>An array A is monotone increasing if for all i &lt;= j, A[i] &lt;= A[j].  An array A is monotone decreasing if for all i &lt;= j, A[i] &gt;= A[j].</p>
+<p>Return true if and only if the given array A is monotonic.</p>
+<p><strong>Example 1:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,2,2,3]</div><div class="line">Output: true</div></pre></td></tr></table></figure></p>
+<p><strong>Example 2:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [6,5,4,4]</div><div class="line">Output: true</div></pre></td></tr></table></figure></p>
+<p><strong>Example 3:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,3,2]</div><div class="line">Output: false</div></pre></td></tr></table></figure></p>
+<p><strong>Example 4:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,2,4,5]</div><div class="line">Output: true</div></pre></td></tr></table></figure></p>
+<p><strong>Example 5:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Input: [1,1,1]</div><div class="line">Output: true</div></pre></td></tr></table></figure></p>
+<p><strong>Note:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">1 &lt;= A.length &lt;= 50000</div><div class="line">-100000 &lt;= A[i] &lt;= 100000</div></pre></td></tr></table></figure></p>
+<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>一个单调数组的定义就是数组元素单调递增或者单调递减。<br>测试样例见题目描述</p>
+<h3 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h3><p>对于n个元素数组来说判断是否递增/减的方法就是遍历一遍数组元素看看是递增还是递减。<br>A[i] &gt;= A[i - 1]; // 递增</p>
+<h2 id="A-i-lt-A-i-1-递减"><a href="#A-i-lt-A-i-1-递减" class="headerlink" title="A[i] &lt;= A[i - 1]; // 递减"></a>A[i] &lt;= A[i - 1]; // 递减</h2><p>参考LeetCode Discuss：<br><a href="https://leetcode.com/problems/monotonic-array/discuss/165899/1-liner-C++" target="_blank" rel="external">https://leetcode.com/problems/monotonic-array/discuss/165899/1-liner-C++</a></p>
+<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isMonotonic</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; A)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> size = A.size();</div><div class="line">        <span class="keyword">if</span> ( A[size - <span class="number">1</span>] &gt; A[<span class="number">0</span>]) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size - <span class="number">1</span>; ++i) &#123;</div><div class="line">                <span class="keyword">if</span> (A[i + <span class="number">1</span>] - A[i] &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size - <span class="number">1</span>; ++i) &#123;</div><div class="line">                <span class="keyword">if</span> (A[i] - A[i + <span class="number">1</span>] &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目描述：&quot;&gt;&lt;a href=&quot;#题目描述：&quot; class=&quot;headerlink&quot; title=&quot;题目描述：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode.com/problems/monotonic-array&quot; target=&quot;_blank&quot;
+    
+    </summary>
+    
+      <category term="LeetCode" scheme="http://skyhacks.org/categories/LeetCode/"/>
+    
+    
+      <category term="LeetCode" scheme="http://skyhacks.org/tags/LeetCode/"/>
+    
+      <category term="Algorithms" scheme="http://skyhacks.org/tags/Algorithms/"/>
+    
+      <category term="Data Structure" scheme="http://skyhacks.org/tags/Data-Structure/"/>
+    
+      <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Share_Week5-制定项目规划</title>
+    <link href="http://skyhacks.org/2018/10/10/Arts/Week5/Arts-Share-Week5-MakeAPlan/"/>
+    <id>http://skyhacks.org/2018/10/10/Arts/Week5/Arts-Share-Week5-MakeAPlan/</id>
+    <published>2018-10-09T16:22:02.000Z</published>
+    <updated>2018-10-15T15:36:34.772Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在负责公司的一个项目，颇多感悟，一一记录一下。<br><em>*项目情况</em></p>
+<ol>
+<li><p>这是一个老的商用项目<br>老项目一般都有一个共通的问题：维护成本很高。因为存活时间太久，经手太多人。如果没有一个统一的约定代码风格，可读性会很差。再加上项目只追求完成业务逻辑，不考虑或者不敢重构，因为怕影响现有逻辑，同时不考虑代码执行效率，只要项目可以跑，完成业务逻辑就可以。代码行间各种坏味道。</p>
+</li>
+<li><p>没有注释或者过多注释<br>关键的函数注释太少，或者注释并没有随着项目代码的变更而更新。更常见的情况是，随处可见、层层叠叠的“BEGIN: add by xxx”,”END: add by xxx”, 极度影响代码的阅读和理解。不理解为啥有了git作为代码管理工具了，还需要写这么多谁修改的用意何在？！</p>
+</li>
+<li><p>项目缺少文档或者文档过时<br>文档对于项目开发来说很重要，让开发者知道需要把系统开发成什么样；让维护项目的工程师知道整个系统的业务和代码逻辑，便于结合源码深入理解整个系统。但是这个项目文档实在很随意，要么就是没有，缺少帮助新手快速理解系统并上手干活的资料。对于项目里涉及的一些软件和流程缺乏一个很系统的指导书，要么就是虽然有，但是很久没有更新，只能辩证的看…</p>
+</li>
+<li><p>项目的概要设计过于简略<br>接手项目进行迭代开发时候适逢项目详细设计阶段。作为一个新人，我手上的概要设计的文档是由一个不懂代码的需求工程师完成的，对于业务逻辑的描述粒度不够，或者根本不涉及。详细设计阶段我需要参考其他模块的文档来理解负责模块的概要设计，然后在不理解业务和没有系统运行环境的情况下，光啃代码去完成详细设计。要命的是，需求工程师因为不懂代码，需求实际所需时间和预定时间差太多，代码量是预估的2倍，交付时间不变，期间还要参加公司的培训、完成一系列考核…</p>
+</li>
+<li><p>单元测试是为了应付指标达标<br>项目也有单元测试，要满足行覆盖率80%以上。但是，项目紧、维护难、人手少，单元测试的指标最终也是应付了事。函数基本mock，并没有起到单元测试原先的作用。</p>
+</li>
+<li><p>项目的计划再三变更<br>上面领导一声令下，下面的人就开始动起来垒代码。做了一半，领导拍了个脑袋说，这个方案不行啊。于是，代码开始回滚，从代码库里删除。之前几个月的努力泡汤。过几天，另一些领导开始拍大腿，不能白做了几个月，至少得要交付一个最小的子集模块，于是继续开始搬砖。紧接着，来了个更急的任务，所有编码工作暂停，所有人员转移到新任务去，因为之前那个任务很有可能不做或者要做，谁也不知道，但是现在手头新项目是权重最高的，那么，开始做吧。等着上面哪位领导继续拍脑袋或者大腿…</p>
+</li>
+</ol>
+<p><strong>反思</strong></p>
+<ol>
+<li>根据敏捷开发的作法，越是这样老的系统，越需要在下一次的迭代开发的过程中重构优化，小步走，保证单元测试覆盖率，提升系统可维护性。</li>
+<li>注释和文档一样重要，尤其是一些关键函数，如果过时的注释，还不如没有注释，否则只会误导后人。</li>
+<li>文档的维护和更新要随着项目同时进行，并且需要有一个统一的地方去堆放相关的项目文档视频等资料，且需要有一个索引方便后人查找。</li>
+<li>概要设计是后续详细设计的基础，如果前期做的不够好，后面就有可能出问题，导致详细设计中某些点考虑不全或者功能点遗漏。后期发现再来补救的成本就要高很多，得不偿失。项目开发交付周期的制定需要科学严谨，既满足客户的需求也要考虑实际情况，不是一拍脑袋就出结果。</li>
+<li>单元测试和集成测试不是摆设和给上面交代的指标数据，如果做不到函数功能代码逻辑的覆盖，只能是形同虚设。</li>
+<li>计划要科学，前期没有调研清楚就做做看的想法，只会浪费时间和金钱。制定一个计划同时也反映了一个领导的能力和远见，希望少拍几次脑袋和大腿，你不疼，我加班加的还疼呢…</li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在负责公司的一个项目，颇多感悟，一一记录一下。&lt;br&gt;&lt;em&gt;*项目情况&lt;/em&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;这是一个老的商用项目&lt;br&gt;老项目一般都有一个共通的问题：维护成本很高。因为存活时间太久，经手太多人。如果没有一个统一的约定代码风格，可读性会很差。再加上
+    
+    </summary>
+    
+      <category term="Arts" scheme="http://skyhacks.org/categories/Arts/"/>
+    
+    
+      <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
+    
+      <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
+    
+      <category term="Week5" scheme="http://skyhacks.org/tags/Week5/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode 905. Sort Array By Parity</title>
@@ -89,9 +182,9 @@
     
       <category term="Tip" scheme="http://skyhacks.org/tags/Tip/"/>
     
-      <category term="Beyond Compare" scheme="http://skyhacks.org/tags/Beyond-Compare/"/>
-    
       <category term="Week4" scheme="http://skyhacks.org/tags/Week4/"/>
+    
+      <category term="Beyond Compare" scheme="http://skyhacks.org/tags/Beyond-Compare/"/>
     
   </entry>
   
@@ -236,13 +329,13 @@
     
       <category term="Week3" scheme="http://skyhacks.org/tags/Week3/"/>
     
+      <category term="Beyond Compare" scheme="http://skyhacks.org/tags/Beyond-Compare/"/>
+    
       <category term="Linux" scheme="http://skyhacks.org/tags/Linux/"/>
     
       <category term="Windows" scheme="http://skyhacks.org/tags/Windows/"/>
     
       <category term="Meld" scheme="http://skyhacks.org/tags/Meld/"/>
-    
-      <category term="Beyond Compare" scheme="http://skyhacks.org/tags/Beyond-Compare/"/>
     
   </entry>
   
@@ -653,9 +746,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Week2" scheme="http://skyhacks.org/tags/Week2/"/>
-    
       <category term="Review" scheme="http://skyhacks.org/tags/Review/"/>
+    
+      <category term="Week2" scheme="http://skyhacks.org/tags/Week2/"/>
     
   </entry>
   
@@ -704,9 +797,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
-    
       <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
+    
+      <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
     
   </entry>
   
@@ -803,9 +896,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
-    
       <category term="Review" scheme="http://skyhacks.org/tags/Review/"/>
+    
+      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
     
   </entry>
   
@@ -857,7 +950,7 @@
     <link href="http://skyhacks.org/2018/08/14/Arts/MyArtsPlan/"/>
     <id>http://skyhacks.org/2018/08/14/Arts/MyArtsPlan/</id>
     <published>2018-08-14T15:14:41.000Z</published>
-    <updated>2018-10-07T15:50:28.517Z</updated>
+    <updated>2018-10-15T15:36:51.750Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>每周至少做一个leetcode算法题</p>
 <ul>
@@ -865,6 +958,7 @@
 <li>week2: <a href="http://skyhacks.org/2018/08/30/LeetCode/LeetCode-TransposeMatrix/">867. Transpose Matrix</a></li>
 <li>week3: <a href="http://skyhacks.org/2018/09/05/LeetCode/LeetCode-ToeplitzMatrix/">766. Toeplitz Matrix</a></li>
 <li>week4: <a href="http://skyhacks.org/2018/09/24/LeetCode/LeetCode-SortArrayByParity/">905. Sort Array By Parity</a></li>
+<li>week5: <a href="http://skyhacks.org/2018/09/24/LeetCode/LeetCode-SortArrayByParity/">896. Monotonic Array</a></li>
 </ul>
 <hr>
 <h2 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h2><p>每周阅读至少一篇英文技术文章</p>
@@ -889,6 +983,7 @@
 <li>week2: <a href="http://skyhacks.org/2018/08/30/Arts/Week2/Arts-Share-Week2-HowToAskQuestions/">如何正确高效地问对问题</a></li>
 <li>week3: <a href="http://skyhacks.org/2018/09/06/Arts/Week3/Arts-Share-Week3-HowToStudy/">如何高效的学习</a></li>
 <li>week4: <a href="http://skyhacks.org/2018/09/20/Arts/Week4/Arts-Share-Week4-GoForward/">学习的感悟</a></li>
+<li>week5: <a href="http://skyhacks.org/2018/09/20/Arts/Week4/Arts-Share-Week4-GoForward/">制定项目规划</a></li>
 </ul>
 ]]></content>
     
@@ -951,128 +1046,6 @@
       <category term="Data Structure" scheme="http://skyhacks.org/tags/Data-Structure/"/>
     
       <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 169. Majority Element II</title>
-    <link href="http://skyhacks.org/2017/11/28/LeetCode/LeetCode-MajorityElementII/"/>
-    <id>http://skyhacks.org/2017/11/28/LeetCode/LeetCode-MajorityElementII/</id>
-    <published>2017-11-28T03:42:33.000Z</published>
-    <updated>2018-08-14T15:31:31.446Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a><a href="https://leetcode.com/problems/majority-element-ii" target="_blank" rel="external">题目描述</a>：</h2><p>Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times. The algorithm should run in linear time and in O(1) space.<br>Hint:<br>How many majority elements could it possibly have?</p>
-<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给定一个大小为n的整数数组，从中找出所有出现次数超过 ⌊ n/3 ⌋ 的元素。算法应该满足线性时间复杂度和O(1)空间复杂度。<br>提示：<br>一共可能有多少个“众数”？</p>
-<h3 id="解题思路："><a href="#解题思路：" class="headerlink" title="解题思路："></a>解题思路：</h3><hr>
-<p>可以从<a href="http://blog.csdn.net/chfe007/article/details/42919017" target="_blank" rel="external">Moore’s voting algorithm</a>中得到一些启发</p>
-<p>参考LeetCode Discuss：<br><a href="https://leetcode.com/discuss/43248/boyer-moore-majority-vote-algorithm-and-my-elaboration" target="_blank" rel="external">https://leetcode.com/discuss/43248/boyer-moore-majority-vote-algorithm-and-my-elaboration</a></p>
-<p>观察可知，数组中至多可能会有2个出现次数超过 ⌊ n/3 ⌋ 的众数<br>记变量n1, n2为候选众数； c1, c2为它们对应的出现次数<br>遍历数组，记当前数字为num<br>若num与n1或n2相同，则将其对应的出现次数加1<br>否则，若c1或c2为0，则将其置为1，对应的候选众数置为num<br>否则，将c1与c2分别减1<br>最后，再统计一次候选众数在数组中出现的次数，若满足要求，则返回之。</p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; majorityElement(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; majorList;</div><div class="line">        <span class="comment">// first round to find the candidates</span></div><div class="line">        <span class="keyword">int</span> count1 = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> candidate1 = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> count2 = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> candidate2 = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++) &#123;</div><div class="line">             <span class="comment">// every iteration deal with one possibility</span></div><div class="line">            <span class="keyword">if</span> (candidate1 == nums[i]) count1++;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (candidate2 == nums[i]) count2++;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (<span class="number">0</span> == count1) &#123;</div><div class="line">                count1 = <span class="number">1</span>;</div><div class="line">                candidate1 = nums[i];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (<span class="number">0</span> == count2) &#123;</div><div class="line">                count2 = <span class="number">1</span>;</div><div class="line">                candidate2 = nums[i];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> &#123;</div><div class="line">                count1--;</div><div class="line">                count2--;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// second round to check</span></div><div class="line">        <span class="comment">// notice that num1 and num2 can be the same, but in the following we only count once!</span></div><div class="line">        count1 = count2 = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++) &#123;</div><div class="line">            <span class="keyword">if</span> (nums[i] == candidate1) count1++;</div><div class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (nums[i] == candidate2) count2++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (nums.size()/<span class="number">3</span> &lt; count1)</div><div class="line">            majorList.push_back(candidate1);</div><div class="line">        <span class="keyword">if</span> (nums.size()/<span class="number">3</span> &lt; count2)</div><div class="line">            majorList.push_back(candidate2);</div><div class="line"></div><div class="line">        <span class="keyword">return</span> majorList;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong><br>此题是<a href="http://skyhacks.org/2017/11/24/LeetCode-MajorityElement">LeetCode 169. Majority Element</a>的加强版，同时要找出大于n/3的众数，难点在于</p>
-<pre><code>1. 时间复杂度O(n)，空间复杂度O(1) -- 注定只能遍历元素，并且用单个变量来完成计数
-2. 众数的条件是n/3
-</code></pre><p>针对此题的n/3的进行深入分析，可以发现有三种情况：</p>
-<pre><code>1. 不存在大于n/3的众数，第一轮结束后，第二轮check时候就会把非众数都过滤掉。
-2. 只存在1个大于n/3的众数, 其余元素个数总数小于2n/3。递减(pair out)时候可以保证众数的count不为0, 第二轮check时候
-就会把非众数都过滤掉。
-3. 存在2个大于n/3的众数，其余元素都小于n/3。递减(pair out)时候可以保证2个众数的count不为0, 第二轮check时候
-就会把非众数都过滤掉。
-</code></pre><p><strong>Boyer-Moore Majority Vote algorithm</strong>的拓展：</p>
-<ol>
-<li><a href="https://discuss.leetcode.com/topic/65042/my-understanding-of-boyer-moore-majority-vote" target="_blank" rel="external">https://discuss.leetcode.com/topic/65042/my-understanding-of-boyer-moore-majority-vote</a></li>
-<li><a href="https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html" target="_blank" rel="external">https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html</a></li>
-</ol>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目描述：&quot;&gt;&lt;a href=&quot;#题目描述：&quot; class=&quot;headerlink&quot; title=&quot;题目描述：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode.com/problems/majority-element-ii&quot; target=&quot;_bl
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://skyhacks.org/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://skyhacks.org/tags/LeetCode/"/>
-    
-      <category term="Algorithms" scheme="http://skyhacks.org/tags/Algorithms/"/>
-    
-      <category term="Data Structure" scheme="http://skyhacks.org/tags/Data-Structure/"/>
-    
-      <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
-    
-      <category term="Majority Element" scheme="http://skyhacks.org/tags/Majority-Element/"/>
-    
-      <category term="Moore’s voting algorithm" scheme="http://skyhacks.org/tags/Moore%E2%80%99s-voting-algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode 169. Majority Element</title>
-    <link href="http://skyhacks.org/2017/11/24/LeetCode/LeetCode-MajorityElement/"/>
-    <id>http://skyhacks.org/2017/11/24/LeetCode/LeetCode-MajorityElement/</id>
-    <published>2017-11-24T09:27:42.000Z</published>
-    <updated>2018-08-14T15:31:31.445Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a><a href="https://leetcode.com/problems/majority-element/description/" target="_blank" rel="external">题目描述</a>：</h2><p>Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.<br>You may assume that the array is non-empty and the majority element always exist in the array.</p>
-<h2 id="题目大意："><a href="#题目大意：" class="headerlink" title="题目大意："></a>题目大意：</h2><p>给定一个长度为n的数组，寻找其中的“众数”。众数是指出现次数大于 ⌊ n/2 ⌋ 的元素。<br>你可以假设数组是非空的并且数组中的众数永远存在。</p>
-<h2 id="参考LeetCode-Discuss："><a href="#参考LeetCode-Discuss：" class="headerlink" title="参考LeetCode Discuss："></a>参考LeetCode Discuss：</h2><p><a href="https://discuss.leetcode.com/topic/8692/o-n-time-o-1-space-fastest-solution/20" target="_blank" rel="external">https://discuss.leetcode.com/topic/8692/o-n-time-o-1-space-fastest-solution/20</a><br><a href="https://discuss.leetcode.com/topic/17446/6-suggested-solutions-in-c-with-explanations" target="_blank" rel="external">https://discuss.leetcode.com/topic/17446/6-suggested-solutions-in-c-with-explanations</a></p>
-<h3 id="解题思路1："><a href="#解题思路1：" class="headerlink" title="解题思路1："></a>解题思路1：</h3><hr>
-<p>HashTable：使用HashTasble给每个出现的元素计数，遍历数组，发现超过半数的众数就返回。</p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">        <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; mapNums;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</div><div class="line">            ++mapNums[nums[i]];</div><div class="line">            <span class="keyword">if</span> (mapNums[nums[i]] &gt; nums.size() / <span class="number">2</span>) <span class="keyword">return</span> nums[i];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong><br>时间复杂度满足O(n)，但是由于HashTable（unordered_map）的存在，空间复杂度就不能满足O(1)。</p>
-<h3 id="解题思路2："><a href="#解题思路2：" class="headerlink" title="解题思路2："></a>解题思路2：</h3><hr>
-<p>排序：排序的结果就是众数如果存在，中间的元素一定是众数（过半）</p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">        sort(nums.begin(), nums.end());</div><div class="line">        <span class="keyword">return</span> (nums.size() / <span class="number">2</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong></p>
-<ol>
-<li>时间复杂度主要在排序上， N*log2(N)</li>
-<li>如果数组为空或者不存在众数，上述代码需要考虑更全面些 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">        sort(nums.begin(), nums.end());</div><div class="line">        <span class="keyword">int</span> pivot = nums.size() / <span class="number">2</span>;</div><div class="line">        <span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = pivot; i &lt; nums.size(); i++) &#123;</div><div class="line">            <span class="keyword">if</span> (nums[pivot] != nums[i]) <span class="keyword">break</span>;</div><div class="line">            count++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = pivot - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</div><div class="line">            <span class="keyword">if</span> (nums[pivot] != nums[i]) <span class="keyword">break</span>;</div><div class="line">            count++;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (count &gt; pivot) <span class="keyword">return</span> nums[pivot];</div><div class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="解题思路3："><a href="#解题思路3：" class="headerlink" title="解题思路3："></a>解题思路3：</h3><hr>
-<p>投票算法：遍历元素，利用candidate 和 count两个变量找到众数。（前提：众数一定存在）</p>
-<p><strong>C++代码：</strong><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">majorityElement</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> major = nums, counts = <span class="number">0</span>, n = nums.size();</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (!counts) &#123;</div><div class="line">                major = nums[i];</div><div class="line">                counts = <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> counts += (nums[i] == major) ? <span class="number">1</span> : <span class="number">-1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> major;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p><strong>代码分析：</strong><br><a href="http://blog.csdn.net/chfe007/article/details/42919017" target="_blank" rel="external">Moore’s voting algorithm</a>是比较有意思的一个算法，在dicuss上看到的。这个算法是解决这样一个问题：从一个数组中找出出现半数以上的元素。大意是这样：</p>
-<blockquote>
-<p>We will sweep down the sequence starting at the pointer position shown above. As we sweep we maintain a pair consisting of a current candidate and a counter. Initially, the current candidate is unknown and the counter is 0.<br>When we move the pointer forward over an element e:</p>
-<ul>
-<li>If the counter is 0, we set the current candidate to e and we set the counter to 1.</li>
-<li>If the counter is not 0, we increment or decrement the counter according to whether e is the current candidate.<br>When we are done, the current candidate is the majority element, if there is a majority.</li>
-</ul>
-</blockquote>
-<p><strong>“投票算法”</strong><br>设定两个变量candidate和count。candidate保存当前可能的候选众数，count保存该候选众数的出现次数。<br>遍历数组num。<br>如果当前的数字e与候选众数candidate相同，则将计数count + 1<br>否则，如果当前的候选众数candidate为空，或者count为0，则将候选众数candidate的值置为e，并将计数count置为1。<br>否则，将计数count - 1<br>最终留下的候选众数candidate即为最终答案。<br>以上算法时间复杂度为O(n)，空间复杂度为O(1)</p>
-<h2 id="官方解析："><a href="#官方解析：" class="headerlink" title="官方解析："></a>官方解析：</h2><p>时间复杂度: O(n2) — 蛮力法: 依次检查每一个元素是否为众数<br>时间复杂度: O(n), 空间复杂度: O(n) — 哈希表: 维护一个每一个元素出现次数的哈希表, 然后找到出现次数最多的元素<br>时间复杂度: O(n log n) — 排序: 在排序后找出连续重复出现次数最多的元素<br>平均时间复杂度: O(n), 最坏复杂度: 无穷大 — 随机算法: 随机选取一个元素计算其是否为众数. 如果不是, 就重复上一步骤直到找到为止。 由于选出众数的概率 &gt; 1 / 2, 因此期望的尝试次数 &lt; 2<br>时间复杂度: O(n log n) — 分治法: 将数组拆成2半, 然后找出前一半的众数A和后一半的众数B。则全局众数要么是A要么是B。 如果 A == B, 则它自然而然就是全局众数。 如果不是, 则A和B都是候选众数, 则至多只需要检查这两个元素的出现次数即可。 时间复杂度, T(n) = T(n/2) + 2n = O(n log n).<br>时间复杂度: O(n) — Moore投票算法: 我们维护一个当前的候选众数和一个初始为0的计数器。遍历数组时，我们看当前的元素x:</p>
-<pre><code>* 如果计数器是0, 我们将候选众数置为 x 并将计数器置为 1
-* 如果计数器非0, 我们根据x与当前的候选众数是否相等对计数器+1或者-1
-* 一趟之后, 当前的候选众数就是所求众数. 时间复杂度 = O(n).
-</code></pre><p>时间复杂度: O(n) — 位操作法: 我们需要32次迭代, 每一次计算所有n个数的第i位的1的个数。由于众数一定存在，那么或者1的个数&gt;0的个数 或者反过来(但绝不会相同)。 众数的第i位一定是计数较多数字。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目描述：&quot;&gt;&lt;a href=&quot;#题目描述：&quot; class=&quot;headerlink&quot; title=&quot;题目描述：&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://leetcode.com/problems/majority-element/description/&quot; t
-    
-    </summary>
-    
-      <category term="LeetCode" scheme="http://skyhacks.org/categories/LeetCode/"/>
-    
-    
-      <category term="LeetCode" scheme="http://skyhacks.org/tags/LeetCode/"/>
-    
-      <category term="Algorithms" scheme="http://skyhacks.org/tags/Algorithms/"/>
-    
-      <category term="Data Structure" scheme="http://skyhacks.org/tags/Data-Structure/"/>
-    
-      <category term="Array" scheme="http://skyhacks.org/tags/Array/"/>
-    
-      <category term="Sort" scheme="http://skyhacks.org/tags/Sort/"/>
-    
-      <category term="HashTable" scheme="http://skyhacks.org/tags/HashTable/"/>
-    
-      <category term="Majority Element" scheme="http://skyhacks.org/tags/Majority-Element/"/>
-    
-      <category term="Moore’s voting algorithm" scheme="http://skyhacks.org/tags/Moore%E2%80%99s-voting-algorithm/"/>
     
   </entry>
   
