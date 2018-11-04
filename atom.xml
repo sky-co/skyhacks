@@ -246,9 +246,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Week4" scheme="http://skyhacks.org/tags/Week4/"/>
-    
       <category term="Tip" scheme="http://skyhacks.org/tags/Tip/"/>
+    
+      <category term="Week4" scheme="http://skyhacks.org/tags/Week4/"/>
     
       <category term="Beyond Compare" scheme="http://skyhacks.org/tags/Beyond-Compare/"/>
     
@@ -297,9 +297,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Week4" scheme="http://skyhacks.org/tags/Week4/"/>
-    
       <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
+    
+      <category term="Week4" scheme="http://skyhacks.org/tags/Week4/"/>
     
   </entry>
   
@@ -391,9 +391,9 @@
     
       <category term="Tip" scheme="http://skyhacks.org/tags/Tip/"/>
     
-      <category term="Beyond Compare" scheme="http://skyhacks.org/tags/Beyond-Compare/"/>
-    
       <category term="Git" scheme="http://skyhacks.org/tags/Git/"/>
+    
+      <category term="Beyond Compare" scheme="http://skyhacks.org/tags/Beyond-Compare/"/>
     
       <category term="Week3" scheme="http://skyhacks.org/tags/Week3/"/>
     
@@ -773,9 +773,9 @@
     
       <category term="Tip" scheme="http://skyhacks.org/tags/Tip/"/>
     
-      <category term="Week2" scheme="http://skyhacks.org/tags/Week2/"/>
-    
       <category term="Git" scheme="http://skyhacks.org/tags/Git/"/>
+    
+      <category term="Week2" scheme="http://skyhacks.org/tags/Week2/"/>
     
   </entry>
   
@@ -863,9 +863,9 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
-      <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
-    
       <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
+    
+      <category term="Share" scheme="http://skyhacks.org/tags/Share/"/>
     
   </entry>
   
@@ -910,11 +910,11 @@
     
       <category term="Arts" scheme="http://skyhacks.org/tags/Arts/"/>
     
+      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
+    
       <category term="Tip" scheme="http://skyhacks.org/tags/Tip/"/>
     
       <category term="Git" scheme="http://skyhacks.org/tags/Git/"/>
-    
-      <category term="Week1" scheme="http://skyhacks.org/tags/Week1/"/>
     
   </entry>
   
@@ -1016,7 +1016,7 @@
     <link href="http://skyhacks.org/2018/08/14/Arts/MyArtsPlan/"/>
     <id>http://skyhacks.org/2018/08/14/Arts/MyArtsPlan/</id>
     <published>2018-08-14T15:14:41.000Z</published>
-    <updated>2018-10-15T15:42:33.589Z</updated>
+    <updated>2018-11-04T14:36:41.310Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>每周至少做一个leetcode算法题</p>
 <ul>
@@ -1033,6 +1033,7 @@
 <li>week2: <a href="http://skyhacks.org/2018/08/25/Arts/Week2/Arts-Review_Week2-MyArtsPlan/">在Facebook服务器上执行远程代码执行</a></li>
 <li>week3: <a href="http://skyhacks.org/2018/09/07/Arts/Week3/Arts-Review_Week3-HowToThinkLikeProgrammer/">如何像程序员一样思考</a></li>
 <li>week4: <a href="http://skyhacks.org/2018/09/20/Arts/Week4/Arts-Review_Week4-EveningPeopleAreSmarter/">科学研究表明为什么晚起的人比早起的人更聪明和富于创造力</a></li>
+<li>week5: <a href="http://skyhacks.org/2018/11/04/Arts/Week5/Arts-Review_Week5-HowToBeSmarter/">科学研究表明为什么晚起的人比早起的人更聪明和富于创造力</a></li>
 </ul>
 <hr>
 <h2 id="Tip"><a href="#Tip" class="headerlink" title="Tip"></a>Tip</h2><p>每周学习至少一个技术技巧, 最好是实际工作学到的</p>

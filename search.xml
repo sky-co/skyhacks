@@ -63,8 +63,8 @@
       </categories>
       <tags>
         <tag>Arts</tag>
-        <tag>Week4</tag>
         <tag>Tip</tag>
+        <tag>Week4</tag>
         <tag>Beyond Compare</tag>
       </tags>
   </entry>
@@ -77,8 +77,8 @@
       </categories>
       <tags>
         <tag>Arts</tag>
-        <tag>Week4</tag>
         <tag>Share</tag>
+        <tag>Week4</tag>
       </tags>
   </entry>
   <entry>
@@ -104,8 +104,8 @@
       <tags>
         <tag>Arts</tag>
         <tag>Tip</tag>
-        <tag>Beyond Compare</tag>
         <tag>Git</tag>
+        <tag>Beyond Compare</tag>
         <tag>Week3</tag>
         <tag>Linux</tag>
         <tag>Windows</tag>
@@ -190,8 +190,8 @@
         <tag>Arts</tag>
         <tag>Hexo</tag>
         <tag>Tip</tag>
-        <tag>Week2</tag>
         <tag>Git</tag>
+        <tag>Week2</tag>
       </tags>
   </entry>
   <entry>
@@ -216,8 +216,8 @@
       </categories>
       <tags>
         <tag>Arts</tag>
-        <tag>Share</tag>
         <tag>Week1</tag>
+        <tag>Share</tag>
       </tags>
   </entry>
   <entry>
@@ -229,9 +229,9 @@
       </categories>
       <tags>
         <tag>Arts</tag>
+        <tag>Week1</tag>
         <tag>Tip</tag>
         <tag>Git</tag>
-        <tag>Week1</tag>
       </tags>
   </entry>
   <entry>
@@ -264,7 +264,7 @@
   <entry>
     <title><![CDATA[ARTS - 左耳听风群的每周必做]]></title>
     <url>%2F2018%2F08%2F14%2FArts%2FMyArtsPlan%2F</url>
-    <content type="text"><![CDATA[Algorithm每周至少做一个leetcode算法题 week1: 832.Flipping an Image week2: 867. Transpose Matrix week3: 766. Toeplitz Matrix week4: 905. Sort Array By Parity week5: 896. Monotonic Array Review每周阅读至少一篇英文技术文章 week1: 马斯克在想什么？ week2: 在Facebook服务器上执行远程代码执行 week3: 如何像程序员一样思考 week4: 科学研究表明为什么晚起的人比早起的人更聪明和富于创造力 Tip每周学习至少一个技术技巧, 最好是实际工作学到的 week1: Git换行符LF与CRLF转换问题 week2: 使用Hexo和GitHub搭建博客，出现hexo -d报错解决方案 week3: Code Diff工具分享 week4: 文件的拷贝工具分享 Share每周分享一篇有观点和思考的技术文章 week1: 不做伪工作者 week2: 如何正确高效地问对问题 week3: 如何高效的学习 week4: 学习的感悟 week5: 制定项目规划]]></content>
+    <content type="text"><![CDATA[Algorithm每周至少做一个leetcode算法题 week1: 832.Flipping an Image week2: 867. Transpose Matrix week3: 766. Toeplitz Matrix week4: 905. Sort Array By Parity week5: 896. Monotonic Array Review每周阅读至少一篇英文技术文章 week1: 马斯克在想什么？ week2: 在Facebook服务器上执行远程代码执行 week3: 如何像程序员一样思考 week4: 科学研究表明为什么晚起的人比早起的人更聪明和富于创造力 week5: 科学研究表明为什么晚起的人比早起的人更聪明和富于创造力 Tip每周学习至少一个技术技巧, 最好是实际工作学到的 week1: Git换行符LF与CRLF转换问题 week2: 使用Hexo和GitHub搭建博客，出现hexo -d报错解决方案 week3: Code Diff工具分享 week4: 文件的拷贝工具分享 Share每周分享一篇有观点和思考的技术文章 week1: 不做伪工作者 week2: 如何正确高效地问对问题 week3: 如何高效的学习 week4: 学习的感悟 week5: 制定项目规划]]></content>
       <categories>
         <category>Arts</category>
       </categories>
@@ -316,10 +316,10 @@
         <tag>Algorithms</tag>
         <tag>Data Structure</tag>
         <tag>Array</tag>
-        <tag>Majority Element</tag>
-        <tag>Moore’s voting algorithm</tag>
         <tag>Sort</tag>
         <tag>HashTable</tag>
+        <tag>Majority Element</tag>
+        <tag>Moore’s voting algorithm</tag>
       </tags>
   </entry>
   <entry>
@@ -420,8 +420,8 @@
         <category>Others</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
         <tag>Next</tag>
+        <tag>Hexo</tag>
         <tag>Gitment</tag>
       </tags>
   </entry>
